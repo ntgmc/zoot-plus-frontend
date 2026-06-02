@@ -1683,8 +1683,8 @@
               "en": "Confirm"
             },
             "default_settings_tooltip": {
-              "cn": "若不进行任何设置, 将使用默认值 (一技能 · 不自动使用 · 技能使用次数: 1次)",
-              "en": "If no settings are applied, default values will be used (Skill 1 · Don't use automatically · Usage count: 1)"
+              "cn": "若不进行任何设置, 将使用默认值 (不指定技能 · 不自动使用 · 技能使用次数: 1次)",
+              "en": "If no settings are applied, default values will be used (Unspecified Skill · Don't use automatically · Usage count: 1)"
             },
             "not_set": {
               "cn": "未设置技能",
@@ -1741,12 +1741,14 @@
         "EditorOperatorItem": {
           "skill_number": {
             "cn": {
+              "0": "不指定技能",
               "1": "一技能",
               "2": "二技能",
               "3": "三技能",
               "other": "未知技能"
             },
             "en": {
+              "0": "Unspecified Skill",
               "1": "S1",
               "2": "S2",
               "3": "S3",
@@ -1847,12 +1849,14 @@
         "EditorOperatorSkill": {
           "skill_number": {
             "cn": {
+              "0": "不指定技能",
               "1": "一技能",
               "2": "二技能",
               "3": "三技能",
               "other": "未知技能"
             },
             "en": {
+              "0": "Unspecified Skill",
               "1": "Skill 1",
               "2": "Skill 2",
               "3": "Skill 3",
@@ -2498,9 +2502,13 @@
           "cn": "描述",
           "en": "Description"
         },
-        "visible_to_all": {
-          "cn": "对所有人可见",
-          "en": "Visible to everyone"
+        "for_personal_use": {
+          "cn": "仅对自己可见（自用）",
+          "en": "For Personal Use"
+        },
+        "personal_use_warning": {
+          "cn": "自用作业集请勾选「仅对自己可见（自用）」哦",
+          "en": "Personal use job sets should be marked as 'For Personal Use'"
         },
         "click_save": {
           "cn": "修改后请点击保存按钮",
@@ -2545,6 +2553,14 @@
         "reverse_list": {
           "cn": "反转列表",
           "en": "Reverse List"
+        },
+        "private_usage_warning": {
+          "cn": "自用作业集请勾选「自用」哦",
+          "en": "Personal use job sets should be marked as 'For Personal Use'"
+        },
+        "private_usage_public_warning": {
+          "cn": "标题含有「自用」关键字且勾选了公开，请取消勾选公开再次提交",
+          "en": "Title contains 'personal use' keyword and is marked as public, please uncheck public and submit again"
         }
       }
     },
@@ -3049,6 +3065,18 @@
         "no_actions_defined": {
           "cn": "作业并未定义任何动作",
           "en": "No actions have been defined for this Job"
+        },
+        "grid_mode": {
+          "cn": "链式视图",
+          "en": "Chain"
+        },
+        "grid_on": {
+          "cn": "开",
+          "en": "On"
+        },
+        "grid_off": {
+          "cn": "关",
+          "en": "Off"
         }
       }
     },
@@ -3372,6 +3400,20 @@
         "en": "Retry"
       }
     },
+    "ThemeSwitchButton": {
+      "light": {
+        "cn": "浅色模式",
+        "en": "Light Mode"
+      },
+      "dark": {
+        "cn": "深色模式",
+        "en": "Dark Mode"
+      },
+      "highContrast": {
+        "cn": "深色模式 (高对比)",
+        "en": "Dark Mode (High Contrast)"
+      }
+    },
     "UserFilter": {
       "searching": {
         "cn": "正在搜索...",
@@ -3441,12 +3483,14 @@
       },
       "skill_number": {
         "cn": {
+          "0": "不指定技能",
           "1": "一技能",
           "2": "二技能",
           "3": "三技能",
           "other": "未知技能"
         },
         "en": {
+          "0": "Unspecified Skill",
           "1": "S1",
           "2": "S2",
           "3": "S3",
@@ -4101,13 +4145,25 @@
       "cn": "MAA 官网",
       "en": "MAA Official Site"
     },
+    "map_site": {
+      "cn": "明日方舟地图站",
+      "en": "Arknights PRTS.Map"
+    },
+    "theresa_site": {
+      "cn": "特蕾西娅",
+      "en": "Theresa"
+    },
+    "maafw_site": {
+      "cn": "MaaFramework",
+      "en": "MaaFramework"
+    },
     "feedback": {
       "cn": "意见与反馈",
       "en": "Feedback"
     },
     "maa_repo": {
-      "cn": "MAA GitHub Repo",
-      "en": "MAA GitHub Repo"
+      "cn": "MAA Repo",
+      "en": "MAA Repo"
     },
     "frontend_repo": {
       "cn": "前端 GitHub Repo",
@@ -4124,6 +4180,10 @@
     "sharing_group": {
       "cn": "作业分享群",
       "en": "Job Sharing Group"
+    },
+    "friendly_links": {
+      "cn": "友情链接",
+      "en": "Friendly Links"
     }
   }
 }
