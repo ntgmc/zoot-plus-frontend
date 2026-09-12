@@ -81,6 +81,16 @@
       "alt_name": "Blazing Sun"
     },
     {
+      "id": "token_10071_aglna2_agairp",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "\"See you soon!\"",
+      "name": "“一会儿见！”",
+      "alias": "yihuierjian！ yihuierxian！ yikuaierjian！ yikuaierxian！ yhej！ yhex！ ykej！ ykex！ “一會兒見！” 一會兒見！",
+      "rarity": 0,
+      "alt_name": "\"See you soon!\""
+    },
+    {
       "id": "token_10061_nasti_nstbld",
       "prof": "TOKEN",
       "subProf": "notchar1",
@@ -175,6 +185,17 @@
       "rarity": 4,
       "alt_name": "Shaw",
       "modules": ["", "Y"]
+    },
+    {
+      "id": "char_4218_aigis",
+      "prof": "SNIPER",
+      "subProf": "skybreaker",
+      "name_en": "Aegis",
+      "name": "埃癸斯",
+      "alias": "aiguisi ags 埃癸斯",
+      "rarity": 5,
+      "alt_name": "Aegis",
+      "modules": ["", "X"]
     },
     {
       "id": "char_4123_ela",
@@ -381,7 +402,7 @@
       "alias": "bailianjiaweier bljwe 百煉嘉維爾",
       "rarity": 6,
       "alt_name": "Gavial the Invincible",
-      "modules": ["", "X", "Y"]
+      "modules": ["", "X", "Y", "A"]
     },
     {
       "id": "char_128_plosis",
@@ -759,7 +780,7 @@
       "alias": "choubai qiubai cb qb 仇白",
       "rarity": 6,
       "alt_name": "Qiubai",
-      "modules": ["", "X"]
+      "modules": ["", "X", "Y"]
     },
     {
       "id": "token_10001_deepcl_tentac",
@@ -1103,7 +1124,7 @@
       "alias": "feiyameita fymt 菲亞梅塔",
       "rarity": 6,
       "alt_name": "Fiammetta",
-      "modules": ["", "X", "Y"]
+      "modules": ["", "X", "Y", "A"]
     },
     {
       "id": "char_123_fang",
@@ -1600,6 +1621,16 @@
       "modules": ["", "Y"]
     },
     {
+      "id": "char_4220_kormr",
+      "prof": "WARRIOR",
+      "subProf": "sword",
+      "name_en": "Koromaru",
+      "name": "虎狼丸",
+      "alias": "hulangwan hlw 虎狼丸",
+      "rarity": 1,
+      "alt_name": "Koromaru"
+    },
+    {
       "id": "char_171_bldsk",
       "prof": "MEDIC",
       "subProf": "physician",
@@ -1794,6 +1825,17 @@
       "modules": ["", "X"]
     },
     {
+      "id": "char_4230_mcnist",
+      "prof": "TANK",
+      "subProf": "shotprotector",
+      "name_en": "Mechanist",
+      "name": "机械师",
+      "alias": "jixieshi jxs 機械師",
+      "rarity": 6,
+      "alt_name": "Mechanist",
+      "modules": ["", "A"]
+    },
+    {
       "id": "token_10004_otter_motter",
       "prof": "TOKEN",
       "subProf": "notchar1",
@@ -1846,6 +1888,17 @@
       "rarity": 4,
       "alt_name": "Gavial",
       "modules": ["", "Y"]
+    },
+    {
+      "id": "char_4237_jcinta",
+      "prof": "PIONEER",
+      "subProf": "bearer",
+      "name_en": "Jacinta",
+      "name": "嘉辛塔",
+      "alias": "jiaxinta jxt 嘉辛塔",
+      "rarity": 5,
+      "alt_name": "Jacinta",
+      "modules": ["", "X"]
     },
     {
       "id": "char_4116_blkkgt",
@@ -1912,6 +1965,27 @@
       "rarity": 4,
       "alt_name": "Jaye",
       "modules": ["", "X"]
+    },
+    {
+      "id": "char_4217_makoto",
+      "prof": "SPECIAL",
+      "subProf": "dollkeeper",
+      "name_en": "Makoto Yuki",
+      "name": "结城理",
+      "alias": "jiechengli jcl 結城理",
+      "rarity": 6,
+      "alt_name": "Makoto Yuki",
+      "modules": ["", "Y"]
+    },
+    {
+      "id": "token_10069_mcnist_mcgraf",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Structural Principle",
+      "name": "结构性原理",
+      "alias": "jiegouxingyuanli jgxyl 結構性原理",
+      "rarity": 0,
+      "alt_name": "Structural Principle"
     },
     {
       "id": "char_347_jaksel",
@@ -2924,6 +2998,17 @@
       "modules": ["", "X"]
     },
     {
+      "id": "char_4229_aphris",
+      "prof": "CASTER",
+      "subProf": "blastcaster",
+      "name_en": "Aphrissa",
+      "name": "谬因",
+      "alias": "miuyin my 謬因",
+      "rarity": 6,
+      "alt_name": "Aphrissa",
+      "modules": ["", "Y"]
+    },
+    {
       "id": "char_154_morgan",
       "prof": "WARRIOR",
       "subProf": "fearless",
@@ -3183,6 +3268,16 @@
       "alt_name": "Popukar"
     },
     {
+      "id": "char_4234_pedro",
+      "prof": "SUPPORT",
+      "subProf": "supportiveranger",
+      "name_en": "Pedro",
+      "name": "佩德洛",
+      "alias": "peideluo pdl 佩德洛",
+      "rarity": 5,
+      "alt_name": "Pedro"
+    },
+    {
       "id": "char_4058_pepe",
       "prof": "WARRIOR",
       "subProf": "hammer",
@@ -3272,7 +3367,7 @@
       "id": "token_10064_wang_stone1",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "stones",
+      "name_en": "Stone",
       "name": "棋子",
       "alias": "qizi qz 棋子",
       "rarity": 0,
@@ -3504,6 +3599,17 @@
       "modules": ["", "X", "Y"]
     },
     {
+      "id": "char_4235_thumpy",
+      "prof": "TANK",
+      "subProf": "primprotector",
+      "name_en": "Thumpy",
+      "name": "珊比",
+      "alias": "shanbi sb 珊比",
+      "rarity": 6,
+      "alt_name": "Thumpy",
+      "modules": ["", "X"]
+    },
+    {
       "id": "char_457_blitz",
       "prof": "TANK",
       "subProf": "shotprotector",
@@ -3709,6 +3815,17 @@
       "rarity": 5,
       "alt_name": "FEater",
       "modules": ["", "Y"]
+    },
+    {
+      "id": "char_4236_tmslot",
+      "prof": "CASTER",
+      "subProf": "funnel",
+      "name_en": "Timeslot",
+      "name": "时隙",
+      "alias": "shixi sx 時隙",
+      "rarity": 5,
+      "alt_name": "Timeslot",
+      "modules": ["", "X"]
     },
     {
       "id": "char_215_mantic",
@@ -4748,7 +4865,7 @@
       "alias": "yanyingweicao yywc 焰影葦草",
       "rarity": 6,
       "alt_name": "Reed The Flame Shadow",
-      "modules": ["", "X"]
+      "modules": ["", "X", "Y"]
     },
     {
       "id": "char_1011_lava2",
@@ -5226,6 +5343,16 @@
       "modules": ["", "X"]
     },
     {
+      "id": "char_1015_aglna2",
+      "prof": "SPECIAL",
+      "subProf": "skywalker",
+      "name_en": "Angelina the Mellow Wish",
+      "name": "予愿安洁莉娜",
+      "alias": "yuyuananjielina yuyuananjielinuo yyajln 予願安潔莉娜",
+      "rarity": 6,
+      "alt_name": "Angelina the Mellow Wish"
+    },
+    {
       "id": "char_109_fmout",
       "prof": "CASTER",
       "subProf": "splashcaster",
@@ -5267,6 +5394,17 @@
       "alias": "yuejianye yuexianye yjy yxy 月見夜",
       "rarity": 3,
       "alt_name": "Midnight"
+    },
+    {
+      "id": "char_4219_yukari",
+      "prof": "SUPPORT",
+      "subProf": "supportiveranger",
+      "name_en": "Yukari Takeba",
+      "name": "岳羽由加莉",
+      "alias": "yueyuyoujiali yyyjl 嶽羽由加莉",
+      "rarity": 5,
+      "alt_name": "Yukari Takeba",
+      "modules": ["", "X"]
     },
     {
       "id": "char_4100_caper",
@@ -5450,6 +5588,16 @@
       "alt_name": "Reconstruct"
     },
     {
+      "id": "token_10070_aphris_pc",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Repeater",
+      "name": "中继器",
+      "alias": "zhongjiqi zjq 中繼器",
+      "rarity": 0,
+      "alt_name": "Repeater"
+    },
+    {
       "id": "char_2024_chyue",
       "prof": "WARRIOR",
       "subProf": "fighter",
@@ -5469,7 +5617,7 @@
       "alias": "zhuhuang zh 燭煌",
       "rarity": 6,
       "alt_name": "Blaze the Igniting Spark",
-      "modules": ["", "X"]
+      "modules": ["", "X", "Y"]
     },
     {
       "id": "char_333_sidero",
@@ -5679,7 +5827,12 @@
         { "id": "blessing", "name": "护佑者", "name_en": "Abjurer" },
         { "id": "summoner", "name": "召唤师", "name_en": "Summoner" },
         { "id": "craftsman", "name": "工匠", "name_en": "Artificer" },
-        { "id": "ritualist", "name": "巫役", "name_en": "Ritualist" }
+        { "id": "ritualist", "name": "巫役", "name_en": "Ritualist" },
+        {
+          "id": "supportiveranger",
+          "name": "游击手",
+          "name_en": "Supportiveranger"
+        }
       ]
     },
     {
