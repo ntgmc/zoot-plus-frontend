@@ -29,36 +29,36 @@ export const LoginPanel: FC<{
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid, isDirty, isSubmitting },
-  } = useForm<LoginFormValues>()
+    formState: { errors, isValid, isSubmitting },
+  } = useForm<LoginFormValues>({ mode: 'onChange' })
   const setAuthState = useSetAtom(authAtom)
 
   const onSubmit = async ({ email, password }: LoginFormValues) => {
-    const res = await wrapErrorMessage(
-      (e) =>
-        t.components.account.LoginPanel.login_failed({
-          error: formatError(e),
+    try {
+      const res = await wrapErrorMessage(
+        (e) =>
+          t.components.account.LoginPanel.login_failed({
+            error: formatError(e),
+          }),
+        login({ email, password }),
+      )
+      setAuthState(fromCredentials(res))
+      AppToaster.show({
+        intent: 'success',
+        message: t.components.account.LoginPanel.login_success({
+          name: res.userInfo.userName,
         }),
-      login({ email, password }),
-    )
-    setAuthState(fromCredentials(res))
-    AppToaster.show({
-      intent: 'success',
-      message: t.components.account.LoginPanel.login_success({
-        name: res.userInfo.userName,
-      }),
-    })
-    onComplete()
+      })
+      onComplete()
+    } catch {
+      // Error handled by wrapErrorMessage (toast shown), prevent isSubmitting from getting stuck
+    }
   }
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AuthFormEmailField
-          control={control}
-          error={errors.email}
-          field="email"
-        />
+        <AuthFormEmailField control={control} error={errors.email} field="email" />
 
         <AuthFormPasswordField<LoginFormValues>
           control={control}
@@ -66,12 +66,7 @@ export const LoginPanel: FC<{
           field="password"
           inputGroupProps={() => ({
             rightElement: (
-              <Button
-                minimal
-                small
-                icon="key"
-                onClick={() => setResetPasswordDialogOpen(true)}
-              >
+              <Button minimal small icon="key" onClick={() => setResetPasswordDialogOpen(true)}>
                 {t.components.account.LoginPanel.forgot_password}
               </Button>
             ),
@@ -79,9 +74,7 @@ export const LoginPanel: FC<{
         />
 
         <div className="mt-6 flex items-center">
-          <span className="text-zinc-500">
-            {t.components.account.LoginPanel.no_account}
-          </span>
+          <span className="text-zinc-500">{t.components.account.LoginPanel.no_account}</span>
           <Button minimal onClick={onNavigateRegisterPanel}>
             {t.components.account.LoginPanel.go_register}
           </Button>
@@ -89,7 +82,7 @@ export const LoginPanel: FC<{
           <div className="flex-1" />
 
           <Button
-            disabled={(!isValid && !isDirty) || isSubmitting}
+            disabled={!isValid || isSubmitting}
             intent="primary"
             loading={isSubmitting}
             type="submit"
@@ -101,10 +94,7 @@ export const LoginPanel: FC<{
         </div>
       </form>
 
-      <ResetPasswordDialog
-        isOpen={resetPasswordDialogOpen}
-        onClose={() => setResetPasswordDialogOpen(false)}
-      />
+      <ResetPasswordDialog isOpen={resetPasswordDialogOpen} onClose={() => setResetPasswordDialogOpen(false)} />
     </>
   )
 }

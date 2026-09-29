@@ -1,12 +1,34 @@
 import { compact, uniqueId } from 'lodash-es'
 import { DeepPartial, FieldArrayWithId } from 'react-hook-form'
 
-import type { CopilotDocV1 } from 'models/copilot.schema'
+import { stripEmptyRole } from 'models/converter'
+import { CopilotDocV1, minimumRequiredForActions } from 'models/copilot.schema'
 import { MinimumRequired } from 'models/operation'
 
 import { findOperatorDirection } from '../../models/operator'
 import { findActionType } from '../../models/types'
 import { snakeCaseKeysUnicode } from '../../utils/object'
+
+/**
+ * JSON schema treats absent optional fields and `null` fields differently:
+ * absent fields pass validation, while `null` fails type checks.
+ * Remove all `null` object fields recursively before exporting.
+ */
+const removeNullFields = (value: unknown): unknown => {
+  if (Array.isArray(value)) {
+    return value.map(removeNullFields)
+  }
+
+  if (value !== null && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([, fieldValue]) => fieldValue !== null)
+        .map(([key, fieldValue]) => [key, removeNullFields(fieldValue)]),
+    )
+  }
+
+  return value
+}
 
 /**
  * Creates an operation that can be used in editor. Used for importing.
@@ -18,12 +40,7 @@ export function toEditableOperation(
 
   // generate IDs
   compact(
-    [
-      operation.actions,
-      operation.opers,
-      operation.groups,
-      operation.groups?.map((group) => group?.opers),
-    ].flat(2),
+    [operation.actions, operation.opers, operation.groups, operation.groups?.map((group) => group?.opers)].flat(2),
   ).forEach((item) => {
     item._id = uniqueId()
   })
@@ -35,6 +52,9 @@ export function toEditableOperation(
     if (type.value !== 'Unknown') {
       action!.type = type.value
     }
+
+    // role 为空串视为未填写，导入即清掉，避免原样导出
+    stripEmptyRole(action!)
 
     if (type.value === 'Deploy') {
       const deployAction = action as CopilotDocV1.ActionDeploy
@@ -56,18 +76,18 @@ export function toEditableOperation(
 export function toMaaOperation(
   operation: DeepPartial<CopilotDocV1.Operation>,
 ): DeepPartial<CopilotDocV1.OperationSnakeCased> {
-  operation = JSON.parse(JSON.stringify(operation))
+  operation = removeNullFields(JSON.parse(JSON.stringify(operation))) as DeepPartial<CopilotDocV1.Operation>
 
   operation.minimumRequired ||= MinimumRequired.V4_0_0
 
+  // 含仅新版协议支持的动作/字段时按特性注册表抬升 minimum_required（见 PROTOCOL_FEATURE_MINIMUMS），
+  // 已声明更高版本时保持不降级
+  operation.minimumRequired =
+    minimumRequiredForActions(operation.actions ?? [], operation.minimumRequired) ?? operation.minimumRequired
+
   // strip IDs
   compact(
-    [
-      operation.actions,
-      operation.opers,
-      operation.groups,
-      operation.groups?.map((group) => group?.opers),
-    ].flat(2),
+    [operation.actions, operation.opers, operation.groups, operation.groups?.map((group) => group?.opers)].flat(2),
   ).forEach((item) => {
     delete item._id
 
@@ -81,9 +101,7 @@ export function toMaaOperation(
 /**
  * Attempts to patch the operation to satisfy the JSON schema.
  */
-export function patchOperation(
-  operation: DeepPartial<CopilotDocV1.OperationSnakeCased>,
-) {
+export function patchOperation(operation: DeepPartial<CopilotDocV1.OperationSnakeCased>) {
   if (operation.doc) {
     operation.doc.details ||= operation.doc.title
   }

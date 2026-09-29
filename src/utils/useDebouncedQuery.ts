@@ -13,7 +13,7 @@ export interface UseDebouncedQueryParams {
 
 /**
  * 适用于带有搜索功能的输入框，比如 Select、Suggest、MultiSelect，用于性能优化，
- * 以及修复使用输入法时的 bug：https://github.com/MaaAssistantArknights/maa-copilot-frontend/issues/72
+ * 以及修复使用输入法时的 bug：https://github.com/ZOOT-Plus/zoot-plus-frontend/issues/72
  * 传入 query 时为受控模式，否则为非受控模式
  */
 export function useDebouncedQuery({
@@ -28,9 +28,7 @@ export function useDebouncedQuery({
   const handleQueryChange = useEffectEvent((newQuery: string) => {
     if (
       // 如果有传入的 query，则使用传入的 query 来比较
-      externalQuery !== undefined
-        ? externalQuery !== newQuery
-        : query !== newQuery
+      externalQuery !== undefined ? externalQuery !== newQuery : query !== newQuery
     ) {
       onQueryChange?.(newQuery)
     }
@@ -58,7 +56,7 @@ export function useDebouncedQuery({
     updateQuery.flush = debouncedUpdateQuery.flush
     updateQuery.cancel = debouncedUpdateQuery.cancel
     return updateQuery
-  }, [debounceTime, handleDebouncedQueryChange, handleQueryChange])
+  }, [debounceTime])
 
   // 立即更新防止后续冲突
   useEffect(() => () => updateQuery.flush(), [updateQuery])

@@ -1,4 +1,4 @@
-import { UserApi } from 'utils/maa-copilot-client'
+import { UserApi } from 'utils/zoot-plus-client'
 
 export async function sendRegistrationEmail(req: { email: string }) {
   await new UserApi({ sendToken: 'never' }).sendRegistrationToken({
@@ -6,12 +6,7 @@ export async function sendRegistrationEmail(req: { email: string }) {
   })
 }
 
-export async function register(req: {
-  email: string
-  registrationToken: string
-  username: string
-  password: string
-}) {
+export async function register(req: { email: string; registrationToken: string; username: string; password: string }) {
   await new UserApi({ sendToken: 'never' }).register({
     registerDTO: {
       ...req,
@@ -48,10 +43,7 @@ export async function updateUserInfo(req: { username: string }) {
   })
 }
 
-export async function updatePassword(req: {
-  originalPassword: string
-  newPassword: string
-}) {
+export async function updatePassword(req: { originalPassword: string; newPassword: string }) {
   await new UserApi().updatePassword({ passwordUpdateDTO: req })
 }
 
@@ -61,11 +53,7 @@ export async function sendResetPasswordEmail(req: { email: string }) {
   })
 }
 
-export function resetPassword(req: {
-  email: string
-  activeCode: string
-  password: string
-}) {
+export function resetPassword(req: { email: string; activeCode: string; password: string }) {
   return new UserApi({ sendToken: 'never' }).passwordReset({
     passwordResetDTO: req,
   })

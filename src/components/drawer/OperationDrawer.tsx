@@ -35,19 +35,22 @@ export function OperationDrawer() {
     })
   }
 
+  const handleOuterBackdropClick = (e?: SyntheticEvent) => {
+    if (e?.nativeEvent instanceof MouseEvent && e.nativeEvent.button !== 0) {
+      return
+    }
+
+    if (operationId) {
+      closeOperation(e)
+    } else {
+      closeOperationSet(e)
+    }
+  }
+
   if (operationSetId) {
     return (
-      <Drawer
-        size={DrawerSize.LARGE}
-        isOpen={!!operationSetId}
-        onClose={closeOperationSet}
-      >
-        {operationSetId && (
-          <OperationSetViewer
-            operationSetId={operationSetId}
-            onCloseDrawer={closeOperationSet}
-          />
-        )}
+      <Drawer size={DrawerSize.LARGE} isOpen={!!operationSetId} onClose={handleOuterBackdropClick}>
+        {operationSetId && <OperationSetViewer operationSetId={operationSetId} onCloseDrawer={closeOperationSet} />}
 
         <Drawer
           usePortal={false} // 嵌套 Drawer 时需要关闭 Portal
@@ -55,29 +58,15 @@ export function OperationDrawer() {
           isOpen={!!operationId}
           onClose={closeOperation}
         >
-          {operationId && (
-            <OperationViewer
-              operationId={operationId}
-              onCloseDrawer={closeOperation}
-            />
-          )}
+          {operationId && <OperationViewer operationId={operationId} onCloseDrawer={closeOperation} />}
         </Drawer>
       </Drawer>
     )
   }
 
   return (
-    <Drawer
-      size={DrawerSize.LARGE}
-      isOpen={!!operationId}
-      onClose={closeOperation}
-    >
-      {operationId && (
-        <OperationViewer
-          operationId={operationId}
-          onCloseDrawer={closeOperation}
-        />
-      )}
+    <Drawer size={DrawerSize.LARGE} isOpen={!!operationId} onClose={closeOperation}>
+      {operationId && <OperationViewer operationId={operationId} onCloseDrawer={closeOperation} />}
     </Drawer>
   )
 }

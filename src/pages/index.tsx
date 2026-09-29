@@ -1,9 +1,8 @@
 import { Card } from '@blueprintjs/core'
 
-import dayjs from 'dayjs'
 import { useLinks } from 'hooks/useLinks'
 import { ComponentType } from 'react'
-import ReactGA from 'react-ga-neo'
+import { ReactGA } from 'utils/react-ga'
 
 import { CardTitle } from 'components/CardTitle'
 import { withGlobalErrorBoundary } from 'components/GlobalErrorBoundary'
@@ -20,7 +19,7 @@ import { useCurrentSize } from '../utils/useCurrenSize'
 export const IndexPage: ComponentType = withGlobalErrorBoundary(() => {
   const { isMD } = useCurrentSize()
   const t = useTranslation()
-  const { SOCIAL_LINKS } = useLinks()
+  const { SOCIAL_LINKS, FRIENDLY_LINKS } = useLinks()
   return (
     <div className="flex flex-col md:flex-row px-4 pb-16 mt-4 md:px-8 md:mt-8 max-w-[96rem] mx-auto">
       {isMD && <Ad />}
@@ -63,6 +62,30 @@ export const IndexPage: ComponentType = withGlobalErrorBoundary(() => {
               ))}
             </div>
 
+            <div className="mb-4">
+              <div className="text-sm font-medium text-zinc-600 dark:text-slate-100 mb-2">{t.links.friendly_links}</div>
+              <div className="flex flex-wrap leading-relaxed mb-2 section-social-links">
+                {FRIENDLY_LINKS.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-zinc-600 dark:text-slate-100 no-underline"
+                  >
+                    {link.icon}
+                    <span>{link.label}</span>
+                  </a>
+                )).reduce((prev, curr) => (
+                  <>
+                    {prev}
+                    <div className="mx-2 opacity-50">·</div>
+                    {curr}
+                  </>
+                ))}
+              </div>
+            </div>
+
             <Ad />
           </div>
         </div>
@@ -73,25 +96,23 @@ export const IndexPage: ComponentType = withGlobalErrorBoundary(() => {
   )
 })
 
-const Ad = dayjs().isBefore('2099-12-31 00:00:00+8')
-  ? () => {
-      const t = useTranslation()
-      const sendEvent = () => {
-        ReactGA.event('click_ad', { ad_type: 'ld' })
-      }
-      return (
-        // eslint-disable-next-line react/jsx-no-target-blank
-        <a
-          className="block relative dark:brightness-[85%]"
-          href="https://lddl01.ldmnq.com/downloader/ldplayerinst9.exe?n=LDplayer9_ld_406237_3586_ld.exe"
-          target="_blank"
-          onClick={sendEvent}
-        >
-          <img src="/ad_leidian.webp" alt="雷电模拟器" />
-          <div className="absolute bottom-2 right-2 border border-current rounded text-[10px] text-zinc-300 px-1 ">
-            {t.pages.index.advertisement}
-          </div>
-        </a>
-      )
-    }
-  : () => null
+const Ad = () => {
+  const t = useTranslation()
+  const sendEvent = () => {
+    ReactGA.event('click_ad', { ad_type: 'mirrorchyan' })
+  }
+  return (
+    <a
+      className="block relative dark:brightness-[85%]"
+      href="https://mirrorchyan.com/zh/projects?source=prts_plus_1"
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={sendEvent}
+    >
+      <img src="/ad_mirrorchyan.webp" alt="Mirror酱" />
+      <div className="absolute bottom-2 right-2 border border-current rounded text-[10px] text-zinc-500 px-1">
+        {t.pages.index.advertisement}
+      </div>
+    </a>
+  )
+}

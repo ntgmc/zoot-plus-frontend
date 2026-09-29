@@ -1,15 +1,8 @@
-import { Button, Callout, Card, TextArea } from '@blueprintjs/core'
+import { Button, Callout, Card, Checkbox, TextArea } from '@blueprintjs/core'
 import { DevTool } from '@hookform/devtools'
 
 import { useEffect, useMemo } from 'react'
-import {
-  Control,
-  DeepPartial,
-  FieldErrors,
-  UseFormSetError,
-  useForm,
-  useWatch,
-} from 'react-hook-form'
+import { Control, Controller, DeepPartial, FieldErrors, UseFormSetError, useForm, useWatch } from 'react-hook-form'
 
 import { CardTitle } from 'components/CardTitle'
 import { FormField, FormField2 } from 'components/FormField'
@@ -34,19 +27,15 @@ import { findLevelByStageName } from '../../../models/level'
 import { EditorOperatorName } from '../operator/EditorOperator'
 import { EditorOperatorSkillTimes } from '../operator/EditorOperatorSkillTimes'
 import { EditorOperatorSkillUsage } from '../operator/EditorOperatorSkillUsage'
-import {
-  EditorActionPreDelay,
-  EditorActionRearDelay,
-} from './EditorActionDelay'
+import { EditorActionPreDelay, EditorActionRearDelay } from './EditorActionDelay'
 import { EditorActionDistance } from './EditorActionDistance'
 import { EditorActionModule } from './EditorActionModule'
+import { EditorActionRect } from './EditorActionRect'
+import { EditorActionSwipeParams } from './EditorActionSwipeParams'
 
 export interface EditorActionAddProps {
   control: Control<CopilotDocV1.Operation>
-  onSubmit: (
-    action: CopilotDocV1.Action,
-    setError: UseFormSetError<CopilotDocV1.Action>,
-  ) => boolean
+  onSubmit: (action: CopilotDocV1.Action, setError: UseFormSetError<CopilotDocV1.Action>) => boolean
   onCancel: () => void
   editingAction?: CopilotDocV1.Action
 }
@@ -58,6 +47,14 @@ const defaultAction: DeepPartial<CopilotDocV1.Action> = {
 const defaultMoveCameraAction: DeepPartial<CopilotDocV1.ActionMoveCamera> = {
   type: CopilotDocV1.Type.MoveCamera,
   distance: [4.5, 0],
+}
+
+// 切换动作类型时这些默认值并不会自动注入表单（MoveCamera 的 distance 同样如此，为上游既有行为），
+// 仅作为 required 校验通过前的语义占位，不要为此单独修表单联动
+const defaultSwipeAction: DeepPartial<CopilotDocV1.ActionSwipe> = {
+  type: CopilotDocV1.Type.Swipe,
+  begin: [100, 100, 50, 50],
+  end: [400, 400, 50, 50],
 }
 
 export const EditorActionAdd = ({
@@ -87,10 +84,7 @@ export const EditorActionAdd = ({
   const skillUsage = useWatch({ control, name: 'skillUsage' })
 
   const { data: levels } = useLevels()
-  const level = useMemo(
-    () => findLevelByStageName(levels, stageName),
-    [levels, stageName],
-  )
+  const level = useMemo(() => findLevelByStageName(levels, stageName), [levels, stageName])
 
   const resettingValues: DeepPartial<CopilotDocV1.Action> = useMemo(
     () => ({
@@ -98,6 +92,7 @@ export const EditorActionAdd = ({
       // to prevent layout jumping, we persist the action type on reset
       type,
       ...(type === 'MoveCamera' ? defaultMoveCameraAction : null),
+      ...(type === 'Swipe' ? defaultSwipeAction : null),
     }),
     [type],
   )
@@ -162,6 +157,39 @@ export const EditorActionAdd = ({
         if ('distance' in editingAction) {
           setValue('distance', editingAction.distance)
         }
+        if ('rect' in editingAction) {
+          setValue('rect', (editingAction as CopilotDocV1.ActionClick).rect)
+        }
+        if ('begin' in editingAction) {
+          setValue('begin', (editingAction as CopilotDocV1.ActionSwipe).begin)
+        }
+        if ('end' in editingAction) {
+          setValue('end', (editingAction as CopilotDocV1.ActionSwipe).end)
+        }
+        if ('duration' in editingAction) {
+          setValue('duration', (editingAction as CopilotDocV1.ActionSwipe).duration)
+        }
+        if ('extraSwipe' in editingAction) {
+          setValue('extraSwipe', (editingAction as CopilotDocV1.ActionSwipe).extraSwipe)
+        }
+        if ('slopeIn' in editingAction) {
+          setValue('slopeIn', (editingAction as CopilotDocV1.ActionSwipe).slopeIn)
+        }
+        if ('slopeOut' in editingAction) {
+          setValue('slopeOut', (editingAction as CopilotDocV1.ActionSwipe).slopeOut)
+        }
+        if ('withPause' in editingAction) {
+          setValue('withPause', (editingAction as CopilotDocV1.ActionSwipe).withPause)
+        }
+        if ('highResolutionSwipeFix' in editingAction) {
+          setValue('highResolutionSwipeFix', (editingAction as CopilotDocV1.ActionSwipe).highResolutionSwipeFix)
+        }
+        if ('keepKills' in editingAction) {
+          setValue('keepKills', (editingAction as CopilotDocV1.ActionMoveCamera).keepKills)
+        }
+        // role 无对应表单控件，但保存时整条动作被表单值替换，不回填会静默丢失；直接切换编辑目标
+        // 不会重置表单，原动作无 role 或值为空串时也要覆盖为 undefined，避免带到下一个动作上
+        setValue('role', 'role' in editingAction ? editingAction.role || undefined : undefined)
       }, 0)
     } else {
       reset(resettingValues)
@@ -169,7 +197,7 @@ export const EditorActionAdd = ({
   }, [editingAction, reset, resettingValues, setValue])
 
   useEffect(() => {
-    if (type === 'MoveCamera') {
+    if (type === 'MoveCamera' || type === 'Swipe') {
       reset(resettingValues)
     }
   }, [type, reset, resettingValues])
@@ -178,7 +206,7 @@ export const EditorActionAdd = ({
     setValue(
       'skillTimes',
       skillUsage === CopilotDocV1.SkillUsageType.ReadyToUseTimes
-        ? (editingAction as CopilotDocV1.ActionSkillUsage)?.skillTimes ?? 1
+        ? ((editingAction as CopilotDocV1.ActionSkillUsage)?.skillTimes ?? 1)
         : undefined,
     )
   }, [skillUsage, editingAction, setValue])
@@ -202,9 +230,7 @@ export const EditorActionAdd = ({
         <div className="flex items-center mb-4">
           <CardTitle className="mb-0" icon={isNew ? 'add' : 'edit'}>
             <span>
-              {isNew
-                ? t.components.editor.action.EditorActionAdd.add
-                : t.components.editor.action.EditorActionAdd.edit}
+              {isNew ? t.components.editor.action.EditorActionAdd.add : t.components.editor.action.EditorActionAdd.edit}
               {t.components.editor.action.EditorActionAdd.action}
             </span>
           </CardTitle>
@@ -212,16 +238,12 @@ export const EditorActionAdd = ({
           <div className="flex-1" />
 
           <FormSubmitButton control={control} icon={isNew ? 'add' : 'edit'}>
-            {isNew
-              ? t.components.editor.action.EditorActionAdd.add
-              : t.components.editor.action.EditorActionAdd.save}
+            {isNew ? t.components.editor.action.EditorActionAdd.add : t.components.editor.action.EditorActionAdd.save}
           </FormSubmitButton>
 
           <EditorResetButton
             reset={() => reset(resettingValues)}
-            entityName={
-              t.components.editor.action.EditorActionAdd.current_action
-            }
+            entityName={t.components.editor.action.EditorActionAdd.current_action}
           />
         </div>
 
@@ -246,42 +268,19 @@ export const EditorActionAdd = ({
           type === 'SkillUsage' ||
           type === 'BulletTime') && (
           <div className="flex">
-            <FormField2<
-              | CopilotDocV1.ActionDeploy
-              | CopilotDocV1.ActionSkillOrRetreatOrBulletTime
-            >
-              label={
-                t.components.editor.action.EditorActionAdd.operator_group_name
-              }
-              description={
-                t.components.editor.action.EditorActionAdd
-                  .select_operator_description
-              }
+            <FormField2<CopilotDocV1.ActionDeploy | CopilotDocV1.ActionSkillOrRetreatOrBulletTime>
+              label={t.components.editor.action.EditorActionAdd.operator_group_name}
+              description={t.components.editor.action.EditorActionAdd.select_operator_description}
               field="name"
               error={
-                (
-                  errors as FieldErrors<
-                    | CopilotDocV1.ActionDeploy
-                    | CopilotDocV1.ActionSkillOrRetreatOrBulletTime
-                  >
-                ).name
+                (errors as FieldErrors<CopilotDocV1.ActionDeploy | CopilotDocV1.ActionSkillOrRetreatOrBulletTime>).name
               }
               asterisk={type === 'Deploy'}
               FormGroupProps={{
                 helperText: (
                   <>
-                    <p>
-                      {
-                        t.components.editor.action.EditorActionAdd
-                          .search_operator_hint
-                      }
-                    </p>
-                    <p>
-                      {
-                        t.components.editor.action.EditorActionAdd
-                          .reference_group_hint
-                      }
-                    </p>
+                    <p>{t.components.editor.action.EditorActionAdd.search_operator_hint}</p>
+                    <p>{t.components.editor.action.EditorActionAdd.reference_group_hint}</p>
                   </>
                 ),
               }}
@@ -295,18 +294,14 @@ export const EditorActionAdd = ({
                 rules={{
                   required:
                     (type === 'Deploy' || type === 'SkillUsage') &&
-                    t.components.editor.action.EditorActionAdd
-                      .operator_required,
+                    t.components.editor.action.EditorActionAdd.operator_required,
                 }}
               />
             </FormField2>
           </div>
         )}
 
-        {(type === 'Deploy' ||
-          type === 'Skill' ||
-          type === 'Retreat' ||
-          type === 'BulletTime') && (
+        {(type === 'Deploy' || type === 'Skill' || type === 'Retreat' || type === 'BulletTime') && (
           <div className="flex">
             <EditorActionOperatorLocation
               shouldUnregister
@@ -318,13 +313,89 @@ export const EditorActionAdd = ({
           </div>
         )}
 
+        {type === 'Click' && (
+          <>
+            <Callout className="mb-2">{t.components.editor.action.EditorActionAdd.click_hint}</Callout>
+            <div className="flex flex-col">
+              <EditorActionOperatorLocation
+                shouldUnregister
+                actionType={type}
+                level={level}
+                control={control}
+                name="location"
+              />
+              <EditorActionRect
+                shouldUnregister
+                label={t.components.editor.action.EditorActionAdd.pixel_rect}
+                control={control}
+                name="rect"
+              />
+            </div>
+          </>
+        )}
+
+        {type === 'SetUnitLocation' && (
+          <>
+            <Callout className="mb-2">{t.components.editor.action.EditorActionAdd.set_unit_location_hint}</Callout>
+            <div className="flex">
+              <FormField2<CopilotDocV1.ActionSetUnitLocation>
+                label={t.components.editor.action.EditorActionAdd.operator_group_name}
+                field="name"
+                error={(errors as FieldErrors<CopilotDocV1.ActionSetUnitLocation>).name}
+                asterisk
+              >
+                <EditorOperatorName
+                  shouldUnregister
+                  groups={operatorGroups}
+                  operators={operators}
+                  control={control}
+                  name="name"
+                  rules={{
+                    required: t.components.editor.action.EditorActionAdd.operator_required,
+                  }}
+                />
+              </FormField2>
+            </div>
+            <div className="flex">
+              <EditorActionOperatorLocation
+                shouldUnregister
+                actionType={type}
+                level={level}
+                control={control}
+                name="location"
+              />
+            </div>
+          </>
+        )}
+
+        {type === 'Swipe' && (
+          <>
+            <Callout className="mb-2">{t.components.editor.action.EditorActionAdd.swipe_hint}</Callout>
+            <div className="flex flex-col">
+              <EditorActionRect
+                shouldUnregister
+                label={t.components.editor.action.EditorActionAdd.swipe_begin}
+                required
+                control={control}
+                name="begin"
+              />
+              <EditorActionRect
+                shouldUnregister
+                label={t.components.editor.action.EditorActionAdd.swipe_end}
+                required
+                control={control}
+                name="end"
+              />
+            </div>
+            <div className="flex mt-2">
+              <EditorActionSwipeParams control={control} />
+            </div>
+          </>
+        )}
+
         {type === 'Deploy' && (
           <div className="flex">
-            <EditorActionOperatorDirection
-              shouldUnregister
-              control={control}
-              name="direction"
-            />
+            <EditorActionOperatorDirection shouldUnregister control={control} name="direction" />
           </div>
         )}
 
@@ -333,10 +404,7 @@ export const EditorActionAdd = ({
             <FormField2
               label={t.components.editor.action.EditorActionAdd.skill_usage}
               field="skillUsage"
-              error={
-                (errors as FieldErrors<CopilotDocV1.ActionSkillUsage>)
-                  .skillUsage
-              }
+              error={(errors as FieldErrors<CopilotDocV1.ActionSkillUsage>).skillUsage}
             >
               <EditorOperatorSkillUsage
                 shouldUnregister
@@ -348,14 +416,9 @@ export const EditorActionAdd = ({
 
             {skillUsage === CopilotDocV1.SkillUsageType.ReadyToUseTimes && (
               <FormField2
-                label={
-                  t.components.editor.action.EditorActionAdd.skill_usage_count
-                }
+                label={t.components.editor.action.EditorActionAdd.skill_usage_count}
                 field="skillTimes"
-                error={
-                  (errors as FieldErrors<CopilotDocV1.ActionSkillUsage>)
-                    .skillTimes
-                }
+                error={(errors as FieldErrors<CopilotDocV1.ActionSkillUsage>).skillTimes}
               >
                 <EditorOperatorSkillTimes
                   control={control as Control<CopilotDocV1.ActionSkillUsage>}
@@ -368,14 +431,19 @@ export const EditorActionAdd = ({
 
         {type === 'MoveCamera' && (
           <>
-            <Callout>
-              {t.components.editor.action.EditorActionAdd.camera_movement_hint}
-            </Callout>
-            <div className="flex mt-2">
-              <EditorActionDistance
-                shouldUnregister
+            <Callout>{t.components.editor.action.EditorActionAdd.camera_movement_hint}</Callout>
+            <div className="flex items-center mt-2">
+              <EditorActionDistance shouldUnregister control={control} name="distance" />
+              <Controller
                 control={control}
-                name="distance"
+                name="keepKills"
+                render={({ field: { onChange, value } }) => (
+                  <Checkbox
+                    label={t.components.editor.action.EditorActionAdd.keep_kills}
+                    checked={!!value}
+                    onChange={(e) => onChange(e.target.checked ? true : undefined)}
+                  />
+                )}
               />
             </div>
           </>
@@ -384,9 +452,7 @@ export const EditorActionAdd = ({
         <div className="h-px w-full bg-gray-200 mt-4 mb-6" />
 
         <EditorActionModule
-          title={
-            t.components.editor.action.EditorActionAdd.execution_conditions
-          }
+          title={t.components.editor.action.EditorActionAdd.execution_conditions}
           icon="stopwatch"
           className="font-bold"
         >
@@ -411,11 +477,7 @@ export const EditorActionAdd = ({
           className="font-bold"
         >
           <div className="flex flex-col w-full">
-            <EditorActionDocColor
-              shouldUnregister
-              control={control}
-              name="docColor"
-            />
+            <EditorActionDocColor shouldUnregister control={control} name="docColor" />
 
             <FormField
               label={t.components.editor.action.EditorActionAdd.description}
@@ -426,13 +488,10 @@ export const EditorActionAdd = ({
                   <TextArea
                     fill
                     rows={2}
-                    growVertically
+                    autoResize
                     large
                     id="doc"
-                    placeholder={
-                      t.components.editor.action.EditorActionAdd
-                        .description_placeholder
-                    }
+                    placeholder={t.components.editor.action.EditorActionAdd.description_placeholder}
                     {...field}
                     value={field.value || ''}
                   />
@@ -444,9 +503,7 @@ export const EditorActionAdd = ({
 
         <div className="mt-4 flex">
           <FormSubmitButton control={control} icon={isNew ? 'add' : 'edit'}>
-            {isNew
-              ? t.components.editor.action.EditorActionAdd.add
-              : t.components.editor.action.EditorActionAdd.save}
+            {isNew ? t.components.editor.action.EditorActionAdd.add : t.components.editor.action.EditorActionAdd.save}
           </FormSubmitButton>
 
           {!isNew && (

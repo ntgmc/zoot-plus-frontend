@@ -1,34 +1,116 @@
 import { IconName } from '@blueprintjs/core'
 
 import { useAtomValue } from 'jotai'
-import { clamp, defaults, mapValues } from 'lodash-es'
+import { clamp, mapValues, uniq } from 'lodash-es'
 
 import { CopilotDocV1 } from 'models/copilot.schema'
 
-import {
-  DetailedSelectChoice,
-  isChoice,
-} from '../components/editor/DetailedSelect'
+import { DetailedSelectChoice, isChoice } from '../components/editor/DetailedSelect'
 import { Language, i18n, i18nDefer, languageAtom } from '../i18n/i18n'
 import { OPERATORS, PROFESSIONS } from '../models/generated/operators.json'
 
 export { OPERATORS, PROFESSIONS }
 
-export type OperatorInfo = (typeof OPERATORS)[number]
+type NonDiscriminative<T, K extends keyof T = keyof T> = { [P in K]: T[P] }
+export type OperatorInfo = NonDiscriminative<(typeof OPERATORS)[number]>
 export type Profession = (typeof PROFESSIONS)[number]
 
-const OPERATORS_BY_ID = Object.fromEntries(
-  OPERATORS.map((operator) => [operator.id, operator]),
-)
+const OPERATORS_BY_ID = Object.fromEntries(OPERATORS.map((operator) => [operator.id, operator]))
 export function findOperatorById(id: string): OperatorInfo | undefined {
   return OPERATORS_BY_ID[id]
 }
 
-const OPERATORS_BY_NAME = Object.fromEntries(
-  OPERATORS.map((operator) => [operator.name, operator]),
-)
-export function findOperatorByName(name: string): OperatorInfo | undefined {
+interface StackedOperatorInfo extends OperatorInfo {
+  duplicates?: OperatorInfo[]
+}
+const OPERATORS_BY_NAME = OPERATORS.reduce<Record<string, StackedOperatorInfo>>((acc, operator) => {
+  if (acc[operator.name]) {
+    if (!acc[operator.name].duplicates) {
+      // 把 info 复制一份，避免修改原始数据
+      acc[operator.name] = { ...acc[operator.name], duplicates: [] }
+    }
+    acc[operator.name].duplicates!.push(operator)
+  } else {
+    acc[operator.name] = operator
+  }
+  return acc
+}, {})
+export function findOperatorByName(name: string): StackedOperatorInfo | undefined {
   return OPERATORS_BY_NAME[name]
+}
+
+export function findOperatorsByIdentity({ name, role }: CopilotDocV1.OperatorIdentity): OperatorInfo[] {
+  const info = findOperatorByName(name)
+  if (!info) {
+    return []
+  }
+  if (!info.duplicates?.length) {
+    return [info]
+  }
+  const operators = [info, ...info.duplicates]
+  if (!role) {
+    return operators
+  }
+  return operators.filter((op) => getRoleByInfo(op) === role)
+}
+
+/**
+ * @example
+ * // 阿米娅只有一个角色 Caster，允许其中一边的角色为空
+ * matchOperatorIdentity({ name: '阿米娅', role: 'Caster' }, { name: '阿米娅', role: 'Caster' }) // true
+ * matchOperatorIdentity({ name: '阿米娅', role: 'Caster' }, { name: '阿米娅', role: 'Guard' }) // false
+ * matchOperatorIdentity({ name: '阿米娅', role: 'Caster' }, { name: '阿米娅' }) // true
+ * matchOperatorIdentity({ name: '阿米娅' }, { name: '阿米娅', role: 'Caster' }) // true
+ * matchOperatorIdentity({ name: '阿米娅' }, { name: '阿米娅', role: 'Guard' }) // false
+ * matchOperatorIdentity({ name: '阿米娅' }, { name: '阿米娅' }) // true
+ *
+ * // Mon3tr 有两个角色 Medic 和 Drone，两边的角色必须完全匹配
+ * matchOperatorIdentity({ name: 'Mon3tr', role: 'Medic' }, { name: 'Mon3tr', role: 'Medic' }) // true
+ * matchOperatorIdentity({ name: 'Mon3tr', role: 'Medic' }, { name: 'Mon3tr' }) // false
+ * matchOperatorIdentity({ name: 'Mon3tr' }, { name: 'Mon3tr', role: 'Medic' }) // false
+ * matchOperatorIdentity({ name: 'Mon3tr' }, { name: 'Mon3tr' }) // true
+ */
+export function matchOperatorIdentity(a: CopilotDocV1.OperatorIdentity, b: CopilotDocV1.OperatorIdentity): boolean {
+  if (a.name !== b.name) return false
+  if (b.role === a.role) return true
+  if (!b.role && !a.role) return true
+  // 兜底：如果只有其中一边指定了角色，但该干员本身也只有这一个角色可选，也算匹配
+  if (!(b.role && a.role)) {
+    const roles = getRolesByName(a.name)
+    if (roles.length === 0 || (roles.length === 1 && roles[0] === (b.role || a.role))) {
+      return true
+    }
+  }
+  return false
+}
+
+export function identityFromInfo(info: OperatorInfo): CopilotDocV1.OperatorIdentity {
+  const identity: CopilotDocV1.OperatorIdentity = { name: info.name }
+  // 只有在 name 对应多个干员时才需要指定 role
+  if (getRolesByName(info.name).length > 1) {
+    identity.role = getRoleByInfo(info)
+  }
+  return identity
+}
+
+export function getRolesByName(name: string): CopilotDocV1.Role[] {
+  return uniq(findOperatorsByIdentity({ name }).map((op) => getRoleByInfo(op)))
+}
+
+export function getRoleByInfo(info: OperatorInfo) {
+  const profToRole: Record<string, CopilotDocV1.Role> = {
+    PIONEER: CopilotDocV1.Role.Pioneer,
+    WARRIOR: CopilotDocV1.Role.Warrior,
+    TANK: CopilotDocV1.Role.Tank,
+    SNIPER: CopilotDocV1.Role.Sniper,
+    CASTER: CopilotDocV1.Role.Caster,
+    MEDIC: CopilotDocV1.Role.Medic,
+    SUPPORT: CopilotDocV1.Role.Support,
+    SPECIAL: CopilotDocV1.Role.Special,
+    TOKEN: CopilotDocV1.Role.Token,
+    TRAP: CopilotDocV1.Role.Trap,
+  }
+  return profToRole[info.prof] ?? CopilotDocV1.Role.Unknown
 }
 
 export const MODULE_ALT_NAMES = {
@@ -90,10 +172,7 @@ export function getSkillCount({ id, rarity }: OperatorInfo): number {
   return 0
 }
 
-const defaultRequirementsByRarity: Record<
-  number,
-  Required<CopilotDocV1.Requirements>
-> = mapValues(
+const defaultRequirementsByRarity: Record<number, Required<CopilotDocV1.Requirements>> = mapValues(
   {
     0: { elite: 0, level: 1, skillLevel: 1 },
     1: { elite: 0, level: 30, skillLevel: 1 },
@@ -112,14 +191,6 @@ const defaultRequirementsByRarity: Record<
 
 export function getDefaultRequirements(rarity = 6) {
   return defaultRequirementsByRarity[rarity] ?? defaultRequirementsByRarity[6]
-}
-
-export function withDefaultRequirements(
-  baseRequirements: CopilotDocV1.Requirements = {},
-  rarity = 6,
-): Required<CopilotDocV1.Requirements> {
-  const defaultRequirements = getDefaultRequirements(rarity)
-  return defaults({}, baseRequirements, defaultRequirements)
 }
 
 export function adjustOperatorLevel({
@@ -171,32 +242,20 @@ export function adjustOperatorLevel({
   ;(() => {
     // 特殊处理：把精英1满级和精英2 1级当成两个边界点，从任何方向尝试跨越时都只能落到这两个点上
     if (elite2 !== 0) {
-      if (
-        (level > elite2 + 1 && level + delta <= elite2 + 1) ||
-        (level === elite2 && delta > 0)
-      ) {
+      if ((level > elite2 + 1 && level + delta <= elite2 + 1) || (level === elite2 && delta > 0)) {
         level = elite2 + 1
         return
-      } else if (
-        (level < elite2 && level + delta >= elite2) ||
-        (level === elite2 + 1 && delta < 0)
-      ) {
+      } else if ((level < elite2 && level + delta >= elite2) || (level === elite2 + 1 && delta < 0)) {
         level = elite2
         return
       }
     }
     // 同上，处理精英0满级和精英1 1级
     if (elite1 !== 0) {
-      if (
-        (level > elite1 + 1 && level + delta <= elite1 + 1) ||
-        (level === elite1 && delta > 0)
-      ) {
+      if ((level > elite1 + 1 && level + delta <= elite1 + 1) || (level === elite1 && delta > 0)) {
         level = elite1 + 1
         return
-      } else if (
-        (level < elite1 && level + delta >= elite1) ||
-        (level === elite1 + 1 && delta < 0)
-      ) {
+      } else if ((level < elite1 && level + delta >= elite1) || (level === elite1 + 1 && delta < 0)) {
         level = elite1
         return
       }
@@ -240,11 +299,9 @@ export const operatorSkillUsages: DetailedOperatorSkillUsage[] = [
     type: 'choice',
     icon: 'circle',
     title: i18nDefer.models.operator.skill_usage.ready_to_use_times.title,
-    altTitle:
-      i18nDefer.models.operator.skill_usage.ready_to_use_times.alt_title,
+    altTitle: i18nDefer.models.operator.skill_usage.ready_to_use_times.alt_title,
     value: CopilotDocV1.SkillUsageType.ReadyToUseTimes,
-    description:
-      i18nDefer.models.operator.skill_usage.ready_to_use_times.description,
+    description: i18nDefer.models.operator.skill_usage.ready_to_use_times.description,
   },
   {
     type: 'choice',
@@ -252,44 +309,31 @@ export const operatorSkillUsages: DetailedOperatorSkillUsage[] = [
     title: i18nDefer.models.operator.skill_usage.automatically.title,
     altTitle: i18nDefer.models.operator.skill_usage.automatically.alt_title,
     value: CopilotDocV1.SkillUsageType.Automatically,
-    description:
-      i18nDefer.models.operator.skill_usage.automatically.description,
+    description: i18nDefer.models.operator.skill_usage.automatically.description,
     disabled: true,
   },
 ]
 
-export const alternativeOperatorSkillUsages: DetailedOperatorSkillUsage[] =
-  operatorSkillUsages.map((item) => ({
-    ...item,
-    title: item.altTitle,
-  }))
+export const alternativeOperatorSkillUsages: DetailedOperatorSkillUsage[] = operatorSkillUsages.map((item) => ({
+  ...item,
+  title: item.altTitle,
+}))
 
 const unknownSkillUsage: DetailedOperatorSkillUsage = {
   type: 'choice',
   icon: 'error',
   title: i18nDefer.models.operator.skill_usage.unknown.title,
   altTitle: i18nDefer.models.operator.skill_usage.unknown.title,
-  value: -1,
+  value: -999,
   description: () => '',
 }
 
-export function findOperatorSkillUsage(
-  value: number = defaultSkillUsage,
-): DetailedOperatorSkillUsage {
-  return (
-    operatorSkillUsages.filter(isChoice).find((item) => item.value === value) ||
-    unknownSkillUsage
-  )
+export function findOperatorSkillUsage(value: number = defaultSkillUsage): DetailedOperatorSkillUsage {
+  return operatorSkillUsages.filter(isChoice).find((item) => item.value === value) || unknownSkillUsage
 }
 
-export function getSkillUsageTitle(
-  skillUsage: CopilotDocV1.SkillUsageType,
-  skillTimes?: CopilotDocV1.SkillTimes,
-) {
-  if (
-    skillUsage === CopilotDocV1.SkillUsageType.ReadyToUseTimes &&
-    skillTimes !== undefined
-  ) {
+export function getSkillUsageTitle(skillUsage: CopilotDocV1.SkillUsageType, skillTimes?: CopilotDocV1.SkillTimes) {
+  if (skillUsage === CopilotDocV1.SkillUsageType.ReadyToUseTimes && skillTimes !== undefined) {
     return i18n.models.operator.skill_usage.ready_to_use_times.format({
       count: skillTimes,
       times: skillTimes,
@@ -298,10 +342,7 @@ export function getSkillUsageTitle(
   return findOperatorSkillUsage(skillUsage).title()
 }
 
-export function getSkillUsageAltTitle(
-  skillUsage: CopilotDocV1.SkillUsageType,
-  skillTimes?: CopilotDocV1.SkillTimes,
-) {
+export function getSkillUsageAltTitle(skillUsage: CopilotDocV1.SkillUsageType, skillTimes?: CopilotDocV1.SkillTimes) {
   if (skillUsage === CopilotDocV1.SkillUsageType.ReadyToUseTimes) {
     return i18n.models.operator.skill_usage.ready_to_use_times.alt_format({
       times: skillTimes ?? 1,
@@ -316,8 +357,7 @@ export interface OperatorDirection {
   value: CopilotDocV1.Direction | null
 }
 
-const defaultDirection: CopilotDocV1.Direction =
-  'None' as CopilotDocV1.Direction.None
+const defaultDirection: CopilotDocV1.Direction = 'None' as CopilotDocV1.Direction.None
 
 export const operatorDirections: OperatorDirection[] = [
   // TODO: remove these string literals when CopilotDocV1 can be imported
@@ -354,12 +394,8 @@ const unknownDirection: OperatorDirection = {
   value: null,
 }
 
-export function findOperatorDirection(
-  value: CopilotDocV1.Direction = defaultDirection,
-): OperatorDirection {
-  return (
-    operatorDirections.find((item) => item.value === value) || unknownDirection
-  )
+export function findOperatorDirection(value: CopilotDocV1.Direction = defaultDirection): OperatorDirection {
+  return operatorDirections.find((item) => item.value === value) || unknownDirection
 }
 
 export interface ActionDocColor {
@@ -369,6 +405,7 @@ export interface ActionDocColor {
 
 // Colors from
 // https://github.com/MaaAssistantArknights/MaaAssistantArknights/blob/50f5f94dfcc2ec175556bbaa55d0ffec74128a8e/src/MeoAsstGui/Helper/LogColor.cs
+// 上游协议规范的日志颜色定义
 export const actionDocColors: ActionDocColor[] = [
   {
     title: i18nDefer.models.operator.color.gray,
@@ -425,5 +462,21 @@ export function useLocalizedOperatorName(name: string): string {
 }
 
 export function getEliteIconUrl(elite: number) {
-  return new URL(`/src/assets/icons/elite_${elite}.png`, import.meta.url).href
+  return new URL(`/src/assets/icons/elite_${elite}.webp`, import.meta.url).href
+}
+
+let eliteIconsPreloaded = false
+
+/**
+ * Preloads all elite icons. Images requested by a later <img> will then
+ * resolve from the browser cache instead of issuing a new network request.
+ */
+export function preloadEliteIcons() {
+  if (eliteIconsPreloaded) return
+  eliteIconsPreloaded = true
+
+  for (let elite = 0; elite <= 2; elite++) {
+    const image = new Image()
+    image.src = getEliteIconUrl(elite)
+  }
 }

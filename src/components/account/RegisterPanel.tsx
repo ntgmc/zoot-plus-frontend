@@ -32,30 +32,33 @@ export const RegisterPanel: FC<{
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isValid, isSubmitting },
     getValues,
-  } = useForm<RegisterFormValues>()
-  const [isSendEmailButtonDisabled, setSendEmailButtonDisabled] =
-    useState(false)
+  } = useForm<RegisterFormValues>({ mode: 'onChange' })
+  const [isSendEmailButtonDisabled, setSendEmailButtonDisabled] = useState(false)
   const [countdown, setCountdown] = useState(60)
   const onSubmit = async (val: RegisterFormValues) => {
-    await wrapErrorMessage(
-      (e) =>
-        t.components.account.RegisterPanel.registration_failed({
-          error: formatError(e),
+    try {
+      await wrapErrorMessage(
+        (e) =>
+          t.components.account.RegisterPanel.registration_failed({
+            error: formatError(e),
+          }),
+        register({
+          email: val.email,
+          registrationToken: val.registrationToken,
+          username: val.username,
+          password: val.password,
         }),
-      register({
-        email: val.email,
-        registrationToken: val.registrationToken,
-        username: val.username,
-        password: val.password,
-      }),
-    )
-    AppToaster.show({
-      intent: 'success',
-      message: t.components.account.RegisterPanel.registration_success,
-    })
-    onComplete()
+      )
+      AppToaster.show({
+        intent: 'success',
+        message: t.components.account.RegisterPanel.registration_success,
+      })
+      onComplete()
+    } catch {
+      // Error handled by wrapErrorMessage (toast shown), prevent isSubmitting from getting stuck
+    }
   }
   const handleCountdownTick = () => {
     setCountdown((prevCountdown) => prevCountdown - 1)
@@ -99,17 +102,10 @@ export const RegisterPanel: FC<{
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <AuthFormEmailField
-        register
-        control={control}
-        error={errors.email}
-        field="email"
-      />
+      <AuthFormEmailField register control={control} error={errors.email} field="email" />
       <div className="mt-6 flex justify-end">
         <Button
-          disabled={
-            (!isValid && !isDirty) || isSubmitting || isSendEmailButtonDisabled
-          }
+          disabled={!!errors.email || isSubmitting || isSendEmailButtonDisabled}
           intent="primary"
           type="button"
           icon="envelope"
@@ -130,21 +126,13 @@ export const RegisterPanel: FC<{
         field="registrationToken"
       />
 
-      <AuthFormUsernameField
-        control={control}
-        error={errors.username}
-        field="username"
-      />
+      <AuthFormUsernameField control={control} error={errors.username} field="username" />
 
-      <AuthFormPasswordField
-        control={control}
-        error={errors.password}
-        field="password"
-      />
+      <AuthFormPasswordField control={control} error={errors.password} field="password" />
 
       <div className="mt-6 flex justify-end">
         <Button
-          disabled={(!isValid && !isDirty) || isSubmitting}
+          disabled={!isValid || isSubmitting}
           intent="primary"
           loading={isSubmitting}
           type="submit"

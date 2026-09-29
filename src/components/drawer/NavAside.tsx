@@ -1,5 +1,4 @@
-import { Drawer, Menu, MenuDivider } from '@blueprintjs/core'
-import { MenuItem2 } from '@blueprintjs/popover2'
+import { Drawer, Menu, MenuDivider, MenuItem } from '@blueprintjs/core'
 
 import { useLinks } from 'hooks/useLinks'
 import { useAtomValue, useSetAtom } from 'jotai'
@@ -21,7 +20,7 @@ export const NavAside = () => {
 
   const [showOperationSetDialog, setShowOperationSetDialog] = useState(false)
 
-  const { NAV_LINKS, SOCIAL_LINKS } = useLinks()
+  const { NAV_LINKS, SOCIAL_LINKS, FRIENDLY_LINKS } = useLinks()
 
   if (!isMD) return null
 
@@ -32,7 +31,7 @@ export const NavAside = () => {
         onClose={() => toggleNav()}
         position="left"
         size="100%"
-        portalClassName="[&>.bp4-overlay-container]:z-10"
+        portalClassName="[&>.bp6-overlay-container]:z-10"
         backdropClassName="bg-transparent"
         className="bg-transparent backdrop-blur-lg overflow-y-auto mt-14 p-2"
       >
@@ -40,7 +39,7 @@ export const NavAside = () => {
           {NAV_LINKS.map((link) => (
             <NavLink key={link.to} to={link.to} className="block !no-underline">
               {({ isActive }) => (
-                <MenuItem2
+                <MenuItem
                   key={link.to}
                   icon={link.icon}
                   active={isActive}
@@ -53,7 +52,7 @@ export const NavAside = () => {
             </NavLink>
           ))}
           <MenuDivider />
-          <MenuItem2
+          <MenuItem
             icon="folder-new"
             text={t.components.drawer.NavAside.create_job_set}
             className="p-2 rounded-md"
@@ -64,7 +63,7 @@ export const NavAside = () => {
           />
           <AnnPanel
             trigger={({ handleClick }) => (
-              <MenuItem2
+              <MenuItem
                 icon="info-sign"
                 text={t.components.drawer.NavAside.announcement}
                 className="p-2 rounded-md"
@@ -93,12 +92,31 @@ export const NavAside = () => {
             </>
           ))}
         </div>
+        <div className="mt-2 p-2">
+          <div className="text-sm font-medium text-zinc-600 dark:text-slate-100 mb-2">{t.links.friendly_links}</div>
+          <div className="flex flex-wrap leading-relaxed mb-2 section-social-links">
+            {FRIENDLY_LINKS.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-zinc-600 dark:text-slate-100 no-underline"
+              >
+                {link.icon}
+                <span>{link.label}</span>
+              </a>
+            )).reduce((prev, curr) => (
+              <>
+                {prev}
+                <div className="mx-2 opacity-50">·</div>
+                {curr}
+              </>
+            ))}
+          </div>
+        </div>
       </Drawer>
 
-      <OperationSetEditorDialog
-        isOpen={showOperationSetDialog}
-        onClose={() => setShowOperationSetDialog(false)}
-      />
+      <OperationSetEditorDialog isOpen={showOperationSetDialog} onClose={() => setShowOperationSetDialog(false)} />
     </>
   )
 }

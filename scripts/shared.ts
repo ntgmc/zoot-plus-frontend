@@ -1,6 +1,6 @@
 import { access } from 'fs/promises'
 import { capitalize, uniq, uniqBy } from 'lodash-es'
-import { pinyin } from 'pinyin'
+import { pinyin, polyphonic } from 'pinyin-pro'
 import simplebig from 'simplebig'
 
 type Profession = { id: string; name: string; name_en?: string }
@@ -15,19 +15,22 @@ export async function fileExists(file: string) {
   }
 }
 
+function cartesianProduct(groups: string[][]): string[] {
+  return groups.reduce<string[]>(
+    (combinations, variants) => combinations.flatMap((prefix) => variants.map((variant) => prefix + variant)),
+    [''],
+  )
+}
+
 function pinyinify(name: string) {
-  return [
-    pinyin(name, {
-      compact: true,
-      heteronym: true,
-      style: pinyin.STYLE_NORMAL,
-    }),
-    pinyin(name, {
-      compact: true,
-      heteronym: true,
-      style: pinyin.STYLE_FIRST_LETTER,
-    }),
-  ].flatMap((py) => py.map((el) => el.join('')))
+  const base = {
+    toneType: 'none',
+    type: 'array',
+    v: true,
+    nonZh: 'consecutive',
+  } as const
+
+  return [polyphonic(name, base), polyphonic(name, { ...base, pattern: 'first' })].flatMap(cartesianProduct)
 }
 
 function transformOperatorName(name: string) {
@@ -38,12 +41,9 @@ function transformOperatorName(name: string) {
 
   return {
     name,
-    alias: uniq([
-      ...pinyinify(cleanedName),
-      traditional,
-      cleanedTraditional,
-      ...pinyinify(cleanedTraditional),
-    ]).join(' '),
+    alias: uniq([...pinyinify(cleanedName), traditional, cleanedTraditional, ...pinyinify(cleanedTraditional)]).join(
+      ' ',
+    ),
   }
 }
 
@@ -52,9 +52,9 @@ const CHARACTER_TABLE_JSON_URL_CN =
 const UNIEQUIP_TABLE_JSON_URL_CN =
   'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/uniequip_table.json'
 const CHARACTER_TABLE_JSON_URL_EN =
-  'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/en_US/gamedata/excel/character_table.json'
+  'https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/refs/heads/master/en/gamedata/excel/character_table.json'
 const UNIEQUIP_TABLE_JSON_URL_EN =
-  'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/en_US/gamedata/excel/uniequip_table.json'
+  'https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/refs/heads/master/en/gamedata/excel/uniequip_table.json'
 
 const CHARACTER_BLOCKLIST = [
   'char_512_aprot', // 暮落(集成战略)：It's just not gonna be there.
@@ -109,55 +109,43 @@ async function json(url: string) {
 }
 
 export async function getOperators() {
-  const [charTableCN, uniequipTableCN, charTableEN, uniequipTableEN] =
-    await Promise.all([
-      json(CHARACTER_TABLE_JSON_URL_CN),
-      json(UNIEQUIP_TABLE_JSON_URL_CN),
-      json(CHARACTER_TABLE_JSON_URL_EN),
-      json(UNIEQUIP_TABLE_JSON_URL_EN),
-    ])
+  const [charTableCN, uniequipTableCN, charTableEN, uniequipTableEN] = await Promise.all([
+    json(CHARACTER_TABLE_JSON_URL_CN),
+    json(UNIEQUIP_TABLE_JSON_URL_CN),
+    json(CHARACTER_TABLE_JSON_URL_EN),
+    json(UNIEQUIP_TABLE_JSON_URL_EN),
+  ])
 
-  const {
-    subProfDict: subProfDictCN,
-    subProfToProfDict,
-    equipDict,
-  } = uniequipTableCN
+  const { subProfDict: subProfDictCN, subProfToProfDict, equipDict } = uniequipTableCN
   const { subProfDict: subProfDictEN } = uniequipTableEN
-  const equipsByOperatorId = Object.values(equipDict).reduce(
-    (acc: Record<string, any[]>, equip: any) => {
-      acc[equip.charId] ||= []
-      acc[equip.charId].push(equip)
-      return acc
-    },
-    {},
-  )
+  const equipsByOperatorId = Object.values(equipDict).reduce((acc: Record<string, any[]>, equip: any) => {
+    acc[equip.charId] ||= []
+    acc[equip.charId].push(equip)
+    return acc
+  }, {})
 
-  const professions: Professions = Object.entries(PROFESSIONS).map(
-    ([id, { name, name_en, code }]) => {
-      const subProfessions = (
-        Object.values(subProfDictCN) as {
-          subProfessionId: string
-          subProfessionName: string
-          subProfessionCatagory: number
-        }[]
-      )
-        .filter((x) => subProfToProfDict[x.subProfessionId] === code)
-        .sort((a, b) => a.subProfessionCatagory - b.subProfessionCatagory)
-        .map(({ subProfessionId, subProfessionName }) => ({
-          id: subProfessionId,
-          name: subProfessionName,
-          name_en:
-            subProfDictEN[subProfessionId]?.subProfessionName ||
-            capitalize(subProfessionId),
-        }))
-      return {
-        id,
-        name,
-        name_en,
-        sub: subProfessions,
-      }
-    },
-  )
+  const professions: Professions = Object.entries(PROFESSIONS).map(([id, { name, name_en, code }]) => {
+    const subProfessions = (
+      Object.values(subProfDictCN) as {
+        subProfessionId: string
+        subProfessionName: string
+        subProfessionCatagory: number
+      }[]
+    )
+      .filter((x) => subProfToProfDict[x.subProfessionId] === code)
+      .sort((a, b) => a.subProfessionCatagory - b.subProfessionCatagory)
+      .map(({ subProfessionId, subProfessionName }) => ({
+        id: subProfessionId,
+        name: subProfessionName,
+        name_en: subProfDictEN[subProfessionId]?.subProfessionName || capitalize(subProfessionId),
+      }))
+    return {
+      id,
+      name,
+      name_en,
+      sub: subProfessions,
+    }
+  })
 
   const opIds = Object.keys(charTableCN)
   const result = uniqBy(
@@ -181,10 +169,7 @@ export async function getOperators() {
           subProf: op.subProfessionId,
           name_en: enName,
           ...transformOperatorName(op.name),
-          rarity:
-            op.subProfessionId === 'notchar1'
-              ? 0
-              : Number(op.rarity?.split('TIER_').join('') || 0),
+          rarity: op.subProfessionId === 'notchar1' ? 0 : Number(op.rarity?.split('TIER_').join('') || 0),
           alt_name: op.appellation,
           modules: modules.length > 0 ? modules : undefined,
         },
@@ -192,14 +177,12 @@ export async function getOperators() {
     }),
     (el) => el.id,
   ).sort((a, b) => {
-    // 默认的 pinyin.compare() 没有传入 locale 参数，导致在不同的系统上有不同的排序结果，
-    // 所以这里手动实现一下，并带上 locale
-    // https://github.com/MaaAssistantArknights/maa-copilot-frontend/pull/265
-    const pinyinA = String(pinyin(a.name))
-    const pinyinB = String(pinyin(b.name))
-    return (
-      pinyinA.localeCompare(pinyinB, 'zh') || a.id.localeCompare(b.id, 'en')
-    )
+    // pinyin-pro 没有直接提供带 locale 的 compare，所以这里先转成拼音字符串，
+    // 再手动用 localeCompare('zh') 排序，避免不同系统默认 locale 导致排序结果不一致。
+    // https://github.com/ZOOT-Plus/zoot-plus-frontend/pull/265
+    const pinyinA = pinyin(a.name, { type: 'array', nonZh: 'consecutive' }).join(',')
+    const pinyinB = pinyin(b.name, { type: 'array', nonZh: 'consecutive' }).join(',')
+    return pinyinA.localeCompare(pinyinB, 'zh') || a.id.localeCompare(b.id, 'en')
   })
   return {
     professions,

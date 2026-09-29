@@ -112,6 +112,45 @@ export const ACTION_TYPES: ActionType[] = [
   },
   {
     type: 'choice',
+    icon: 'select',
+    accent: 'border-teal-700',
+    accentText: 'text-teal-700 dark:text-teal-400',
+    accentBg: 'bg-teal-700',
+    title: i18nDefer.models.types.action_type.click.title,
+    shortTitle: i18nDefer.models.types.action_type.click.short_title,
+    value: CopilotDocV1.Type.Click,
+    alternativeValue: '点击',
+    description: i18nDefer.models.types.action_type.click.description,
+    group: i18nDefer.models.types.action_group.battle_control,
+  },
+  {
+    type: 'choice',
+    icon: 'arrows-horizontal',
+    accent: 'border-indigo-700',
+    accentText: 'text-indigo-700 dark:text-indigo-400',
+    accentBg: 'bg-indigo-700',
+    title: i18nDefer.models.types.action_type.swipe.title,
+    shortTitle: i18nDefer.models.types.action_type.swipe.short_title,
+    value: CopilotDocV1.Type.Swipe,
+    alternativeValue: '滑动',
+    description: i18nDefer.models.types.action_type.swipe.description,
+    group: i18nDefer.models.types.action_group.battle_control,
+  },
+  {
+    type: 'choice',
+    icon: 'locate',
+    accent: 'border-rose-700',
+    accentText: 'text-rose-700 dark:text-rose-400',
+    accentBg: 'bg-rose-700',
+    title: i18nDefer.models.types.action_type.set_unit_location.title,
+    shortTitle: i18nDefer.models.types.action_type.set_unit_location.short_title,
+    value: CopilotDocV1.Type.SetUnitLocation,
+    alternativeValue: '设置单位坐标',
+    description: i18nDefer.models.types.action_type.set_unit_location.description,
+    group: i18nDefer.models.types.action_group.battle_control,
+  },
+  {
+    type: 'choice',
     icon: 'antenna',
     accent: 'border-violet-700',
     accentText: 'text-violet-700 dark:text-violet-400',
@@ -162,11 +201,7 @@ const notFoundActionType: Omit<ActionType, 'value'> & { value: 'Unknown' } = {
 
 export const findActionType = (type?: string) => {
   if (!type) return notFoundActionType
-  return (
-    ACTION_TYPES.find(
-      (item) => item.value === type || item.alternativeValue === type,
-    ) || notFoundActionType
-  )
+  return ACTION_TYPES.find((item) => item.value === type || item.alternativeValue === type) || notFoundActionType
 }
 
 export type ActionConditionType =
@@ -186,17 +221,12 @@ export const ACTION_CONDITIONS: Record<
   intermediatePreDelay: {
     title: i18nDefer.models.types.action_condition.intermediate_pre_delay.title,
     icon: 'time',
-    description:
-      i18nDefer.models.types.action_condition.intermediate_pre_delay
-        .description,
+    description: i18nDefer.models.types.action_condition.intermediate_pre_delay.description,
   },
   intermediatePostDelay: {
-    title:
-      i18nDefer.models.types.action_condition.intermediate_post_delay.title,
+    title: i18nDefer.models.types.action_condition.intermediate_post_delay.title,
     icon: 'time',
-    description:
-      i18nDefer.models.types.action_condition.intermediate_post_delay
-        .description,
+    description: i18nDefer.models.types.action_condition.intermediate_post_delay.description,
   },
   costs: {
     title: i18nDefer.models.types.action_condition.costs.title,
@@ -206,8 +236,7 @@ export const ACTION_CONDITIONS: Record<
   costChanges: {
     title: i18nDefer.models.types.action_condition.cost_changes.title,
     icon: 'dollar',
-    description:
-      i18nDefer.models.types.action_condition.cost_changes.description,
+    description: i18nDefer.models.types.action_condition.cost_changes.description,
   },
   kills: {
     title: i18nDefer.models.types.action_condition.kills.title,

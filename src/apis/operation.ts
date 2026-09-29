@@ -1,16 +1,12 @@
 import { uniqBy } from 'lodash-es'
-import {
-  BanCommentsStatusEnum,
-  CopilotInfoStatusEnum,
-  QueriesCopilotRequest,
-} from 'maa-copilot-client'
+import { BanCommentsStatusEnum, CopilotSetStatus, QueriesCopilotRequest } from 'zoot-plus-client'
 import useSWR, { SWRConfiguration } from 'swr'
 import useSWRInfinite from 'swr/infinite'
 
 import { toCopilotOperation } from 'models/converter'
-import { OpRatingType, Operation } from 'models/operation'
+import { CopilotType, OpRatingType, Operation } from 'models/operation'
 import { ShortCodeContent, parseShortCode } from 'models/shortCode'
-import { OperationApi } from 'utils/maa-copilot-client'
+import { OperationApi } from 'utils/zoot-plus-client'
 import { useSWRRefresh } from 'utils/swr'
 
 export type OrderBy = 'views' | 'hot' | 'id'
@@ -29,6 +25,9 @@ export interface UseOperationsParams {
   operator?: OperatorFilterParams
   operationIds?: number[]
   uploaderId?: string
+  onlyFollowing?: boolean
+  /** 仅查询指定类型的作业；不传则返回全部 */
+  type?: CopilotType
 
   disabled?: boolean
   suspense?: boolean
@@ -44,6 +43,8 @@ export function useOperations({
   operator,
   operationIds,
   uploaderId,
+  onlyFollowing,
+  type,
   disabled,
   suspense,
   revalidateFirstPage,
@@ -72,7 +73,7 @@ export function useOperations({
           console.warn(e)
         }
 
-        if (content) {
+        if (content && (content.type === 'operation' || content.type === 'legacy')) {
           return [
             'operations',
             {
@@ -90,15 +91,14 @@ export function useOperations({
           document: keyword,
           levelKeyword,
           operator: operator
-            ? [
-                ...operator.included,
-                ...operator.excluded.map((o) => `~${o}`),
-              ].join(',') || undefined
+            ? [...operator.included, ...operator.excluded.map((o) => `~${o}`)].join(',') || undefined
             : undefined,
           orderBy,
           desc: descending,
           copilotIds: operationIds,
           uploaderId,
+          onlyFollowing,
+          type,
         } satisfies QueriesCopilotRequest,
       ]
     },
@@ -141,9 +141,7 @@ export function useOperations({
 
   // 按 operationIds 的顺序排序
   const operations = operationIds?.length
-    ? operationIds
-        ?.map((id) => _operations?.find((v) => v.id === id))
-        .filter((v) => !!v)
+    ? operationIds?.map((id) => _operations?.find((v) => v.id === id)).filter((v) => !!v)
     : _operations
 
   return {
@@ -166,17 +164,12 @@ interface UseOperationParams extends SWRConfiguration {
 }
 
 export function useOperation({ id, ...config }: UseOperationParams) {
-  return useSWR(
-    id ? ['operation', id] : null,
-    () => getOperation({ id: id! }),
-    config,
-  )
+  return useSWR(id ? ['operation', id] : null, () => getOperation({ id: id! }), config)
 }
 
 export function useRefreshOperation() {
   const refresh = useSWRRefresh()
-  return (id: number) =>
-    refresh((key) => key.includes('operation') && key.includes(String(id)))
+  return (id: number) => refresh((key) => key.includes('operation') && key.includes(String(id)))
 }
 
 export async function getOperation(req: { id: number }): Promise<Operation> {
@@ -191,29 +184,22 @@ export async function getOperation(req: { id: number }): Promise<Operation> {
   }
 }
 
-export async function createOperation(req: {
-  content: string
-  status: CopilotInfoStatusEnum
-}) {
-  return (await new OperationApi().uploadCopilot({ copilotCUDRequest: req }))
-    .data
+export async function createOperation(req: { content: string; status: CopilotSetStatus; type: CopilotType }) {
+  return (await new OperationApi().uploadCopilot({ uploadCopilotRequest: { ...req } })).data
 }
 
 export async function updateOperation(req: {
   id: number
   content: string
-  status: CopilotInfoStatusEnum
+  status: CopilotSetStatus
+  type: CopilotType
 }) {
-  await new OperationApi().updateCopilot({ copilotCUDRequest: req })
+  await new OperationApi().updateCopilot({ uploadCopilotRequest: { ...req } })
 }
 
 export async function deleteOperation(req: { id: number }) {
   await new OperationApi().deleteCopilot({
-    copilotCUDRequest: {
-      content: '',
-      status: CopilotInfoStatusEnum.Public,
-      ...req,
-    },
+    copilotDeleteRequest: { id: req.id },
   })
 }
 
@@ -232,12 +218,11 @@ export async function rateOperation(req: { id: number; rating: OpRatingType }) {
   })
 }
 
-export async function banComments(req: {
-  operationId: number
-  status: BanCommentsStatusEnum
-}) {
+export async function banComments(req: { operationId: number; status: BanCommentsStatusEnum }) {
   await new OperationApi().banComments({
     copilotId: req.operationId,
     ...req,
   })
 }
+
+export type OperationsData = ReturnType<typeof useOperations>

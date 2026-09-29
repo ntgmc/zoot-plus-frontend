@@ -1,6 +1,7 @@
-import { Button, ButtonGroup, Card } from '@blueprintjs/core'
+﻿import { Button, ButtonGroup } from '@blueprintjs/core'
 
 import { useAtom } from 'jotai'
+import { MaaUserInfoRelationEnum } from 'zoot-plus-client'
 import { ComponentType, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 
@@ -9,40 +10,50 @@ import { OperationSetList } from 'components/OperationSetList'
 import { OperationDrawer } from 'components/drawer/OperationDrawer'
 import { authAtom } from 'store/auth'
 
-import { useUserInfo } from '../apis/user'
-import { CardTitle } from '../components/CardTitle'
-import { withSuspensable } from '../components/Suspensable'
 import { useTranslation } from '../i18n/i18n'
+import { useUserInfo } from '../apis/user'
+import { withSuspensable } from '../components/Suspensable'
+import { UserProfileHeader } from '../components/UserProfile/UserProfileHeader'
+import { UserStatsCard } from '../components/UserProfile/UserStatsCard'
 import { NotFoundError } from '../utils/error'
 
 const _ProfilePage: ComponentType = () => {
   const t = useTranslation()
   const { id } = useParams()
   if (!id) {
-    // edge case?
     throw new Error(t.pages.profile.invalid_id)
   }
 
-  const { data: userInfo } = useUserInfo({ userId: id, suspense: true })
+  const { data: userInfo, mutate } = useUserInfo({ userId: id, suspense: true })
 
-  const [authState, _setAuthState] = useAtom(authAtom)
+  const [authState] = useAtom(authAtom)
 
-  const [listMode, setListMode] = useState<'operation' | 'operationSet'>(
-    'operation',
-  )
+  const [listMode, setListMode] = useState<'operation' | 'operationSet'>('operation')
   const [operationCount, setOperationCount] = useState(-1)
   const [operationSetCount, setOperationSetCount] = useState(-1)
+
+  const handleFollowChange = (newRelation: MaaUserInfoRelationEnum) => {
+    if (userInfo) {
+      mutate(
+        {
+          ...userInfo,
+          relation: newRelation,
+          fansCount:
+            newRelation === MaaUserInfoRelationEnum.Following || newRelation === MaaUserInfoRelationEnum.Mutual
+              ? (userInfo.fansCount ?? 0) + 1
+              : Math.max((userInfo.fansCount ?? 0) - 1, 0),
+        },
+        { revalidate: false },
+      )
+    }
+  }
 
   return (
     <div className="flex flex-col md:flex-row px-8 pb-16 mt-8 max-w-[96rem] mx-auto">
       <div className="md:w-2/3 order-2 md:order-1 mr-0 md:mr-8">
         <div className="mb-4 flex flex-wrap">
           <ButtonGroup className="mr-2">
-            <Button
-              icon="document"
-              active={listMode === 'operation'}
-              onClick={() => setListMode('operation')}
-            >
+            <Button icon="document" active={listMode === 'operation'} onClick={() => setListMode('operation')}>
               {t.pages.profile.tasks}
               {operationCount === -1 ? '' : ` (${operationCount})`}
             </Button>
@@ -62,23 +73,27 @@ const _ProfilePage: ComponentType = () => {
             <OperationList
               limit={10}
               orderBy="id"
-              uploaderId={authState.userId == id ? 'me' : id}
+              uploaderId={authState.userId === id ? 'me' : id}
               onUpdate={({ total }) => setOperationCount(total)}
             />
           )}
           {listMode === 'operationSet' && (
-            <OperationSetList
-              creatorId={id}
-              onUpdate={({ total }) => setOperationSetCount(total)}
-            />
+            <OperationSetList creatorId={id} onUpdate={({ total }) => setOperationSetCount(total)} />
           )}
         </div>
       </div>
       <div className="md:w-1/3 order-1 md:order-2">
         <div className="sticky top-20">
-          <Card className="flex flex-col mb-4 space-y-2">
-            <CardTitle icon="user">{userInfo?.userName}</CardTitle>
-          </Card>
+          {userInfo && (
+            <>
+              <UserProfileHeader user={userInfo} onFollowChange={handleFollowChange} />
+              <UserStatsCard
+                key={userInfo.id}
+                user={userInfo}
+                operationCount={operationCount >= 0 ? operationCount : undefined}
+              />
+            </>
+          )}
         </div>
       </div>
 

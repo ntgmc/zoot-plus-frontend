@@ -1,7 +1,7 @@
 import {
+  AnchorButton,
   Button,
   ButtonGroup,
-  Callout,
   Card,
   Collapse,
   Elevation,
@@ -13,28 +13,23 @@ import {
   MenuDivider,
   MenuItem,
   NonIdealState,
+  PopoverNext,
+  Switch,
   Tag,
+  Tooltip,
 } from '@blueprintjs/core'
-import { Popover2, Tooltip2 } from '@blueprintjs/popover2'
 import { ErrorBoundary } from '@sentry/react'
 
-import {
-  banComments,
-  deleteOperation,
-  rateOperation,
-  useOperation,
-  useRefreshOperations,
-} from 'apis/operation'
+import { banComments, deleteOperation, rateOperation, useOperation, useRefreshOperations } from 'apis/operation'
 import clsx from 'clsx'
 import { useAtom } from 'jotai'
-import {
-  BanCommentsStatusEnum,
-  CopilotInfoStatusEnum,
-} from 'maa-copilot-client'
-import { ComponentType, FC, useEffect, useState } from 'react'
+import { ComponentType, FC, useEffect, useId, useState } from 'react'
 import { copyShortCode, handleDownloadJSON } from 'services/operation'
+import { BanCommentsStatusEnum, CopilotSetStatus } from 'zoot-plus-client'
 
 import { FactItem } from 'components/FactItem'
+import { HelperText } from 'components/HelperText'
+import { OperatorCard } from 'components/OperatorCard'
 import { Paragraphs } from 'components/Paragraphs'
 import { RelativeTime } from 'components/RelativeTime'
 import { withSuspensable } from 'components/Suspensable'
@@ -42,7 +37,8 @@ import { AppToaster } from 'components/Toaster'
 import { DrawerLayout } from 'components/drawer/DrawerLayout'
 import { EDifficultyLevel } from 'components/entity/ELevel'
 import { OperationRating } from 'components/viewer/OperationRating'
-import { OpRatingType, Operation } from 'models/operation'
+import { OperatorsAndGroupsHelpNote } from 'components/viewer/OperatorsAndGroupsHelpNote'
+import { CopilotType, OpRatingType, Operation } from 'models/operation'
 import { authAtom } from 'store/auth'
 import { wrapErrorMessage } from 'utils/wrapErrorMessage'
 
@@ -51,19 +47,11 @@ import { i18nDefer, useTranslation } from '../../i18n/i18n'
 import { CopilotDocV1 } from '../../models/copilot.schema'
 import { createCustomLevel, findLevelByStageName } from '../../models/level'
 import { Level } from '../../models/operation'
-import {
-  OPERATORS,
-  getEliteIconUrl,
-  getModuleName,
-  getSkillCount,
-  useLocalizedOperatorName,
-  withDefaultRequirements,
-} from '../../models/operator'
+import { gridModeAtom } from '../../store/pref'
 import { formatError } from '../../utils/error'
 import { ActionCard } from '../ActionCard'
+import { ActionTimelineItem } from '../ActionTimelineItem'
 import { Confirm } from '../Confirm'
-import { MasteryIcon } from '../MasteryIcon'
-import { OperatorAvatar } from '../OperatorAvatar'
 import { ReLinkRenderer } from '../ReLink'
 import { UserName } from '../UserName'
 import { CommentArea } from './comment/CommentArea'
@@ -118,11 +106,7 @@ const ManageMenu: FC<{
           to={`/create/${operation.id}`}
           target="_blank"
           render={({ className, ...props }) => (
-            <MenuItem
-              icon="edit"
-              text={t.components.viewer.OperationViewer.modify_task}
-              {...props}
-            />
+            <MenuItem icon="edit" text={t.components.viewer.OperationViewer.modify_task} {...props} />
           )}
         />
         <ReLinkRenderer
@@ -130,11 +114,7 @@ const ManageMenu: FC<{
           to={`/editor/${operation.id}`}
           target="_blank"
           render={({ className, ...props }) => (
-            <MenuItem
-              icon="edit"
-              text={t.components.viewer.OperationViewer.modify_task_v2}
-              {...props}
-            />
+            <MenuItem icon="edit" text={t.components.viewer.OperationViewer.modify_task_v2} {...props} />
           )}
         />
         {operation.commentStatus === BanCommentsStatusEnum.Enabled && (
@@ -152,9 +132,7 @@ const ManageMenu: FC<{
           >
             <H6>{t.components.viewer.OperationViewer.close_comments}</H6>
             <p>{t.components.viewer.OperationViewer.confirm_close_comments}</p>
-            <p>
-              {t.components.viewer.OperationViewer.existing_comments_preserved}
-            </p>
+            <p>{t.components.viewer.OperationViewer.existing_comments_preserved}</p>
           </Confirm>
         )}
         {operation.commentStatus === BanCommentsStatusEnum.Disabled && (
@@ -195,6 +173,50 @@ const ManageMenu: FC<{
         </Confirm>
       </Menu>
     </>
+  )
+}
+
+const GridTimeline: FC<{
+  actions: CopilotDocV1.Action[]
+  groups?: CopilotDocV1.Group[]
+}> = ({ actions, groups }) => {
+  return (
+    <div className="mt-4 pb-8">
+      <div
+        className={clsx(
+          // 响应式网格布局, 根据屏幕宽度自动切换列数(1列 -> 2列 -> 3列 -> 4列)
+          'grid gap-x-6 gap-y-7 sm:gap-y-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+
+          // 移动端单列模式: 将连接箭头旋转90度朝下, 并移动到卡片底部中心
+          'max-md:[&_.timeline-arrow]:!rotate-90 max-md:[&_.timeline-arrow]:!-bottom-5 max-md:[&_.timeline-arrow]:!left-1/2 max-md:[&_.timeline-arrow]:!-translate-x-1/2 max-md:[&_.timeline-arrow]:!top-auto max-md:[&_.timeline-arrow]:!right-auto max-md:[&_.timeline-arrow]:!translate-y-0',
+
+          // md断点: 双列模式, 隐藏每行末尾(偶数项)的右侧箭头
+          'md:[&>div:nth-child(2n)_.timeline-arrow]:!hidden',
+
+          // lg断点: 三列模式, 先恢复上一个断点隐藏的箭头, 再隐藏每行末尾(3的倍数项)的右侧箭头
+          'lg:[&>div:nth-child(2n)_.timeline-arrow]:!flex lg:[&>div:nth-child(3n)_.timeline-arrow]:!hidden',
+
+          // xl断点: 四列模式, 先恢复上一个断点隐藏的箭头, 再隐藏每行末尾(4的倍数项)的右侧箭头
+          'xl:[&>div:nth-child(3n)_.timeline-arrow]:!flex xl:[&>div:nth-child(4n)_.timeline-arrow]:!hidden',
+
+          // 无论在什么断点下, 永远隐藏最后一个卡片的箭头
+          '[&>div:last-child_.timeline-arrow]:!hidden',
+        )}
+      >
+        {actions.map((action, idx) => (
+          <div key={idx} className="relative w-full z-10 transition-transform">
+            <ActionTimelineItem
+              index={idx}
+              action={action}
+              isLast={idx === actions.length - 1}
+              groups={groups}
+              grid={true} // use true just to activate card style
+              showArrow={idx !== actions.length - 1}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -270,15 +292,13 @@ export const OperationViewer: ComponentType<{
         title={
           <>
             <Icon icon="document" />
-            <span className="ml-2">
-              {t.components.viewer.OperationViewer.maa_copilot_task}
-            </span>
+            <span className="ml-2">{t.components.viewer.OperationViewer.task}</span>
 
             <div className="flex-1" />
 
             <div className="flex flex-wrap items-center gap-2 md:gap-4">
               {operation.uploaderId === auth.userId && (
-                <Popover2
+                <PopoverNext
                   content={
                     <ManageMenu
                       operation={operation}
@@ -287,12 +307,8 @@ export const OperationViewer: ComponentType<{
                     />
                   }
                 >
-                  <Button
-                    icon="wrench"
-                    text={t.components.viewer.OperationViewer.manage}
-                    rightIcon="caret-down"
-                  />
-                </Popover2>
+                  <Button icon="wrench" text={t.components.viewer.OperationViewer.manage} rightIcon="caret-down" />
+                </PopoverNext>
               )}
 
               <Button
@@ -305,7 +321,7 @@ export const OperationViewer: ComponentType<{
                 icon="clipboard"
                 text={t.components.viewer.OperationViewer.copy_secret_code}
                 intent="primary"
-                onClick={() => copyShortCode(operation)}
+                onClick={() => copyShortCode({ id: operation.id, type: 'operation' })}
               />
             </div>
           </>
@@ -320,11 +336,7 @@ export const OperationViewer: ComponentType<{
             />
           }
         >
-          <OperationViewerInner
-            levels={levels}
-            operation={operation}
-            handleRating={handleRating}
-          />
+          <OperationViewerInner levels={levels} operation={operation} handleRating={handleRating} />
         </ErrorBoundary>
       </DrawerLayout>
     )
@@ -333,114 +345,6 @@ export const OperationViewer: ComponentType<{
     pendingTitle: i18nDefer.components.viewer.OperationViewer.loading_task,
   },
 )
-
-const OperatorCard: FC<{
-  operator: CopilotDocV1.Operator
-  version?: number
-}> = ({ operator, version = 1 }) => {
-  const t = useTranslation()
-  const displayName = useLocalizedOperatorName(operator.name)
-  const info = OPERATORS.find((o) => o.name === operator.name)
-  const { level, elite, skillLevel, module } = withDefaultRequirements(
-    operator.requirements,
-    info?.rarity,
-  )
-  const skillCount = info
-    ? Math.max(getSkillCount(info), operator.skill ?? 1)
-    : 3
-
-  return (
-    <div className="relative flex items-start">
-      <div className="relative w-20">
-        <div className="relative rounded-lg overflow-hidden shadow-md">
-          <OperatorAvatar
-            id={info?.id}
-            rarity={info?.rarity}
-            className="w-20 h-20"
-            fallback={displayName}
-            sourceSize={96}
-          />
-          {module !== CopilotDocV1.Module.Default && (
-            <div
-              title={t.components.viewer.OperationViewer.module_title({
-                count: module,
-                name: getModuleName(module),
-              })}
-              className="absolute -bottom-1 right-1 font-serif font-bold text-lg text-white [text-shadow:0_0_3px_#a855f7,0_0_5px_#a855f7]"
-            >
-              {module === CopilotDocV1.Module.Original ? (
-                <Icon icon="small-square" />
-              ) : (
-                getModuleName(module)
-              )}
-            </div>
-          )}
-        </div>
-        <h4 className="mt-1 -mx-2 leading-4 font-semibold tracking-tighter text-center">
-          {displayName}
-        </h4>
-        {info && info.prof !== 'TOKEN' && (
-          <img
-            className="absolute top-0 right-0 w-5 h-5 p-px bg-gray-600 rounded-tr-md"
-            src={'/assets/prof-icons/' + info.prof + '.png'}
-            alt={info.prof}
-          />
-        )}
-      </div>
-      {version >= 2 && info?.prof !== 'TOKEN' && (
-        <>
-          <div className="absolute top-1 -left-5 ml-[2px] px-3 py-4 rounded-full bg-[radial-gradient(rgba(0,0,0,0.6)_10%,rgba(0,0,0,0.08)_30%,rgba(0,0,0,0)_45%)] pointer-events-none">
-            <img
-              className="w-7 h-6 object-contain"
-              src={getEliteIconUrl(elite)}
-              alt={t.models.operator.elite({ level: elite })}
-            />
-          </div>
-          <div className="absolute -top-2 -left-2 w-8 h-8 pr-px leading-7 rounded-full border-2 border-yellow-300 bg-black/50 text-lg text-white font-semibold text-center shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
-            {level}
-          </div>
-        </>
-      )}
-
-      <ul className="flex flex-col gap-1 ml-1">
-        {Array.from({ length: skillCount }, (_, index) => {
-          const skillNumber = index + 1
-          const selected = operator.skill === skillNumber
-          return (
-            <li
-              key={index}
-              className={clsx(
-                'relative',
-                selected
-                  ? 'bg-purple-100 dark:bg-purple-900 dark:text-purple-200 text-purple-800'
-                  : 'bg-gray-300 dark:bg-gray-600 opacity-15 dark:opacity-25',
-              )}
-              title={t.models.operator.skill_number({ count: skillNumber })}
-            >
-              <div className="w-6 h-6 flex items-center justify-center font-bold text-xl border-2 border-current">
-                {version >= 2 ? (
-                  selected ? (
-                    skillLevel <= 7 ? (
-                      skillLevel
-                    ) : (
-                      <MasteryIcon
-                        className="w-4 h-4"
-                        mastery={skillLevel - 7}
-                        subClassName="fill-gray-300 dark:fill-gray-500"
-                      />
-                    )
-                  ) : undefined
-                ) : (
-                  skillNumber
-                )}
-              </div>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
-  )
-}
 
 function OperationViewerInner({
   levels,
@@ -456,7 +360,17 @@ function OperationViewerInner({
     <div className="h-full overflow-auto p-4 md:p-8">
       <H3>
         {operation.parsedContent.doc.title}
-        {operation.status === CopilotInfoStatusEnum.Private && (
+        {operation.type === CopilotType.VIDEO && (
+          <Tag minimal intent="success" className="ml-2 font-normal">
+            {t.components.viewer.OperationViewer.type_video}
+          </Tag>
+        )}
+        {operation.type === CopilotType.PRTS && (
+          <Tag minimal className="ml-2 font-normal opacity-75">
+            {t.components.viewer.OperationViewer.type_prts}
+          </Tag>
+        )}
+        {operation.status === CopilotSetStatus.Private && (
           <Tag minimal className="ml-2 font-normal opacity-75">
             {t.components.viewer.OperationViewer.private}
           </Tag>
@@ -472,82 +386,51 @@ function OperationViewerInner({
           <FactItem title={t.components.viewer.OperationViewer.stage}>
             <EDifficultyLevel
               level={
-                findLevelByStageName(
-                  levels,
-                  operation.parsedContent.stageName,
-                ) || createCustomLevel(operation.parsedContent.stageName)
+                findLevelByStageName(levels, operation.parsedContent.stageName) ||
+                createCustomLevel(operation.parsedContent.stageName)
               }
               difficulty={operation.parsedContent.difficulty}
             />
           </FactItem>
 
-          <FactItem
-            relaxed
-            className="items-start"
-            title={t.components.viewer.OperationViewer.task_rating}
-          >
+          <FactItem relaxed className="items-start" title={t.components.viewer.OperationViewer.task_rating}>
             <OperationRating operation={operation} className="mr-2" />
 
             <ButtonGroup className="flex items-center ml-2">
-              <Tooltip2 content="o(*≧▽≦)ツ" placement="bottom">
+              <Tooltip content="o(*≧▽≦)ツ" placement="bottom">
                 <Button
                   icon="thumbs-up"
-                  intent={
-                    operation.ratingType === OpRatingType.Like
-                      ? 'success'
-                      : 'none'
-                  }
+                  intent={operation.ratingType === OpRatingType.Like ? 'success' : 'none'}
                   className="mr-2"
                   active={operation.ratingType === OpRatingType.Like}
                   onClick={() => handleRating(OpRatingType.Like)}
                 />
-              </Tooltip2>
-              <Tooltip2 content=" ヽ(。>д<)ｐ" placement="bottom">
+              </Tooltip>
+              <Tooltip content=" ヽ(。>д<)ｐ" placement="bottom">
                 <Button
                   icon="thumbs-down"
-                  intent={
-                    operation.ratingType === OpRatingType.Dislike
-                      ? 'danger'
-                      : 'none'
-                  }
+                  intent={operation.ratingType === OpRatingType.Dislike ? 'danger' : 'none'}
                   active={operation.ratingType === OpRatingType.Dislike}
                   onClick={() => handleRating(OpRatingType.Dislike)}
                 />
-              </Tooltip2>
+              </Tooltip>
             </ButtonGroup>
           </FactItem>
         </div>
 
         <div className="flex flex-wrap md:flex-col items-start select-none tabular-nums gap-4">
-          <FactItem
-            dense
-            title={t.components.viewer.OperationViewer.views}
-            icon="eye-open"
-          >
-            <span className="text-gray-800 dark:text-slate-100 font-bold">
-              {operation.views}
-            </span>
+          <FactItem dense title={t.components.viewer.OperationViewer.views} icon="eye-open">
+            <span className="text-gray-800 dark:text-slate-100 font-bold">{operation.views}</span>
           </FactItem>
 
-          <FactItem
-            dense
-            title={t.components.viewer.OperationViewer.published_at}
-            icon="time"
-          >
+          <FactItem dense title={t.components.viewer.OperationViewer.published_at} icon="time">
             <span className="text-gray-800 dark:text-slate-100 font-bold">
               <RelativeTime moment={operation.uploadTime} />
             </span>
           </FactItem>
 
-          <FactItem
-            dense
-            title={t.components.viewer.OperationViewer.author}
-            icon="user"
-          >
-            <UserName
-              className="text-gray-800 dark:text-slate-100 font-bold"
-              userId={operation.uploaderId}
-            >
+          <FactItem dense title={t.components.viewer.OperationViewer.author} icon="user">
+            <UserName className="text-gray-800 dark:text-slate-100 font-bold" userId={operation.uploaderId}>
               {operation.uploader}
             </UserName>
           </FactItem>
@@ -561,9 +444,7 @@ function OperationViewerInner({
           <NonIdealState
             icon="issue"
             title={t.components.viewer.OperationViewer.render_error}
-            description={
-              t.components.viewer.OperationViewer.render_preview_problem
-            }
+            description={t.components.viewer.OperationViewer.render_preview_problem}
             className="h-96 bg-stripe rounded"
           />
         }
@@ -585,9 +466,7 @@ function OperationViewerInner({
           <NonIdealState
             icon="tree"
             title={t.components.viewer.OperationViewer.comments_closed}
-            description={
-              t.components.viewer.OperationViewer.comments_closed_note
-            }
+            description={t.components.viewer.OperationViewer.comments_closed_note}
           />
         ) : (
           <CommentArea operationId={operation.id} />
@@ -600,117 +479,135 @@ function OperationViewerInnerDetails({ operation }: { operation: Operation }) {
   const t = useTranslation()
   const [showOperators, setShowOperators] = useState(true)
   const [showActions, setShowActions] = useState(false)
+  const [gridMode, setGridMode] = useAtom(gridModeAtom)
+  const operatorsContentId = useId()
+
+  const isVideo = operation.type === CopilotType.VIDEO
 
   return (
     <div>
-      <H4
-        className="inline-flex items-center cursor-pointer hover:opacity-80"
-        onClick={() => setShowOperators((v) => !v)}
-      >
-        {t.components.viewer.OperationViewer.operators_and_groups}
-        <Icon
-          icon="chevron-down"
-          className={clsx(
-            'ml-1 transition-transform',
-            showOperators && 'rotate-180',
-          )}
-        />
+      <H4 className="inline-flex">
+        <button
+          type="button"
+          className="inline-flex items-center cursor-pointer border-0 bg-transparent p-0 hover:opacity-80"
+          aria-expanded={showOperators}
+          aria-controls={operatorsContentId}
+          onClick={() => setShowOperators((v) => !v)}
+        >
+          {t.components.viewer.OperationViewer.operators_and_groups}
+          <Icon icon="chevron-down" className={clsx('ml-1 transition-transform', showOperators && 'rotate-180')} />
+        </button>
       </H4>
-      <details className="inline">
-        <summary className="inline cursor-pointer">
-          <Icon icon="help" size={14} className="ml-2 mb-1 opacity-50" />
-        </summary>
-        <Callout intent="primary" icon={null} className="mb-4">
-          <p>
-            {t.components.viewer.OperationViewer.operators_and_groups_note.jsx({
-              operators: (s) => <b>{s}</b>,
-              groups: (s) => <b>{s}</b>,
-            })}
-          </p>
-        </Callout>
-      </details>
-      <Collapse isOpen={showOperators}>
-        <div className="mt-2 flex flex-wrap gap-6">
-          {!operation.parsedContent.opers?.length &&
-            !operation.parsedContent.groups?.length && (
+      <OperatorsAndGroupsHelpNote />
+      <div id={operatorsContentId}>
+        <Collapse isOpen={showOperators}>
+          <div className="mt-2 flex flex-wrap gap-6">
+            {!operation.parsedContent.opers?.length && !operation.parsedContent.groups?.length && (
               <NonIdealState
                 className="my-2"
                 title={t.components.viewer.OperationViewer.no_operators}
-                description={
-                  t.components.viewer.OperationViewer.no_operators_added
-                }
+                description={t.components.viewer.OperationViewer.no_operators_added}
                 icon="slash"
                 layout="horizontal"
               />
             )}
-          {operation.parsedContent.opers?.map((operator) => (
-            <OperatorCard
-              key={operator.name}
-              operator={operator}
-              version={operation.parsedContent.version}
-            />
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-4 mt-4">
-          {operation.parsedContent.groups?.map((group) => (
-            <Card
-              elevation={Elevation.ONE}
-              className="!p-2 flex flex-col items-center"
-              key={group.name}
-            >
-              <H6 className="mb-3 text-gray-800">{group.name}</H6>
-              <div className="flex flex-wrap px-2 gap-6">
-                {group.opers
-                  ?.filter(Boolean)
-                  .map((operator) => (
-                    <OperatorCard
-                      key={operator.name}
-                      operator={operator}
-                      version={operation.parsedContent.version}
-                    />
-                  ))}
-
-                {group.opers?.filter(Boolean).length === 0 && (
-                  <span className="text-zinc-500">
-                    {t.components.viewer.OperationViewer.no_operator}
-                  </span>
-                )}
-              </div>
-            </Card>
-          ))}
-        </div>
-      </Collapse>
-
-      <H4
-        className="mt-6 inline-flex items-center cursor-pointer hover:opacity-80"
-        onClick={() => setShowActions((v) => !v)}
-      >
-        {t.components.viewer.OperationViewer.action_sequence}
-        <Icon
-          icon="chevron-down"
-          className={clsx(
-            'ml-1 transition-transform',
-            showActions && 'rotate-180',
-          )}
-        />
-      </H4>
-      <Collapse isOpen={showActions}>
-        {operation.parsedContent.actions?.length ? (
-          <div className="mt-2 flex flex-col pb-8">
-            {operation.parsedContent.actions.map((action, i) => (
-              <ActionCard action={action} key={i} />
+            {operation.parsedContent.opers?.map((operator) => (
+              <OperatorCard key={operator.name} operator={operator} />
             ))}
           </div>
+          <div className="flex flex-wrap gap-4 mt-4">
+            {operation.parsedContent.groups?.map((group) => (
+              <Card elevation={Elevation.ONE} className="!p-2 flex flex-col items-center" key={group.name}>
+                <H6 className="mb-3 text-gray-800">{group.name}</H6>
+                <div className="flex flex-wrap px-2 gap-6">
+                  {group.opers?.filter(Boolean).map((operator) => (
+                    <OperatorCard key={operator.name} operator={operator} />
+                  ))}
+
+                  {group.opers?.filter(Boolean).length === 0 && (
+                    <span className="text-zinc-500">{t.components.viewer.OperationViewer.no_operator}</span>
+                  )}
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Collapse>
+      </div>
+
+      <div className="mt-6 flex items-center gap-4">
+        {isVideo ? (
+          <H4 className="inline-flex items-center mb-0">{t.components.viewer.OperationViewer.video_guide}</H4>
         ) : (
-          <NonIdealState
-            className="my-2"
-            title={t.components.viewer.OperationViewer.no_actions}
-            description={t.components.viewer.OperationViewer.no_actions_defined}
-            icon="slash"
-            layout="horizontal"
-          />
+          <>
+            <H4
+              className="inline-flex items-center cursor-pointer hover:opacity-80 mb-0"
+              onClick={() => setShowActions((v) => !v)}
+            >
+              {t.components.viewer.OperationViewer.action_sequence}
+              <Icon icon="chevron-down" className={clsx('ml-1 transition-transform', showActions && 'rotate-180')} />
+            </H4>
+            {showActions && (
+              <Switch
+                checked={gridMode}
+                onChange={(e) => setGridMode(e.currentTarget.checked)}
+                label={t.components.viewer.OperationViewer.grid_mode}
+                className="mb-0"
+                innerLabel={t.components.viewer.OperationViewer.grid_off}
+                innerLabelChecked={t.components.viewer.OperationViewer.grid_on}
+              />
+            )}
+          </>
         )}
-      </Collapse>
+      </div>
+      {isVideo ? (
+        <div className="mt-2">
+          {operation.videoUrl ? (
+            <AnchorButton
+              large
+              intent="primary"
+              icon="video"
+              href={operation.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              text={t.components.viewer.OperationViewer.watch_video}
+            />
+          ) : (
+            <NonIdealState
+              className="my-2"
+              title={t.components.viewer.OperationViewer.no_video}
+              icon="slash"
+              layout="horizontal"
+            />
+          )}
+        </div>
+      ) : (
+        <Collapse isOpen={showActions}>
+          {operation.parsedContent.actions?.length ? (
+            <>
+              <HelperText className="mt-2 [&_a]:inline">
+                <span dangerouslySetInnerHTML={{ __html: t.components.viewer.OperationViewer.coordinate_hint }} />
+              </HelperText>
+              {gridMode ? (
+                <GridTimeline actions={operation.parsedContent.actions} groups={operation.parsedContent.groups} />
+              ) : (
+                <div className="mt-2 flex flex-col pb-8">
+                  {operation.parsedContent.actions.map((action, i) => (
+                    <ActionCard action={action} key={i} />
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            <NonIdealState
+              className="my-2"
+              title={t.components.viewer.OperationViewer.no_actions}
+              description={t.components.viewer.OperationViewer.no_actions_defined}
+              icon="slash"
+              layout="horizontal"
+            />
+          )}
+        </Collapse>
+      )}
     </div>
   )
 }

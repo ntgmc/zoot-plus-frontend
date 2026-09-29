@@ -1,5 +1,5 @@
 import { atomWithStorage } from 'jotai/utils'
-import { MaaLoginRsp } from 'maa-copilot-client'
+import { MaaLoginRsp } from 'zoot-plus-client'
 
 export interface AuthState {
   token?: string
@@ -13,7 +13,9 @@ export interface AuthState {
   username?: string
 }
 
-export const authAtom = atomWithStorage<AuthState>('maa-copilot-auth', {})
+export const authAtom = atomWithStorage<AuthState>('zoot-plus-auth', {}, undefined, {
+  getOnInit: true,
+})
 
 export function fromCredentials(credentials: MaaLoginRsp): AuthState {
   return {

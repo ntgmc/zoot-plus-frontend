@@ -1,14 +1,12 @@
 import camelcaseKeys from 'camelcase-keys'
-import { CopilotInfo } from 'maa-copilot-client'
+import { CopilotInfo } from 'zoot-plus-client'
 
 import { CopilotDocV1 } from 'models/copilot.schema'
 
 import { i18n } from '../i18n/i18n'
-import { findOperatorByName } from './operator'
+import { findOperatorsByIdentity } from './operator'
 
-export function toCopilotOperation(
-  apiOperation: CopilotInfo,
-): CopilotDocV1.Operation {
+export function toCopilotOperation(apiOperation: CopilotInfo): CopilotDocV1.Operation {
   try {
     const json = JSON.parse(apiOperation.content)
     const operation: CopilotDocV1.Operation = camelcaseKeys(json, {
@@ -29,37 +27,57 @@ export function toCopilotOperation(
   }
 }
 
-export function migrateOperation(
-  operation: CopilotDocV1.Operation,
-): CopilotDocV1.Operation {
+/**
+ * role 为空串（含 null）视为未填写，就地删掉该字段，避免原样导出。
+ * 三条导入链路共用：migrateOperation（API 加载与 editor2）与 toEditableOperation（源码粘贴）。
+ */
+export function stripEmptyRole<T extends object>(action: T): T {
+  if ('role' in action && !(action as { role?: unknown }).role) {
+    delete (action as { role?: unknown }).role
+  }
+  return action
+}
+
+export function migrateOperation(operation: CopilotDocV1.Operation): CopilotDocV1.Operation {
+  // role 为空串视为未填写，导入链路统一在此清掉，避免原样导出
+  operation.actions?.forEach(stripEmptyRole)
   if (operation.version === 2) {
     // in version 2, the module property is set to the index of the module in the modules array,
     // we need to convert it using the correct CopilotDocV1.Module mapping
     return {
       ...operation,
       version: CopilotDocV1.VERSION,
-      opers: operation.opers?.map((operator) => {
-        if (operator.requirements?.module === undefined) {
-          return operator
-        }
-        const modules = findOperatorByName(operator.name)?.modules
-        if (!modules) {
-          return operator
-        }
-        const actualModuleName = modules[operator.requirements.module]
-        const actualModule =
-          actualModuleName in CopilotDocV1.Module
-            ? (CopilotDocV1.Module[actualModuleName] as CopilotDocV1.Module)
-            : CopilotDocV1.Module.Default
-        return {
-          ...operator,
-          requirements: {
-            ...operator.requirements,
-            module: actualModule,
-          },
-        }
-      }),
+      opers: migrateOperatorsModule(operation.opers),
+      // groups 内的干员同样存在 v2 模组索引，需要一并迁移
+      groups: operation.groups?.map((group) => ({
+        ...group,
+        opers: migrateOperatorsModule(group.opers),
+      })),
     }
   }
   return operation
+}
+
+function migrateOperatorsModule(opers?: CopilotDocV1.Operator[]): CopilotDocV1.Operator[] | undefined {
+  return opers?.map((operator) => {
+    if (operator.requirements?.module === undefined) {
+      return operator
+    }
+    const modules = findOperatorsByIdentity(operator)[0]?.modules
+    if (!modules) {
+      return operator
+    }
+    const actualModuleName = modules[operator.requirements.module]
+    const actualModule =
+      actualModuleName in CopilotDocV1.Module
+        ? (CopilotDocV1.Module[actualModuleName] as CopilotDocV1.Module)
+        : CopilotDocV1.Module.Default
+    return {
+      ...operator,
+      requirements: {
+        ...operator.requirements,
+        module: actualModule,
+      },
+    }
+  })
 }
