@@ -1,9 +1,6 @@
 import { i18n } from '../i18n/i18n'
 
-export function formatError(
-  e: unknown,
-  fallback = i18n.utils.error.unknown_error,
-): string {
+export function formatError(e: unknown, fallback = i18n.utils.error.unknown_error): string {
   if (typeof e === 'string') {
     return e || fallback
   }
@@ -41,5 +38,10 @@ export class NetworkError extends Error {
 }
 
 export class ApiError extends Error {
-  message: string = this.message || i18n.utils.error.api_error
+  status?: number
+  constructor(message?: string, status?: number) {
+    super(message || i18n.utils.error.api_error)
+    this.name = 'ApiError'
+    if (status !== undefined) this.status = status
+  }
 }

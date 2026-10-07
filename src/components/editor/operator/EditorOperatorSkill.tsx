@@ -1,5 +1,5 @@
 import { Button, IconName, MenuItem } from '@blueprintjs/core'
-import { Select2 } from '@blueprintjs/select'
+import { Select } from '@blueprintjs/select'
 
 import { useMemo } from 'react'
 import { useController } from 'react-hook-form'
@@ -15,13 +15,9 @@ interface EditorOperatorSkillChoice {
   value: number | null
 }
 
-interface EditorOperatorSkillProps
-  extends EditorFieldProps<CopilotDocV1.Operator, number> {}
+interface EditorOperatorSkillProps extends EditorFieldProps<CopilotDocV1.Operator, number> {}
 
-export const EditorOperatorSkill = ({
-  name,
-  control,
-}: EditorOperatorSkillProps) => {
+export const EditorOperatorSkill = ({ name, control }: EditorOperatorSkillProps) => {
   const t = useTranslation()
 
   const {
@@ -33,6 +29,13 @@ export const EditorOperatorSkill = ({
 
   const items = useMemo<EditorOperatorSkillChoice[]>(
     () => [
+      {
+        icon: 'cog',
+        title: t.components.editor.operator.EditorOperatorSkill.skill_number({
+          count: 0,
+        }),
+        value: 0,
+      },
       {
         icon: 'cog',
         title: t.components.editor.operator.EditorOperatorSkill.skill_number({
@@ -58,10 +61,10 @@ export const EditorOperatorSkill = ({
     [t],
   )
 
-  const selected = items.find((item) => item.value === (value ?? 1))
+  const selected = items.find((item) => item.value === (value ?? 0))
 
   return (
-    <Select2<EditorOperatorSkillChoice>
+    <Select<EditorOperatorSkillChoice>
       filterable={false}
       resetOnSelect={true}
       items={items}
@@ -86,6 +89,6 @@ export const EditorOperatorSkill = ({
         onBlur={onBlur}
         ref={ref}
       />
-    </Select2>
+    </Select>
   )
 }

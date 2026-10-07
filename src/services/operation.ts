@@ -4,9 +4,10 @@ import { i18n } from '../i18n/i18n'
 import { CopilotDocV1 } from '../models/copilot.schema'
 import { ShortCodeContent, toShortCode } from '../models/shortCode'
 import { formatError } from '../utils/error'
-import { OperationApi } from '../utils/maa-copilot-client'
+import { OperationApi } from '../utils/zoot-plus-client'
 import { snakeCaseKeysUnicode } from '../utils/object'
 import { wrapErrorMessage } from '../utils/wrapErrorMessage'
+import { writeTextToClipboard } from 'utils/clipboard'
 
 const doTriggerDownloadJSON = (content: string, filename: string) => {
   const blob = new Blob([content], {
@@ -29,7 +30,7 @@ export const handleDownloadJSON = (operationDoc: CopilotDocV1.Operation) => {
     2,
   )
 
-  doTriggerDownloadJSON(json, `MAACopilot_${operationDoc.doc.title}.json`)
+  doTriggerDownloadJSON(json, `PRTSPlus_${operationDoc.doc.title}.json`)
 
   AppToaster.show({
     message: i18n.services.operation.json_downloaded,
@@ -49,12 +50,8 @@ export const handleLazyDownloadJSON = async (id: number, title: string) => {
   )
 
   try {
-    const json = JSON.stringify(
-      snakeCaseKeysUnicode(JSON.parse(resp.data!.content) as any),
-      null,
-      2,
-    )
-    doTriggerDownloadJSON(json, `MAACopilot_${title}.json`)
+    const json = JSON.stringify(snakeCaseKeysUnicode(JSON.parse(resp.data!.content) as any), null, 2)
+    doTriggerDownloadJSON(json, `PRTSPlus_${title}.json`)
     AppToaster.show({
       message: i18n.services.operation.json_downloaded,
       intent: 'success',
@@ -71,14 +68,10 @@ export const handleLazyDownloadJSON = async (id: number, title: string) => {
 /**
  * @param target - Either an operation or an operation set
  */
-export const copyShortCode = async (target: { id: number }) => {
+export const copyShortCode = async (target: ShortCodeContent) => {
   try {
-    const content: ShortCodeContent = {
-      id: target.id,
-    }
-
-    const shortCode = toShortCode(content)
-    navigator.clipboard.writeText(shortCode)
+    const shortCode = toShortCode(target)
+    writeTextToClipboard(shortCode)
 
     AppToaster.show({
       message: i18n.services.operation.shortcode_copied,

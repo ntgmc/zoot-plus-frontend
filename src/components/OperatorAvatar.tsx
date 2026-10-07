@@ -1,15 +1,13 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
 
-import {
-  OperatorInfo,
-  findOperatorById,
-  findOperatorByName,
-} from '../models/operator'
+import { CopilotDocV1 } from '../models/copilot.schema'
+import { OperatorInfo, findOperatorById, findOperatorByName, findOperatorsByIdentity } from '../models/operator'
 
 interface OperatorAvatarProps {
   id?: string
   name?: string
+  identity?: CopilotDocV1.OperatorIdentity
   rarity?: number
   size?: 'small' | 'medium' | 'large'
   sourceSize?: 32 | 96
@@ -20,6 +18,7 @@ interface OperatorAvatarProps {
 export function OperatorAvatar({
   id,
   name,
+  identity,
   rarity,
   size,
   fallback = '?',
@@ -30,8 +29,9 @@ export function OperatorAvatar({
   if (id) {
     info = findOperatorById(id)
     name = info?.name
-  } else if (name) {
-    info = findOperatorByName(name)
+  } else {
+    if (identity) info = findOperatorsByIdentity(identity)[0]
+    else if (name) info = findOperatorByName(name)
     id = info?.id
   }
   rarity ??= info?.rarity
@@ -53,17 +53,11 @@ export function OperatorAvatar({
           ? 'bg-purple-100 ring-purple-200'
           : 'bg-slate-100 ring-slate-200'
 
-  const commonClassName =
-    'ring-inset ring-2 border-solid rounded-md object-cover'
+  const commonClassName = 'ring-inset ring-2 border-solid rounded-md object-cover'
 
   return id ? (
     <img
-      className={clsx(
-        sizingClassName,
-        colorClassName,
-        commonClassName,
-        className,
-      )}
+      className={clsx(sizingClassName, colorClassName, commonClassName, className)}
       src={`/assets/operator-avatars/webp${sourceSize}/${id}.webp`}
       alt={name || id}
       // lazy 要配合 width 和 height 使用，不然图片提前很多就加载了

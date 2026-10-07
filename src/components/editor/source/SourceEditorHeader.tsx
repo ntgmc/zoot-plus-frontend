@@ -1,8 +1,8 @@
-import { Button, Icon, Menu, MenuItem } from '@blueprintjs/core'
-import { Popover2 } from '@blueprintjs/popover2'
+import { Button, Icon, Menu, MenuItem, PopoverNext } from '@blueprintjs/core'
 
 import { FC, useState } from 'react'
 
+import { writeTextToClipboard } from 'utils/clipboard'
 import { useTranslation } from '../../../i18n/i18n'
 import { CopilotDocV1 } from '../../../models/copilot.schema'
 import { AppToaster } from '../../Toaster'
@@ -14,10 +14,24 @@ interface SourceEditorHeaderProps {
   onChange: (text: string) => void
 }
 
-export const SourceEditorHeader: FC<SourceEditorHeaderProps> = ({
-  text,
-  onChange,
-}) => {
+export const SourceEditorHeader: FC<SourceEditorHeaderProps> = ({ text, onChange }) => {
+  const t = useTranslation()
+  return (
+    <>
+      <Icon icon="manually-entered-data" />
+      <span className="ml-2">{t.components.editor.source.SourceEditorHeader.edit_json}</span>
+      <div className="flex-1" />
+      <SourceEditorToolbar text={text} onChange={onChange} />
+    </>
+  )
+}
+
+interface SourceEditorToolbarProps {
+  text: string
+  onChange: (text: string) => void
+}
+
+export const SourceEditorToolbar: FC<SourceEditorToolbarProps> = ({ text, onChange }) => {
   const t = useTranslation()
   const [importDropdownOpen, setImportDropdownOpen] = useState(false)
 
@@ -27,7 +41,7 @@ export const SourceEditorHeader: FC<SourceEditorHeaderProps> = ({
   }
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(text)
+    writeTextToClipboard(text)
 
     AppToaster.show({
       message: t.components.editor.source.SourceEditorHeader.json_copied,
@@ -49,29 +63,22 @@ export const SourceEditorHeader: FC<SourceEditorHeaderProps> = ({
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = `MAACopilot_${title || t.components.editor.source.SourceEditorHeader.untitled}.json`
+    link.download = `PRTSPlus_${title || t.components.editor.source.SourceEditorHeader.untitled}.json`
     link.click()
     URL.revokeObjectURL(url)
 
     AppToaster.show({
-      message:
-        t.components.editor.source.SourceEditorHeader.job_json_downloaded,
+      message: t.components.editor.source.SourceEditorHeader.job_json_downloaded,
       intent: 'success',
     })
   }
 
   return (
     <>
-      <Icon icon="manually-entered-data" />
-      <span className="ml-2">
-        {t.components.editor.source.SourceEditorHeader.edit_json}
-      </span>
-
-      <div className="flex-1" />
-
-      <Popover2
-        minimal
-        position="bottom-left"
+      <PopoverNext
+        animation="minimal"
+        arrow={false}
+        placement="bottom-start"
         isOpen={importDropdownOpen}
         onClose={() => setImportDropdownOpen(false)}
         content={
@@ -88,18 +95,15 @@ export const SourceEditorHeader: FC<SourceEditorHeaderProps> = ({
           rightIcon="caret-down"
           onClick={() => setImportDropdownOpen(!importDropdownOpen)}
         />
-      </Popover2>
+      </PopoverNext>
 
-      <Popover2
-        minimal
-        position="bottom-left"
+      <PopoverNext
+        animation="minimal"
+        arrow={false}
+        placement="bottom-start"
         content={
           <Menu>
-            <MenuItem
-              icon="clipboard"
-              text={t.components.editor.source.SourceEditorHeader.copy}
-              onClick={handleCopy}
-            />
+            <MenuItem icon="clipboard" text={t.components.editor.source.SourceEditorHeader.copy} onClick={handleCopy} />
             <MenuItem
               icon="download"
               text={t.components.editor.source.SourceEditorHeader.download}
@@ -109,12 +113,11 @@ export const SourceEditorHeader: FC<SourceEditorHeaderProps> = ({
         }
       >
         <Button
-          className="mr-4"
           icon="export"
           text={t.components.editor.source.SourceEditorHeader.export}
           rightIcon="caret-down"
         />
-      </Popover2>
+      </PopoverNext>
     </>
   )
 }

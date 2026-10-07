@@ -1,4 +1,4 @@
-import { CommentsInfo, SubCommentsInfo } from 'maa-copilot-client'
+import { CommentsInfo, SubCommentsInfo } from 'zoot-plus-client'
 
 export type CommentInfo = MainCommentInfo | SubCommentInfo
 export type MainCommentInfo = CommentsInfo
@@ -13,9 +13,7 @@ export const enum CommentRating {
 export const MAX_COMMENT_LENGTH = 150
 export const AUTHOR_MAX_COMMENT_LENGTH = 500
 
-export function isMainComment(
-  comment: CommentInfo,
-): comment is MainCommentInfo {
+export function isMainComment(comment: CommentInfo): comment is MainCommentInfo {
   return 'subCommentsInfos' in comment
 }
 

@@ -16,9 +16,19 @@
       "subProf": "notchar1",
       "name_en": "'Clip'",
       "name": "“夹子”",
-      "alias": "jiazi gazi jz gz “夾子” 夾子",
+      "alias": "jiazi gazi xiazi jz gz xz “夾子” 夾子",
       "rarity": 0,
       "alt_name": "\"Clip\" Charge"
+    },
+    {
+      "id": "token_10060_nasti_nstchr",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "'Overseer'",
+      "name": "“监工专员”",
+      "alias": "jiangongzhuanyuan jiangongzhuanyun jgzy “監工專員” 監工專員",
+      "rarity": 0,
+      "alt_name": "Site Supervisor"
     },
     {
       "id": "token_10020_ling_soul1",
@@ -71,6 +81,36 @@
       "alt_name": "Blazing Sun"
     },
     {
+      "id": "token_10071_aglna2_agairp",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "\"See you soon!\"",
+      "name": "“一会儿见！”",
+      "alias": "yihuierjian！ yihuierxian！ yikuaierjian！ yikuaierxian！ yhej！ yhex！ ykej！ ykex！ “一會兒見！” 一會兒見！",
+      "rarity": 0,
+      "alt_name": "\"See you soon!\""
+    },
+    {
+      "id": "token_10061_nasti_nstbld",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "'Emergency Load-Bearing Squad'",
+      "name": "“应急承重小组”",
+      "alias": "yingjichengzhongxiaozu yingjichengchongxiaozu yjczxz yjccxz “應急承重小組” 應急承重小組",
+      "rarity": 0,
+      "alt_name": "Emergency Support Team"
+    },
+    {
+      "id": "token_10059_nasti_nstdef",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "'Quality Inspector'",
+      "name": "“质检专员”",
+      "alias": "zhijianzhuanyuan zhijianzhuanyun zjzy “質檢專員” 質檢專員",
+      "rarity": 0,
+      "alt_name": "Quality Inspector"
+    },
+    {
       "id": "char_009_12fce",
       "prof": "CASTER",
       "subProf": "splashcaster",
@@ -86,10 +126,14 @@
       "subProf": "geek",
       "name_en": "Aak",
       "name": "阿",
-      "alias": "ae 阿",
+      "alias": "a e 阿",
       "rarity": 6,
       "alt_name": "Aak",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4178_alanna",
@@ -100,7 +144,10 @@
       "alias": "alanna alannuo elanna elannuo aln eln 阿蘭娜",
       "rarity": 5,
       "alt_name": "Alanna",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_446_aroma",
@@ -111,7 +158,10 @@
       "alias": "aluoma eluoma alm elm 阿羅瑪",
       "rarity": 5,
       "alt_name": "Aroma",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_002_amiya",
@@ -122,7 +172,11 @@
       "alias": "amiya emiya amy emy 阿米婭",
       "rarity": 5,
       "alt_name": "Amiya",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4132_ascln",
@@ -133,7 +187,11 @@
       "alias": "asikalun asikaguan asiqialun asiqiaguan esikalun esikaguan esiqialun esiqiaguan askl askg asql asqg eskl eskg esql esqg 阿斯卡綸",
       "rarity": 6,
       "alt_name": "Ascalon",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_277_sqrrel",
@@ -144,7 +202,24 @@
       "alias": "axiao exiao ax ex 阿消",
       "rarity": 4,
       "alt_name": "Shaw",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4218_aigis",
+      "prof": "SNIPER",
+      "subProf": "skybreaker",
+      "name_en": "Aegis",
+      "name": "埃癸斯",
+      "alias": "aiguisi ags 埃癸斯",
+      "rarity": 5,
+      "alt_name": "Aegis",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4123_ela",
@@ -155,7 +230,10 @@
       "alias": "aila yila al yl 艾拉",
       "rarity": 6,
       "alt_name": "Ela",
-      "modules": ["", "D"]
+      "modules": [
+        "",
+        "D"
+      ]
     },
     {
       "id": "char_4043_erato",
@@ -166,7 +244,10 @@
       "alias": "ailatuo alt 埃拉托",
       "rarity": 5,
       "alt_name": "Erato",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4009_irene",
@@ -177,7 +258,12 @@
       "alias": "ailini yilini aln yln 艾麗妮",
       "rarity": 6,
       "alt_name": "Irene",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_338_iris",
@@ -188,7 +274,10 @@
       "alias": "ailisi als 愛麗絲",
       "rarity": 5,
       "alt_name": "Iris",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_127_estell",
@@ -199,7 +288,10 @@
       "alias": "aisidaier yisidaier asde ysde 艾絲黛爾",
       "rarity": 4,
       "alt_name": "Estelle",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_180_amgoat",
@@ -210,7 +302,11 @@
       "alias": "aiyafala yiyafala ayfl yyfl 艾雅法拉",
       "rarity": 6,
       "alt_name": "Eyjafjalla",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_302_glaze",
@@ -221,7 +317,10 @@
       "alias": "anbier abe 安比爾",
       "rarity": 4,
       "alt_name": "Ambriel",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_211_adnach",
@@ -242,7 +341,12 @@
       "alias": "anjielina anjielinuo ajln 安潔莉娜",
       "rarity": 6,
       "alt_name": "Angelina",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_212_ansel",
@@ -263,7 +367,10 @@
       "alias": "ansuo as 暗索",
       "rarity": 4,
       "alt_name": "Rope",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_218_cuttle",
@@ -274,7 +381,10 @@
       "alias": "anzhela azl 安哲拉",
       "rarity": 5,
       "alt_name": "Andreana",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4131_odda",
@@ -285,7 +395,10 @@
       "alias": "aoda yuda ad yd 奧達",
       "rarity": 5,
       "alt_name": "Odda",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_346_aosta",
@@ -296,7 +409,38 @@
       "alias": "aosita yusita ast yst 奧斯塔",
       "rarity": 5,
       "alt_name": "Aosta",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4186_tmoris",
+      "prof": "SPECIAL",
+      "subProf": "stalker",
+      "name_en": "Umiri Yahata",
+      "name": "八幡海铃",
+      "alias": "bafanhailing bfhl 八幡海鈴",
+      "rarity": 5,
+      "alt_name": "Yahata Umiri",
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4166_varkis",
+      "prof": "WARRIOR",
+      "subProf": "centurion",
+      "name_en": "Varkáris",
+      "name": "摆渡人",
+      "alias": "baiduren bdr 擺渡人",
+      "rarity": 5,
+      "alt_name": "Varkáris",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_252_bibeak",
@@ -307,7 +451,10 @@
       "alias": "baihui bohui bh 柏喙",
       "rarity": 5,
       "alt_name": "Bibeak",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_204_platnm",
@@ -318,7 +465,10 @@
       "alias": "baijin bj 白金",
       "rarity": 5,
       "alt_name": "Platinum",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1026_gvial2",
@@ -329,7 +479,12 @@
       "alias": "bailianjiaweier bljwe 百煉嘉維爾",
       "rarity": 6,
       "alt_name": "Gavial the Invincible",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_128_plosis",
@@ -340,7 +495,10 @@
       "alias": "baimianxiao bmx 白麵鴞",
       "rarity": 5,
       "alt_name": "Ptilopsis",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_325_bison",
@@ -351,7 +509,10 @@
       "alias": "baisong bs 拜鬆",
       "rarity": 5,
       "alt_name": "Bison",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4072_ironmn",
@@ -362,7 +523,11 @@
       "alias": "baitie bt 白鐵",
       "rarity": 6,
       "alt_name": "Stainless",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10027_ironmn_pile1",
@@ -393,7 +558,10 @@
       "alias": "baixue bx 白雪",
       "rarity": 4,
       "alt_name": "ShiraYuki",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_284_spot",
@@ -406,15 +574,14 @@
       "alt_name": "Spot"
     },
     {
-      "id": "char_230_savage",
-      "prof": "WARRIOR",
-      "subProf": "centurion",
-      "name_en": "Savage",
-      "name": "暴行",
-      "alias": "baohang baoxing puhang puxing bh bx ph px 暴行",
-      "rarity": 5,
-      "alt_name": "Savage",
-      "modules": ["", "X"]
+      "id": "token_10058_sbell2_icetgt",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Protection Objective (Frozen)",
+      "name": "保护目标（冻结状态）",
+      "alias": "baohumubiao（dongjiezhuangtai） bhmb（djzt） 保護目標（凍結狀態）",
+      "rarity": 0,
+      "alt_name": "Protection Objective – Frozen"
     },
     {
       "id": "char_388_mint",
@@ -425,7 +592,24 @@
       "alias": "baolv baolu bolv bolu bl 薄綠",
       "rarity": 5,
       "alt_name": "Mint",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_230_savage",
+      "prof": "WARRIOR",
+      "subProf": "centurion",
+      "name_en": "Savage",
+      "name": "暴行",
+      "alias": "baoxing baohang baoheng puxing puhang puheng bx bh px ph 暴行",
+      "rarity": 5,
+      "alt_name": "Savage",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_304_zebra",
@@ -436,7 +620,24 @@
       "alias": "baoyu puyu by py 暴雨",
       "rarity": 5,
       "alt_name": "Heavyrain",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4037_demetr",
+      "prof": "WARRIOR",
+      "subProf": "fighter",
+      "name_en": "Bellone",
+      "name": "贝洛内",
+      "alias": "beiluonei beiluona bln 貝洛內",
+      "rarity": 6,
+      "alt_name": "Bellone",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_369_bena",
@@ -447,13 +648,16 @@
       "alias": "beina beinuo bn 貝娜",
       "rarity": 5,
       "alt_name": "Bena",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10043_necras_skeltn",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "The Servant of Lament",
+      "name_en": "Servant of Lamentation",
       "name": "悲叹的仆役",
       "alias": "beitandepuyi beitandipuyi btdpy 悲歎的仆役",
       "rarity": 0,
@@ -463,7 +667,7 @@
       "id": "token_10054_phatm2_encdool",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "Blood's whisper",
+      "name_en": "Blood's Whisper",
       "name": "本能的召唤",
       "alias": "bennengdezhaohuan bennengdeshaohuan bennengdizhaohuan bennengdishaohuan bennaidezhaohuan bennaideshaohuan bennaidizhaohuan bennaidishaohuan bndzh bndsh 本能的召喚",
       "rarity": 0,
@@ -478,7 +682,10 @@
       "alias": "bianren br 鞭刃",
       "rarity": 5,
       "alt_name": "Whislash",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4104_coldst",
@@ -489,7 +696,10 @@
       "alias": "bingniang bn 冰釀",
       "rarity": 5,
       "alt_name": "Coldshot",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_487_bobb",
@@ -497,10 +707,13 @@
       "subProf": "ritualist",
       "name_en": "Bobbing",
       "name": "波卜",
-      "alias": "bobu bobo bb 波卜",
+      "alias": "bobu bobo bopu bb bp 波卜",
       "rarity": 5,
       "alt_name": "Bobbing",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_258_podego",
@@ -511,7 +724,24 @@
       "alias": "bodengke bdk 波登可",
       "rarity": 4,
       "alt_name": "Podenco",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4223_botany",
+      "prof": "SUPPORT",
+      "subProf": "ritualist",
+      "name_en": "Botani",
+      "name": "伯塔尼",
+      "alias": "botani baitani btn 伯塔尼",
+      "rarity": 5,
+      "alt_name": "Ботани",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4004_pudd",
@@ -522,7 +752,10 @@
       "alias": "buding buzheng bd bz 布丁",
       "rarity": 4,
       "alt_name": "Pudding",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_356_broca",
@@ -533,7 +766,10 @@
       "alias": "buluoka buluoqia blk blq 布洛卡",
       "rarity": 5,
       "alt_name": "Broca",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4155_talr",
@@ -544,7 +780,10 @@
       "alias": "caidu caiduo cd 裁度",
       "rarity": 5,
       "alt_name": "Figurino",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4106_bryota",
@@ -555,7 +794,10 @@
       "alias": "cangtai ct 蒼苔",
       "rarity": 5,
       "alt_name": "Bryophyta",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_286_cast3",
@@ -576,7 +818,10 @@
       "alias": "chanwan cw 纏丸",
       "rarity": 4,
       "alt_name": "Matoimaru",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4047_pianst",
@@ -586,7 +831,11 @@
       "name": "车尔尼",
       "alias": "cheerni juerni cen jen 車爾尼",
       "rarity": 5,
-      "alt_name": "Czerny"
+      "alt_name": "Czerny",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_010_chen",
@@ -597,7 +846,11 @@
       "alias": "chen c 陳",
       "rarity": 6,
       "alt_name": "Ch'en",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_445_wscoot",
@@ -608,7 +861,10 @@
       "alias": "chengfeng cf 騁風",
       "rarity": 4,
       "alt_name": "Windscoot",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_377_gdglow",
@@ -619,7 +875,11 @@
       "alias": "chengshan dengshan cs ds 澄閃",
       "rarity": 6,
       "alt_name": "Goldenglow",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_1027_greyy2",
@@ -630,7 +890,10 @@
       "alias": "chengxigeleiyi cxgly 承曦格雷伊",
       "rarity": 5,
       "alt_name": "Greyy the Lightningbearer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_475_akafyu",
@@ -641,7 +904,24 @@
       "alias": "chidong cd 赤冬",
       "rarity": 5,
       "alt_name": "Akafuyu",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1050_chen3",
+      "prof": "WARRIOR",
+      "subProf": "artsfghter",
+      "name_en": "Ch'en the Dawnstreak",
+      "name": "赤刃明霄陈",
+      "alias": "chirenmingxiaochen crmxc 赤刃明霄陳",
+      "rarity": 6,
+      "alt_name": "Ch'en the Dawnstreak",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4065_judge",
@@ -652,7 +932,11 @@
       "alias": "chizui cz 斥罪",
       "rarity": 6,
       "alt_name": "Penance",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4082_qiubai",
@@ -663,7 +947,11 @@
       "alias": "choubai qiubai cb qb 仇白",
       "rarity": 6,
       "alt_name": "Qiubai",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10001_deepcl_tentac",
@@ -684,7 +972,10 @@
       "alias": "chuxue cx 初雪",
       "rarity": 5,
       "alt_name": "Pramanix",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1016_agoat2",
@@ -695,7 +986,11 @@
       "alias": "chunjinaiyafala chunjinyiyafala cjayfl cjyyfl 純燼艾雅法拉",
       "rarity": 6,
       "alt_name": "Eyjafjalla the Hvít Aska",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_494_vendla",
@@ -706,7 +1001,10 @@
       "alias": "cimei cm 刺玫",
       "rarity": 5,
       "alt_name": "Vendela",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10008_cqbw_box",
@@ -734,7 +1032,7 @@
       "subProf": "notchar1",
       "name_en": "Undeviating Course",
       "name": "从不混淆的方向",
-      "alias": "congbuhunxiaodefangxiang congbuhunxiaodifangxiang congfouhunxiaodefangxiang congfouhunxiaodifangxiang zongbuhunxiaodefangxiang zongbuhunxiaodifangxiang zongfouhunxiaodefangxiang zongfouhunxiaodifangxiang cbhxdfx cfhxdfx zbhxdfx zfhxdfx 從不混淆的方向",
+      "alias": "congbuhunxiaodefangxiang congbuhunxiaodifangxiang congfouhunxiaodefangxiang congfouhunxiaodifangxiang cbhxdfx cfhxdfx 從不混淆的方向 zongbuhunxiaodefangxiang zongbuhunxiaodifangxiang zongfouhunxiaodefangxiang zongfouhunxiaodifangxiang zbhxdfx zfhxdfx",
       "rarity": 0,
       "alt_name": "Undeviating Course"
     },
@@ -747,7 +1045,11 @@
       "alias": "cuiyuhemo cyhm 淬羽赫默",
       "rarity": 6,
       "alt_name": "Silence the Paradigmatic",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_362_saga",
@@ -758,7 +1060,11 @@
       "alias": "cuoe ce 嵯峨",
       "rarity": 6,
       "alt_name": "Saga",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_157_dagda",
@@ -769,7 +1075,10 @@
       "alias": "dageda dgd 達格達",
       "rarity": 5,
       "alt_name": "Dagda",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4110_delphn",
@@ -780,13 +1089,16 @@
       "alias": "daifeien dfe 戴菲恩",
       "rarity": 5,
       "alt_name": "Delphine",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10051_radian_tower1",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "dive",
+      "name_en": "Dive",
       "name": "戴乌",
       "alias": "daiwu dw 戴烏",
       "rarity": 0,
@@ -801,7 +1113,10 @@
       "alias": "danshu ds 但書",
       "rarity": 5,
       "alt_name": "Proviso",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4126_fuze",
@@ -812,7 +1127,10 @@
       "alias": "daohuosuo dhs 導火索",
       "rarity": 5,
       "alt_name": "Fuze",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_102_texas",
@@ -823,7 +1141,10 @@
       "alias": "dekesasi dkss 德克薩斯",
       "rarity": 5,
       "alt_name": "Texas",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4191_tippi",
@@ -844,7 +1165,11 @@
       "alias": "dihuojiexika dihuojiexiqia dhjxk dhjxq 滌火傑西卡",
       "rarity": 6,
       "alt_name": "Jessica the Liberated",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_183_skgoat",
@@ -855,7 +1180,10 @@
       "alias": "diling deling dl 地靈",
       "rarity": 4,
       "alt_name": "Earthspirit",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4195_radian",
@@ -866,7 +1194,25 @@
       "alias": "dianhu dh 電弧",
       "rarity": 6,
       "alt_name": "Raidian",
-      "modules": ["", "A"]
+      "modules": [
+        "",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "char_4208_wintim",
+      "prof": "PIONEER",
+      "subProf": "agent",
+      "name_en": "Snegurochka",
+      "name": "冬时",
+      "alias": "dongshi ds 冬時",
+      "rarity": 4,
+      "alt_name": "Снегурочка",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_452_bstalk",
@@ -877,7 +1223,10 @@
       "alias": "doumiao dm 豆苗",
       "rarity": 4,
       "alt_name": "Beanstalk",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_130_doberm",
@@ -888,7 +1237,10 @@
       "alias": "dubin db 杜賓",
       "rarity": 4,
       "alt_name": "Dobermann",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_501_durin",
@@ -909,7 +1261,10 @@
       "alias": "duqiao dq 渡橋",
       "rarity": 5,
       "alt_name": "Mitm",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_294_ayer",
@@ -920,7 +1275,10 @@
       "alias": "duanya dy 斷崖",
       "rarity": 5,
       "alt_name": "Ayerscarpe",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_159_peacok",
@@ -931,7 +1289,10 @@
       "alias": "duanzuizhe dzz 斷罪者",
       "rarity": 4,
       "alt_name": "Conviction",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4083_chimes",
@@ -942,7 +1303,10 @@
       "alias": "duoling dl 鐸鈴",
       "rarity": 5,
       "alt_name": "Wind Chimes",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4048_doroth",
@@ -953,7 +1317,11 @@
       "alias": "duoluoxi dlx 多蘿西",
       "rarity": 6,
       "alt_name": "Dorothy",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10036_lasher_mcbird",
@@ -974,7 +1342,10 @@
       "alias": "fangting ft 芳汀",
       "rarity": 4,
       "alt_name": "Arene",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4148_philae",
@@ -984,7 +1355,11 @@
       "name": "菲莱",
       "alias": "feilai fl 菲萊",
       "rarity": 5,
-      "alt_name": "Philae"
+      "alt_name": "Philae",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_300_phenxi",
@@ -995,7 +1370,12 @@
       "alias": "feiyameita fymt 菲亞梅塔",
       "rarity": 6,
       "alt_name": "Fiammetta",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_123_fang",
@@ -1008,6 +1388,20 @@
       "alt_name": "Fang"
     },
     {
+      "id": "char_4182_oblvns",
+      "prof": "WARRIOR",
+      "subProf": "lord",
+      "name_en": "Sakiko Togawa",
+      "name": "丰川祥子",
+      "alias": "fengchuanxiangzi fcxz 豐川祥子",
+      "rarity": 6,
+      "alt_name": "Togawa Sakiko",
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
       "id": "char_222_bpipe",
       "prof": "PIONEER",
       "subProf": "charger",
@@ -1016,7 +1410,11 @@
       "alias": "fengdi fd 風笛",
       "rarity": 6,
       "alt_name": "Bagpipe",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4016_kazema",
@@ -1027,7 +1425,50 @@
       "alias": "fengwan fw 風丸",
       "rarity": 5,
       "alt_name": "Kazemaru",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4222_taraxa",
+      "prof": "MEDIC",
+      "subProf": "watchman",
+      "name_en": "Taraxacum",
+      "name": "风絮",
+      "alias": "fengxu fx 風絮",
+      "rarity": 5,
+      "alt_name": "Taraxacum"
+    },
+    {
+      "id": "token_10057_svash2_eagle1",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Eye of the Blizzard",
+      "name": "风雪之眼",
+      "alias": "fengxuezhiyan fxzy 風雪之眼",
+      "rarity": 0,
+      "alt_name": "Eye of the Snowstorm"
+    },
+    {
+      "id": "token_10057_svash2_eagle2",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Eye of the Blizzard",
+      "name": "风雪之眼",
+      "alias": "fengxuezhiyan fxzy 風雪之眼",
+      "rarity": 0,
+      "alt_name": "Eye of the Snowstorm"
+    },
+    {
+      "id": "token_10057_svash2_eagle3",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Eye of the Blizzard",
+      "name": "风雪之眼",
+      "alias": "fengxuezhiyan fxzy 風雪之眼",
+      "rarity": 0,
+      "alt_name": "Eye of the Snowstorm"
     },
     {
       "id": "char_4093_frston",
@@ -1048,7 +1489,10 @@
       "alias": "fulanka fulanqia flk flq 芙蘭卡",
       "rarity": 5,
       "alt_name": "Franka",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_120_hibisc",
@@ -1061,6 +1505,30 @@
       "alt_name": "Hibiscus"
     },
     {
+      "id": "char_4031_liesel",
+      "prof": "CASTER",
+      "subProf": "splashcaster",
+      "name_en": "Ripresa",
+      "name": "复奏",
+      "alias": "fuzou fz 複奏",
+      "rarity": 5,
+      "alt_name": "Ripresa",
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4227_gallus",
+      "prof": "CASTER",
+      "subProf": "corecaster",
+      "name_en": "GALLUS²",
+      "name": "GALLUS²",
+      "alias": "GALLUS²",
+      "rarity": 1,
+      "alt_name": "GALLUS²"
+    },
+    {
       "id": "char_220_grani",
       "prof": "PIONEER",
       "subProf": "charger",
@@ -1069,7 +1537,10 @@
       "alias": "gelani gln 格拉尼",
       "rarity": 5,
       "alt_name": "Grani",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_326_glacus",
@@ -1080,7 +1551,10 @@
       "alias": "gelaokesi glks 格勞克斯",
       "rarity": 5,
       "alt_name": "Glaucus",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_474_glady",
@@ -1091,7 +1565,11 @@
       "alias": "geleidiya gldy 歌蕾蒂婭",
       "rarity": 6,
       "alt_name": "Gladiia",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_253_greyy",
@@ -1102,7 +1580,10 @@
       "alias": "geleiyi gly 格雷伊",
       "rarity": 4,
       "alt_name": "Greyy",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10009_weedy_cannon",
@@ -1133,7 +1614,10 @@
       "alias": "gumi gm 古米",
       "rarity": 4,
       "alt_name": "Гум",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1023_ghost2",
@@ -1144,7 +1628,12 @@
       "alias": "guimingyoulingsha gmyls 歸溟幽靈鯊",
       "rarity": 6,
       "alt_name": "Specter the Unchained",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_4163_rosesa",
@@ -1155,7 +1644,20 @@
       "alias": "guiyan gy 瑰鹽",
       "rarity": 5,
       "alt_name": "Rose Salt",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_394_hadiya",
+      "prof": "WARRIOR",
+      "subProf": "mercenary",
+      "name_en": "Hadiya",
+      "name": "哈蒂娅",
+      "alias": "hadiya hdy 哈蒂婭",
+      "rarity": 5,
+      "alt_name": "Hadiya"
     },
     {
       "id": "char_4114_harold",
@@ -1166,7 +1668,10 @@
       "alias": "haluode hld 哈洛德",
       "rarity": 5,
       "alt_name": "Harold",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4045_heidi",
@@ -1177,7 +1682,10 @@
       "alias": "haidi hd 海蒂",
       "rarity": 5,
       "alt_name": "Heidi",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4066_highmo",
@@ -1188,7 +1696,10 @@
       "alias": "haimo hm 海沫",
       "rarity": 5,
       "alt_name": "Highmore",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4079_haini",
@@ -1199,7 +1710,10 @@
       "alias": "haini hn 海霓",
       "rarity": 5,
       "alt_name": "Lucilla",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1021_kroos2",
@@ -1210,7 +1724,10 @@
       "alias": "hanmangkeluosi hmkls 寒芒克洛絲",
       "rarity": 5,
       "alt_name": "Kroos the Keen Glint",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_341_sntlla",
@@ -1221,18 +1738,10 @@
       "alias": "hantan ht 寒檀",
       "rarity": 5,
       "alt_name": "Santalla",
-      "modules": ["", "Y"]
-    },
-    {
-      "id": "char_4172_xingzh",
-      "prof": "SUPPORT",
-      "subProf": "blessing",
-      "name_en": "Xingzhu",
-      "name": "行箸",
-      "alias": "hangzhu xingzhu hz xz 行箸",
-      "rarity": 5,
-      "alt_name": "Xingzhu",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4039_horn",
@@ -1243,7 +1752,11 @@
       "alias": "haojiao haojue hj 號角",
       "rarity": 6,
       "alt_name": "Horn",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4088_hodrer",
@@ -1254,7 +1767,11 @@
       "alias": "hedelei hdl 赫德雷",
       "rarity": 6,
       "alt_name": "Hoederer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4041_chnut",
@@ -1265,7 +1782,10 @@
       "alias": "heguo hg 褐果",
       "rarity": 4,
       "alt_name": "Chestnut",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_188_helage",
@@ -1276,7 +1796,11 @@
       "alias": "helage hlg 赫拉格",
       "rarity": 6,
       "alt_name": "Hellagur",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_108_silent",
@@ -1287,7 +1811,10 @@
       "alias": "hemo hm 赫默",
       "rarity": 5,
       "alt_name": "Silence",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_297_hamoni",
@@ -1298,7 +1825,10 @@
       "alias": "hexian huoxian huxian hx 和弦",
       "rarity": 5,
       "alt_name": "Harmonie",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_340_shwaz",
@@ -1309,7 +1839,11 @@
       "alias": "hei h 黑",
       "rarity": 6,
       "alt_name": "Schwarz",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4046_ebnhlz",
@@ -1320,7 +1854,12 @@
       "alias": "heijian hj 黑鍵",
       "rarity": 6,
       "alt_name": "Ebenholz",
-      "modules": ["", "X", "Y", "D"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "D"
+      ]
     },
     {
       "id": "char_500_noirc",
@@ -1341,7 +1880,24 @@
       "alias": "hengsha hs 衡沙",
       "rarity": 5,
       "alt_name": "Sand Reckoner",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_226_hmau",
+      "prof": "TANK",
+      "subProf": "guardian",
+      "name_en": "Hung",
+      "name": "吽",
+      "alias": "hong hou ou h o 吽",
+      "rarity": 5,
+      "alt_name": "Hung",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_144_red",
@@ -1349,10 +1905,13 @@
       "subProf": "executor",
       "name_en": "Projekt Red",
       "name": "红",
-      "alias": "honggong hg 紅",
+      "alias": "hong gong h g 紅",
       "rarity": 5,
       "alt_name": "Projekt Red",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_290_vigna",
@@ -1363,7 +1922,10 @@
       "alias": "hongdou gongdou hd gd 紅豆",
       "rarity": 4,
       "alt_name": "Vigna",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4023_rfalcn",
@@ -1374,7 +1936,10 @@
       "alias": "hongsun gongsun hs gs 紅隼",
       "rarity": 5,
       "alt_name": "Kestrel",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4055_bgsnow",
@@ -1385,7 +1950,11 @@
       "alias": "hongxue hx 鴻雪",
       "rarity": 6,
       "alt_name": "Позёмка",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_190_clour",
@@ -1396,18 +1965,20 @@
       "alias": "hongyun gongyun hy gy 紅雲",
       "rarity": 4,
       "alt_name": "Vermeil",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
-      "id": "char_226_hmau",
-      "prof": "TANK",
-      "subProf": "guardian",
-      "name_en": "Hung",
-      "name": "吽",
-      "alias": "houhongou ho 吽",
-      "rarity": 5,
-      "alt_name": "Hung",
-      "modules": ["", "Y"]
+      "id": "char_4220_kormr",
+      "prof": "WARRIOR",
+      "subProf": "sword",
+      "name_en": "Koromaru",
+      "name": "虎狼丸",
+      "alias": "hulangwan hlw 虎狼丸",
+      "rarity": 1,
+      "alt_name": "Koromaru"
     },
     {
       "id": "char_171_bldsk",
@@ -1418,7 +1989,10 @@
       "alias": "huafalin hfl 華法琳",
       "rarity": 5,
       "alt_name": "Warfarin",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_243_waaifu",
@@ -1429,7 +2003,10 @@
       "alias": "huaihu hh 槐琥",
       "rarity": 5,
       "alt_name": "Waai Fu",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10003_cgbird_bird",
@@ -1450,7 +2027,11 @@
       "alias": "huang h 煌",
       "rarity": 6,
       "alt_name": "Blaze",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10040_siege2_vlion",
@@ -1471,7 +2052,10 @@
       "alias": "huangwulapulande hwlpld 荒蕪拉普蘭德",
       "rarity": 6,
       "alt_name": "Lappland the Decadenza",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_431_ashlok",
@@ -1482,7 +2066,10 @@
       "alias": "huihao hh 灰毫",
       "rarity": 5,
       "alt_name": "Ashlock",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_367_swllow",
@@ -1493,7 +2080,10 @@
       "alias": "huihou hh 灰喉",
       "rarity": 5,
       "alt_name": "GreyThroat",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_456_ash",
@@ -1504,7 +2094,11 @@
       "alias": "huijin hj 灰燼",
       "rarity": 6,
       "alt_name": "Ash",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10035_wisdel_wward",
@@ -1525,7 +2119,12 @@
       "alias": "huoerhaiya hehy 霍爾海雅",
       "rarity": 6,
       "alt_name": "Ho'olheyak",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_1030_noirc2",
@@ -1536,7 +2135,10 @@
       "alias": "huolongSheijiao huolongSheijue hlShj 火龍S黑角",
       "rarity": 5,
       "alt_name": "Rathalos S Noir Corne",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_493_firwhl",
@@ -1547,7 +2149,10 @@
       "alias": "huoshao hs 火哨",
       "rarity": 5,
       "alt_name": "Firewhistle",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_163_hpsts",
@@ -1558,7 +2163,10 @@
       "alias": "huoshen hs 火神",
       "rarity": 5,
       "alt_name": "Vulcan",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_293_thorns",
@@ -1569,7 +2177,11 @@
       "alias": "jici jc 棘刺",
       "rarity": 6,
       "alt_name": "Thorns",
-      "modules": ["", "X", "D"]
+      "modules": [
+        "",
+        "X",
+        "D"
+      ]
     },
     {
       "id": "token_10032_jesca2_jckshd",
@@ -1590,7 +2202,10 @@
       "alias": "jiguang jg 極光",
       "rarity": 5,
       "alt_name": "Aurora",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_401_elysm",
@@ -1601,7 +2216,24 @@
       "alias": "jijing jj 極境",
       "rarity": 5,
       "alt_name": "Elysium",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4230_mcnist",
+      "prof": "TANK",
+      "subProf": "shotprotector",
+      "name_en": "Mechanist",
+      "name": "机械师",
+      "alias": "jixieshi jxs 機械師",
+      "rarity": 6,
+      "alt_name": "Mechanist",
+      "modules": [
+        "",
+        "A"
+      ]
     },
     {
       "id": "token_10004_otter_motter",
@@ -1614,6 +2246,20 @@
       "alt_name": "Mibo"
     },
     {
+      "id": "char_4203_kichi",
+      "prof": "SNIPER",
+      "subProf": "reaperrange",
+      "name_en": "Kichisei",
+      "name": "吉星",
+      "alias": "jixing jx 吉星",
+      "rarity": 5,
+      "alt_name": "Kichisei",
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
       "id": "char_1013_chen2",
       "prof": "SNIPER",
       "subProf": "reaperrange",
@@ -1622,7 +2268,11 @@
       "alias": "jiariweilongchen jrwlc 假日威龍陳",
       "rarity": 6,
       "alt_name": "Ch'en the Holungday",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_349_chiave",
@@ -1633,7 +2283,10 @@
       "alias": "jiawei guwei jw gw 賈維",
       "rarity": 5,
       "alt_name": "Chiave",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_187_ccheal",
@@ -1644,7 +2297,24 @@
       "alias": "jiaweier jwe 嘉維爾",
       "rarity": 4,
       "alt_name": "Gavial",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4237_jcinta",
+      "prof": "PIONEER",
+      "subProf": "bearer",
+      "name_en": "Jacinta",
+      "name": "嘉辛塔",
+      "alias": "jiaxinta jxt 嘉辛塔",
+      "rarity": 5,
+      "alt_name": "Jacinta",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4116_blkkgt",
@@ -1655,18 +2325,11 @@
       "alias": "jian j 鐧",
       "rarity": 6,
       "alt_name": "Degenbrecher",
-      "modules": ["", "X"]
-    },
-    {
-      "id": "char_4036_forcer",
-      "prof": "SPECIAL",
-      "subProf": "pusher",
-      "name_en": "Enforcer",
-      "name": "见行者",
-      "alias": "jianhangzhe jianxingzhe xianhangzhe xianxingzhe jhz jxz xhz xxz 見行者",
-      "rarity": 5,
-      "alt_name": "Enforcer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_260_durnar",
@@ -1676,7 +2339,11 @@
       "name": "坚雷",
       "alias": "jianlei jl 堅雷",
       "rarity": 4,
-      "alt_name": "Dur-nar"
+      "alt_name": "Dur-nar",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1028_texas2",
@@ -1687,7 +2354,25 @@
       "alias": "jianmodekesasi jmdkss 緘默德克薩斯",
       "rarity": 6,
       "alt_name": "Texas the Omertosa",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4036_forcer",
+      "prof": "SPECIAL",
+      "subProf": "pusher",
+      "name_en": "Enforcer",
+      "name": "见行者",
+      "alias": "jianxingzhe jianhangzhe jianhengzhe xianxingzhe xianhangzhe xianhengzhe jxz jhz xxz xhz 見行者",
+      "rarity": 5,
+      "alt_name": "Enforcer",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_199_yak",
@@ -1698,7 +2383,10 @@
       "alias": "jiaofeng juefeng jf 角峰",
       "rarity": 4,
       "alt_name": "Matterhorn",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_272_strong",
@@ -1709,7 +2397,34 @@
       "alias": "jie j 孑",
       "rarity": 4,
       "alt_name": "Jaye",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4217_makoto",
+      "prof": "SPECIAL",
+      "subProf": "dollkeeper",
+      "name_en": "Makoto Yuki",
+      "name": "结城理",
+      "alias": "jiechengli jcl 結城理",
+      "rarity": 6,
+      "alt_name": "Makoto Yuki",
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "token_10069_mcnist_mcgraf",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Structural Principle",
+      "name": "结构性原理",
+      "alias": "jiegouxingyuanli jgxyl 結構性原理",
+      "rarity": 0,
+      "alt_name": "Structural Principle"
     },
     {
       "id": "char_347_jaksel",
@@ -1720,7 +2435,10 @@
       "alias": "jieke jk 傑克",
       "rarity": 4,
       "alt_name": "Jackie",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_235_jesica",
@@ -1731,7 +2449,10 @@
       "alias": "jiexika jiexiqia jxk jxq 傑西卡",
       "rarity": 4,
       "alt_name": "Jessica",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4078_bdhkgt",
@@ -1742,7 +2463,10 @@
       "alias": "jieyun jy 截雲",
       "rarity": 5,
       "alt_name": "Jieyun",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_306_leizi",
@@ -1753,7 +2477,10 @@
       "alias": "jingzhe jz 驚蟄",
       "rarity": 5,
       "alt_name": "Leizi",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10007_phatom_twin",
@@ -1781,10 +2508,13 @@
       "subProf": "blessing",
       "name_en": "Nine-Colored Deer",
       "name": "九色鹿",
-      "alias": "jiuselu jsl 九色鹿",
+      "alias": "jiuselu jiushailu jsl 九色鹿",
       "rarity": 5,
       "alt_name": "Nine-Colored Deer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1042_phatm2",
@@ -1795,7 +2525,24 @@
       "alias": "jiushen js 酒神",
       "rarity": 6,
       "alt_name": "Tragodia",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4221_ju",
+      "prof": "SNIPER",
+      "subProf": "siegesniper",
+      "name_en": "Ju",
+      "name": "矩",
+      "alias": "ju j 矩",
+      "rarity": 5,
+      "alt_name": "Ju",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_328_cammou",
@@ -1806,7 +2553,10 @@
       "alias": "kada qiada kd qd 卡達",
       "rarity": 4,
       "alt_name": "Click",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_214_kafka",
@@ -1817,7 +2567,10 @@
       "alias": "kafuka kafuqia qiafuka qiafuqia kfk kfq qfk qfq 卡夫卡",
       "rarity": 5,
       "alt_name": "Kafka",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_426_billro",
@@ -1828,7 +2581,11 @@
       "alias": "kanielian qianielian knla qnla 卡涅利安",
       "rarity": 6,
       "alt_name": "Carnelian",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_209_ardign",
@@ -1849,7 +2606,22 @@
       "alias": "kaierxi kex 凱爾希",
       "rarity": 6,
       "alt_name": "Kal'tsit",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
+    },
+    {
+      "id": "char_1052_kalts2",
+      "prof": "MEDIC",
+      "subProf": "watchman",
+      "name_en": "Kal'tsit·Esperanta",
+      "name": "凯尔希·思衡托",
+      "alias": "kaierxi·sihengtuo kaierxi·saihengtuo kex·sht 凱爾希·思衡托",
+      "rarity": 6,
+      "alt_name": "Kal'tsit·Esperanta"
     },
     {
       "id": "char_4162_cathy",
@@ -1860,7 +2632,10 @@
       "alias": "kaiselin ksl 凱瑟琳",
       "rarity": 5,
       "alt_name": "Catherine",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_301_cutter",
@@ -1871,7 +2646,10 @@
       "alias": "kedao kd 刻刀",
       "rarity": 4,
       "alt_name": "Cutter",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_2013_cerber",
@@ -1882,7 +2660,11 @@
       "alias": "keebai keebo keb 刻俄柏",
       "rarity": 6,
       "alt_name": "Ceobe",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10023_windft_wrench",
@@ -1893,6 +2675,20 @@
       "alias": "kekaodianchi kkdc 可靠電池",
       "rarity": 0,
       "alt_name": "Reliable Battery"
+    },
+    {
+      "id": "char_4228_closur",
+      "prof": "PIONEER",
+      "subProf": "tactician",
+      "name_en": "Closure",
+      "name": "可露希尔",
+      "alias": "keluxier kelouxier klxe 可露希爾",
+      "rarity": 6,
+      "alt_name": "Closure",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_124_kroos",
@@ -1913,7 +2709,10 @@
       "alias": "kesong ks 可頌",
       "rarity": 5,
       "alt_name": "Croissant",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_101_sora",
@@ -1924,7 +2723,10 @@
       "alias": "kong k 空",
       "rarity": 5,
       "alt_name": "Sora",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_282_catap",
@@ -1945,7 +2747,10 @@
       "alias": "konggou kg 空構",
       "rarity": 5,
       "alt_name": "Spuria",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_332_archet",
@@ -1956,7 +2761,12 @@
       "alias": "kongxian kx 空弦",
       "rarity": 6,
       "alt_name": "Archetto",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_405_absin",
@@ -1967,13 +2777,16 @@
       "alias": "kuai kuyi ka ky 苦艾",
       "rarity": 5,
       "alt_name": "Absinthe",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10044_wulfen_mine",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "Rocky Chomper",
+      "name_en": "Ore 'Killer'",
       "name": "矿石“杀手”",
       "alias": "kuangshishashou kuangdanshashou ksss kdss 礦石“殺手” 礦石殺手",
       "rarity": 0,
@@ -1988,7 +2801,12 @@
       "alias": "kuiying guiying ky gy 傀影",
       "rarity": 6,
       "alt_name": "Phantom",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_140_whitew",
@@ -1999,7 +2817,10 @@
       "alias": "lapulande lpld 拉普蘭德",
       "rarity": 5,
       "alt_name": "Lappland",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_373_lionhd",
@@ -2010,7 +2831,10 @@
       "alias": "laienhate leht 萊恩哈特",
       "rarity": 5,
       "alt_name": "Leonhardt",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4142_laios",
@@ -2021,7 +2845,10 @@
       "alias": "laiousi los 萊歐斯",
       "rarity": 5,
       "alt_name": "Laios",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4117_ray",
@@ -2032,7 +2859,11 @@
       "alias": "laiyi ly 萊伊",
       "rarity": 6,
       "alt_name": "Ray",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_129_bluep",
@@ -2043,7 +2874,10 @@
       "alias": "landu landai ld 藍毒",
       "rarity": 5,
       "alt_name": "Blue Poison",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_285_medic2",
@@ -2074,7 +2908,25 @@
       "alias": "laoli ll 老鯉",
       "rarity": 6,
       "alt_name": "Lee",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_1049_catap2",
+      "prof": "WARRIOR",
+      "subProf": "mercenary",
+      "name_en": "Zinogre S Catapult",
+      "name": "雷狼龙S空爆",
+      "alias": "leilanglongSkongbao lllSkb 雷狼龍S空爆",
+      "rarity": 5,
+      "alt_name": "Zinogre S Catapult",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10033_ela_grzmot",
@@ -2092,10 +2944,13 @@
       "subProf": "longrange",
       "name_en": "Lemuen",
       "name": "蕾缪安",
-      "alias": "leimouan leimiuan leimiaoan leimuan leiliaoan lma lla 蕾繆安",
+      "alias": "leimiuan leimouan leiliaoan leimiaoan leimuan lma lla 蕾繆安",
       "rarity": 6,
       "alt_name": "Lemuen",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_107_liskam",
@@ -2106,7 +2961,10 @@
       "alias": "leishe leiyi ls ly 雷蛇",
       "rarity": 5,
       "alt_name": "Liskarm",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_237_gravel",
@@ -2117,7 +2975,10 @@
       "alias": "li l 礫",
       "rarity": 4,
       "alt_name": "Gravel",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1036_fang2",
@@ -2128,7 +2989,10 @@
       "alias": "lizhenruiqiangfen lzrqf 曆陣銳槍芬",
       "rarity": 5,
       "alt_name": "Fang the Fire-sharpened",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "trap_079_allydonq",
@@ -2149,7 +3013,10 @@
       "alias": "liefeng lf 獵蜂",
       "rarity": 4,
       "alt_name": "Beehunter",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_194_leto",
@@ -2160,7 +3027,24 @@
       "alias": "liexia lx 烈夏",
       "rarity": 5,
       "alt_name": "Лето",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4225_tanya",
+      "prof": "TANK",
+      "subProf": "primprotector",
+      "name_en": "Crackborne",
+      "name": "裂响",
+      "alias": "liexiang lx 裂響",
+      "rarity": 5,
+      "alt_name": "Crackborne",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4080_lin",
@@ -2171,7 +3055,11 @@
       "alias": "lin l 林",
       "rarity": 6,
       "alt_name": "Lin",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_115_headbr",
@@ -2182,7 +3070,10 @@
       "alias": "lindong ld 凜冬",
       "rarity": 5,
       "alt_name": "Зима",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_148_nearl",
@@ -2193,7 +3084,10 @@
       "alias": "linguang lg 臨光",
       "rarity": 5,
       "alt_name": "Nearl",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1033_swire2",
@@ -2204,7 +3098,12 @@
       "alias": "linlangshihuaiya llshy 琳琅詩懷雅",
       "rarity": 6,
       "alt_name": "Swire the Elegant Wit",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_4102_threye",
@@ -2215,7 +3114,20 @@
       "alias": "linshi ls 凜視",
       "rarity": 5,
       "alt_name": "Valarqvin",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1045_svash2",
+      "prof": "PIONEER",
+      "subProf": "counsellor",
+      "name_en": "SilverAsh the Reignfrost",
+      "name": "凛御银灰",
+      "alias": "linyuyinhui lyyh 凜禦銀灰",
+      "rarity": 6,
+      "alt_name": "SilverAsh the Reignfrost"
     },
     {
       "id": "char_2023_ling",
@@ -2226,7 +3138,10 @@
       "alias": "ling l 令",
       "rarity": 6,
       "alt_name": "Ling",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_358_lisa",
@@ -2237,7 +3152,11 @@
       "alias": "linglan ll 鈴蘭",
       "rarity": 6,
       "alt_name": "Suzuran",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4187_graceb",
@@ -2268,7 +3187,26 @@
       "alias": "lingzhi lz 靈知",
       "rarity": 6,
       "alt_name": "Gnosis",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
+    },
+    {
+      "id": "char_617_sharp2",
+      "prof": "WARRIOR",
+      "subProf": "lord",
+      "name_en": "Lord/Sharp",
+      "name": "领主·Sharp",
+      "alias": "lingzhu·Sharp lz·Sharp 領主·Sharp",
+      "rarity": 6,
+      "alt_name": "Lord/Sharp",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4042_lumen",
@@ -2279,7 +3217,11 @@
       "alias": "liuming lm 流明",
       "rarity": 6,
       "alt_name": "Lumen",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_126_shotst",
@@ -2290,7 +3232,10 @@
       "alias": "liuxing lx 流星",
       "rarity": 4,
       "alt_name": "Meteor",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10030_mlyss_wtrman",
@@ -2311,7 +3256,10 @@
       "alias": "longshelan lsl 龍舌蘭",
       "rarity": 5,
       "alt_name": "Tequila",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10005_mgllan_drone3",
@@ -2349,10 +3297,13 @@
       "subProf": "unyield",
       "name_en": "Lutonada",
       "name": "露托",
-      "alias": "loutuo lutuo lt 露托",
+      "alias": "lutuo loutuo lt 露托",
       "rarity": 4,
       "alt_name": "Lutonada",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4196_reckpr",
@@ -2363,7 +3314,10 @@
       "alias": "luwuguan lwg 錄武官",
       "rarity": 5,
       "alt_name": "Record Keeper",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_433_windft",
@@ -2374,7 +3328,10 @@
       "alias": "lvefeng lf 掠風",
       "rarity": 5,
       "alt_name": "Windflit",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_484_robrta",
@@ -2385,7 +3342,10 @@
       "alias": "luobilata lblt 羅比菈塔",
       "rarity": 4,
       "alt_name": "Roberta",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_451_robin",
@@ -2396,7 +3356,20 @@
       "alias": "luobin lb 羅賓",
       "rarity": 5,
       "alt_name": "Robin",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4215_buddy",
+      "prof": "PIONEER",
+      "subProf": "tactician",
+      "name_en": "Rhodes Island Recon",
+      "name": "罗德岛隐秘队",
+      "alias": "luodedaoyinmidui luodedaoyinbidui lddymd lddybd 羅德島隱秘隊 luodedaoyinmizhui luodedaoyinbizhui lddymz lddybz",
+      "rarity": 1,
+      "alt_name": "Rhodes Island Recon"
     },
     {
       "id": "char_4133_logos",
@@ -2407,7 +3380,11 @@
       "alias": "luogesi lgs 邏各斯",
       "rarity": 6,
       "alt_name": "Logos",
-      "modules": ["", "Y", "D"]
+      "modules": [
+        "",
+        "Y",
+        "D"
+      ]
     },
     {
       "id": "char_4040_rockr",
@@ -2418,7 +3395,10 @@
       "alias": "luoluo ll 洛洛",
       "rarity": 5,
       "alt_name": "Rockrock",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4067_lolxh",
@@ -2429,7 +3409,10 @@
       "alias": "luoxiaohei lxh 羅小黑",
       "rarity": 4,
       "alt_name": "Luo Xiaohei",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4064_mlynar",
@@ -2440,7 +3423,10 @@
       "alias": "maenna men 瑪恩納",
       "rarity": 6,
       "alt_name": "Młynar",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4141_marcil",
@@ -2448,10 +3434,13 @@
       "subProf": "splashcaster",
       "name_en": "Marcille",
       "name": "玛露西尔",
-      "alias": "malouxier maluxier mlxe 瑪露西爾",
+      "alias": "maluxier malouxier mlxe 瑪露西爾",
       "rarity": 6,
       "alt_name": "Marcille",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_248_mgllan",
@@ -2462,7 +3451,11 @@
       "alias": "maizhelun mzl 麥哲倫",
       "rarity": 6,
       "alt_name": "Magallan",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_610_acfend",
@@ -2473,7 +3466,10 @@
       "alias": "Mechanist",
       "rarity": 6,
       "alt_name": "Mechanist",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_133_mm",
@@ -2484,7 +3480,10 @@
       "alias": "mei m 梅",
       "rarity": 4,
       "alt_name": "May",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_242_otter",
@@ -2495,7 +3494,10 @@
       "alias": "meier me 梅爾",
       "rarity": 5,
       "alt_name": "Mayer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4006_melnte",
@@ -2506,7 +3508,10 @@
       "alias": "meila ml 玫拉",
       "rarity": 5,
       "alt_name": "Melanite",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_208_melan",
@@ -2514,9 +3519,23 @@
       "subProf": "fearless",
       "name_en": "Melantha",
       "name": "玫兰莎",
-      "alias": "meilansuo meilansha mls 玫蘭莎",
+      "alias": "meilansha meilansuo mls 玫蘭莎",
       "rarity": 3,
       "alt_name": "Melantha"
+    },
+    {
+      "id": "char_616_pithst",
+      "prof": "SUPPORT",
+      "subProf": "ritualist",
+      "name_en": "Alliance/Supportive Operator",
+      "name": "盟约·辅助干员",
+      "alias": "mengyue·fuzhuganyuan mengyue·fuzhuganyun mengyue·fuchuganyuan mengyue·fuchuganyun mengyao·fuzhuganyuan mengyao·fuzhuganyun mengyao·fuchuganyuan mengyao·fuchuganyun my·fzgy my·fcgy 盟約·輔助幹員",
+      "rarity": 4,
+      "alt_name": "Alliance/Supportive Opertator",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_391_rosmon",
@@ -2527,7 +3546,11 @@
       "alias": "midiexiang mdx 迷迭香",
       "rarity": 6,
       "alt_name": "Rosmontis",
-      "modules": ["", "X", "A"]
+      "modules": [
+        "",
+        "X",
+        "A"
+      ]
     },
     {
       "id": "char_122_beagle",
@@ -2543,7 +3566,7 @@
       "id": "token_10055_phatm2_mndclv",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "Cage of chaos",
+      "name_en": "Cage of Chaos",
       "name": "迷狂牢笼",
       "alias": "mikuanglaolong mkll 迷狂牢籠",
       "rarity": 0,
@@ -2555,10 +3578,13 @@
       "subProf": "phalanx",
       "name_en": "Beeswax",
       "name": "蜜蜡",
-      "alias": "mila ml 蜜蠟",
+      "alias": "mila mizha ml mz 蜜蠟",
       "rarity": 5,
       "alt_name": "Beeswax",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_449_glider",
@@ -2569,7 +3595,10 @@
       "alias": "mimei mm 蜜莓",
       "rarity": 5,
       "alt_name": "Honeyberry",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4017_puzzle",
@@ -2577,10 +3606,13 @@
       "subProf": "agent",
       "name_en": "Puzzle",
       "name": "谜图",
-      "alias": "mitu mt 謎圖",
+      "alias": "mitu meitu mt 謎圖",
       "rarity": 5,
       "alt_name": "Puzzle",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10021_blkngt_hypnos",
@@ -2600,7 +3632,11 @@
       "name": "明椒",
       "alias": "mingjiao mj 明椒",
       "rarity": 5,
-      "alt_name": "Paprika"
+      "alt_name": "Paprika",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_615_acspec",
@@ -2611,7 +3647,10 @@
       "alias": "Misery",
       "rarity": 6,
       "alt_name": "Misery",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4198_christ",
@@ -2621,7 +3660,40 @@
       "name": "Miss.Christine",
       "alias": "Miss.Christine",
       "rarity": 5,
-      "alt_name": "Miss.Christine"
+      "alt_name": "Miss.Christine",
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_249_mlyss",
+      "prof": "PIONEER",
+      "subProf": "tactician",
+      "name_en": "Muelsyse",
+      "name": "缪尔赛思",
+      "alias": "miuersaisi miuersaisai mouersaisi mouersaisai liaoersaisi liaoersaisai miaoersaisi miaoersaisai muersaisi muersaisai mess less 繆爾賽思",
+      "rarity": 6,
+      "alt_name": "Muelsyse",
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4229_aphris",
+      "prof": "CASTER",
+      "subProf": "blastcaster",
+      "name_en": "Aphrissa",
+      "name": "谬因",
+      "alias": "miuyin my 謬因",
+      "rarity": 6,
+      "alt_name": "Aphrissa",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_154_morgan",
@@ -2632,7 +3704,10 @@
       "alias": "mogen magen mg 摩根",
       "rarity": 5,
       "alt_name": "Morgan",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_213_mostma",
@@ -2643,7 +3718,11 @@
       "alias": "mositima mosidima musitima musidima mstm msdm 莫斯提馬",
       "rarity": 6,
       "alt_name": "Mostima",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4134_cetsyr",
@@ -2654,7 +3733,10 @@
       "alias": "mowang mw 魔王",
       "rarity": 6,
       "alt_name": "Civilight Eterna",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_117_myrrh",
@@ -2665,7 +3747,10 @@
       "alias": "moyao my 末藥",
       "rarity": 4,
       "alt_name": "Myrrh",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4179_monstr",
@@ -2675,7 +3760,11 @@
       "name": "Mon3tr",
       "alias": "Mon3tr",
       "rarity": 6,
-      "alt_name": "Mon3tr"
+      "alt_name": "Mon3tr",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10002_kalts_mon3tr",
@@ -2688,17 +3777,6 @@
       "alt_name": "Mon3tr"
     },
     {
-      "id": "char_249_mlyss",
-      "prof": "PIONEER",
-      "subProf": "tactician",
-      "name_en": "Muelsyse",
-      "name": "缪尔赛思",
-      "alias": "mouersaisi mouersaisai miuersaisi miuersaisai miaoersaisi miaoersaisai muersaisi muersaisai liaoersaisi liaoersaisai mess less 繆爾賽思",
-      "rarity": 6,
-      "alt_name": "Muelsyse",
-      "modules": ["", "X", "Y"]
-    },
-    {
       "id": "char_4025_aprot2",
       "prof": "TANK",
       "subProf": "artsprotector",
@@ -2706,7 +3784,11 @@
       "name": "暮落",
       "alias": "muluo mula mulao ml 暮落",
       "rarity": 5,
-      "alt_name": "Shalem"
+      "alt_name": "Shalem",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10042_tecno_puppet",
@@ -2727,7 +3809,10 @@
       "alias": "muqian muyan mq my 鉬鉛",
       "rarity": 5,
       "alt_name": "Wulfenite",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_185_frncat",
@@ -2738,7 +3823,10 @@
       "alias": "musi ms 慕斯",
       "rarity": 4,
       "alt_name": "Mousse",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4138_narant",
@@ -2748,7 +3836,26 @@
       "name": "娜仁图亚",
       "alias": "narentuya nuorentuya nrty 娜仁圖亞",
       "rarity": 6,
-      "alt_name": "Narantuya"
+      "alt_name": "Narantuya",
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4212_nasti",
+      "prof": "SUPPORT",
+      "subProf": "craftsman",
+      "name_en": "Nasti",
+      "name": "娜斯提",
+      "alias": "nasiti nasidi nuositi nuosidi nst nsd 娜斯提",
+      "rarity": 6,
+      "alt_name": "Nasti",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_103_angel",
@@ -2759,7 +3866,11 @@
       "alias": "nengtianshi naitianshi nts 能天使",
       "rarity": 6,
       "alt_name": "Exusiai",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4146_nymph",
@@ -2769,7 +3880,12 @@
       "name": "妮芙",
       "alias": "nifu nf 妮芙",
       "rarity": 6,
-      "alt_name": "Nymph"
+      "alt_name": "Nymph",
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_311_mudrok",
@@ -2780,7 +3896,11 @@
       "alias": "niyan ny 泥岩",
       "rarity": 6,
       "alt_name": "Mudrock",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_2014_nian",
@@ -2791,7 +3911,25 @@
       "alias": "nian n 年",
       "rarity": 6,
       "alt_name": "Nian",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_1051_headb2",
+      "prof": "WARRIOR",
+      "subProf": "hammer",
+      "name_en": "Zima the Raging Tide",
+      "name": "怒潮凛冬",
+      "alias": "nuchaolindong ncld 怒潮凜冬",
+      "rarity": 6,
+      "alt_name": "Zima the Raging Tide",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4173_nowell",
@@ -2802,7 +3940,10 @@
       "alias": "nuoweier nwe 諾威爾",
       "rarity": 5,
       "alt_name": "Nowell",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10041_cathy_catsld",
@@ -2810,7 +3951,7 @@
       "subProf": "notchar1",
       "name_en": "Crawler Protection Unit",
       "name": "爬行号·防护单元",
-      "alias": "pahanghao·fanghudanyuan pahanghao·fanghushanyuan pahanghao·fanghuchanyuan paxinghao·fanghudanyuan paxinghao·fanghushanyuan paxinghao·fanghuchanyuan phh·fhdy phh·fhsy phh·fhcy pxh·fhdy pxh·fhsy pxh·fhcy 爬行號·防護單元",
+      "alias": "paxinghao·fanghudanyuan paxinghao·fanghushanyuan paxinghao·fanghuchanyuan pahanghao·fanghudanyuan pahanghao·fanghushanyuan pahanghao·fanghuchanyuan pahenghao·fanghudanyuan pahenghao·fanghushanyuan pahenghao·fanghuchanyuan pxh·fhdy pxh·fhsy pxh·fhcy phh·fhdy phh·fhsy phh·fhcy 爬行號·防護單元",
       "rarity": 0,
       "alt_name": "Crawler Protection Unit"
     },
@@ -2823,7 +3964,11 @@
       "alias": "palasi pls 帕拉斯",
       "rarity": 6,
       "alt_name": "Pallas",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10014_bstalk_crab",
@@ -2844,7 +3989,10 @@
       "alias": "paopao pp 泡泡",
       "rarity": 4,
       "alt_name": "Bubble",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_281_popka",
@@ -2857,6 +4005,16 @@
       "alt_name": "Popukar"
     },
     {
+      "id": "char_4234_pedro",
+      "prof": "SUPPORT",
+      "subProf": "supportiveranger",
+      "name_en": "Pedro",
+      "name": "佩德洛",
+      "alias": "peideluo pdl 佩德洛",
+      "rarity": 5,
+      "alt_name": "Pedro"
+    },
+    {
       "id": "char_4058_pepe",
       "prof": "WARRIOR",
       "subProf": "hammer",
@@ -2865,7 +4023,11 @@
       "alias": "peipei pp 佩佩",
       "rarity": 6,
       "alt_name": "Pepe",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "A"
+      ]
     },
     {
       "id": "char_4136_phonor",
@@ -2896,7 +4058,10 @@
       "alias": "Pith",
       "rarity": 6,
       "alt_name": "Pith",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_145_prove",
@@ -2907,7 +4072,10 @@
       "alias": "puluowangsi plws 普羅旺斯",
       "rarity": 5,
       "alt_name": "Provence",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4144_chilc",
@@ -2918,7 +4086,10 @@
       "alias": "qierchake qierzhake jierchake jierzhake zierchake zierzhake zhaierchake zhaierzhake qeck qezk jeck jezk zeck zezk 齊爾查克",
       "rarity": 5,
       "alt_name": "Chilchuck",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_478_kirara",
@@ -2929,7 +4100,10 @@
       "alias": "qiliang ql 綺良",
       "rarity": 5,
       "alt_name": "Kirara",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1029_yato2",
@@ -2940,7 +4114,31 @@
       "alias": "qilinRyedao qlRyd 麒麟R夜刀",
       "rarity": 6,
       "alt_name": "Kirin R Yato",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "token_10064_wang_stone1",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Stone",
+      "name": "棋子",
+      "alias": "qizi qz 棋子",
+      "rarity": 0,
+      "alt_name": "stones"
+    },
+    {
+      "id": "token_10065_demetr_dmtpos",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Bond",
+      "name": "牵绊",
+      "alias": "qianban qb 牽絆",
+      "rarity": 0,
+      "alt_name": "Bond"
     },
     {
       "id": "char_4062_totter",
@@ -2951,7 +4149,10 @@
       "alias": "qianhuai yanhuai qh yh 鉛踝",
       "rarity": 4,
       "alt_name": "Totter",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_479_sleach",
@@ -2962,7 +4163,11 @@
       "alias": "qinliu ql 琴柳",
       "rarity": 6,
       "alt_name": "Saileach",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_149_scave",
@@ -2973,7 +4178,10 @@
       "alias": "qingdaofu qdf 清道夫",
       "rarity": 4,
       "alt_name": "Scavenger",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_385_finlpp",
@@ -2984,7 +4192,10 @@
       "alias": "qingliu ql 清流",
       "rarity": 4,
       "alt_name": "Purestream",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_488_buildr",
@@ -2995,7 +4206,10 @@
       "alias": "qingzhi qz 青枳",
       "rarity": 5,
       "alt_name": "Poncirus",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10018_robrta_mach",
@@ -3016,7 +4230,10 @@
       "alias": "Raidian",
       "rarity": 6,
       "alt_name": "Raidian",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4026_vulpis",
@@ -3027,7 +4244,11 @@
       "alias": "rendong rd 忍冬",
       "rarity": 6,
       "alt_name": "Vulpisfoglia",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_363_toddi",
@@ -3038,13 +4259,30 @@
       "alias": "rongquan rq 熔泉",
       "rarity": 5,
       "alt_name": "Toddifons",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4183_mortis",
+      "prof": "SPECIAL",
+      "subProf": "dollkeeper",
+      "name_en": "Mutsumi Wakaba",
+      "name": "若叶睦",
+      "alias": "ruoyemu ruoxiemu reyemu rexiemu rym rxm 若葉睦",
+      "rarity": 5,
+      "alt_name": "Wakaba Mutsumi",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10052_radian_tower2",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "cycle",
+      "name_en": "Cycle",
       "name": "赛柯",
       "alias": "saike sk 賽柯",
       "rarity": 0,
@@ -3059,7 +4297,25 @@
       "alias": "saileiya seleiya sly 塞雷婭",
       "rarity": 6,
       "alt_name": "Saria",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4184_dolris",
+      "prof": "SUPPORT",
+      "subProf": "bard",
+      "name_en": "Uika Misumi",
+      "name": "三角初华",
+      "alias": "sanjiaochuhua sanjuechuhua sjch 三角初華",
+      "rarity": 5,
+      "alt_name": "Misumi Uika",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_473_mberry",
@@ -3067,16 +4323,19 @@
       "subProf": "wandermedic",
       "name_en": "Mulberry",
       "name": "桑葚",
-      "alias": "sangshen ss 桑葚",
+      "alias": "sangshen sangren ss sr 桑葚",
       "rarity": 5,
       "alt_name": "Mulberry",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10053_radian_tower3",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "centre",
+      "name_en": "Center",
       "name": "桑特拉",
       "alias": "sangtela stl 桑特拉",
       "rarity": 0,
@@ -3091,7 +4350,12 @@
       "alias": "senran sr 森蚺",
       "rarity": 6,
       "alt_name": "Eunectes",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_4143_sensi",
@@ -3102,7 +4366,10 @@
       "alias": "senxi sx 森西",
       "rarity": 5,
       "alt_name": "Senshi",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10034_ray_sndbst",
@@ -3133,7 +4400,25 @@
       "alias": "shan s 山",
       "rarity": 6,
       "alt_name": "Mountain",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4235_thumpy",
+      "prof": "TANK",
+      "subProf": "primprotector",
+      "name_en": "Thumpy",
+      "name": "珊比",
+      "alias": "shanbi sb 珊比",
+      "rarity": 6,
+      "alt_name": "Thumpy",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_457_blitz",
@@ -3144,7 +4429,10 @@
       "alias": "shanji sj 閃擊",
       "rarity": 5,
       "alt_name": "Blitz",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_147_shining",
@@ -3155,7 +4443,11 @@
       "alias": "shanling sl 閃靈",
       "rarity": 6,
       "alt_name": "Shining",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_508_aguard",
@@ -3176,7 +4468,10 @@
       "alias": "Sharp",
       "rarity": 6,
       "alt_name": "Sharp",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_379_sesa",
@@ -3187,7 +4482,10 @@
       "alias": "shesha ss 懾砂",
       "rarity": 5,
       "alt_name": "Sesa",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_150_snakek",
@@ -3198,7 +4496,10 @@
       "alias": "shetuxiang yituxiang stx ytx 蛇屠箱",
       "rarity": 4,
       "alt_name": "Cuora",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_469_indigo",
@@ -3209,7 +4510,10 @@
       "alias": "shendian sd 深靛",
       "rarity": 4,
       "alt_name": "Indigo",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_110_deepcl",
@@ -3217,10 +4521,13 @@
       "subProf": "summoner",
       "name_en": "Deepcolor",
       "name": "深海色",
-      "alias": "shenhaise shs 深海色",
+      "alias": "shenhaise shenhaishai shs 深海色",
       "rarity": 4,
       "alt_name": "Deepcolor",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4109_baslin",
@@ -3231,7 +4538,10 @@
       "alias": "shenlv sl 深律",
       "rarity": 5,
       "alt_name": "Bassline",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4137_udflow",
@@ -3242,7 +4552,24 @@
       "alias": "shenxun sx 深巡",
       "rarity": 5,
       "alt_name": "Underflow",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1046_sbell2",
+      "prof": "CASTER",
+      "subProf": "phalanx",
+      "name_en": "Pramanix the Prerita",
+      "name": "圣聆初雪",
+      "alias": "shenglingchuxue slcx 聖聆初雪",
+      "rarity": 6,
+      "alt_name": "Pramanix the Prerita",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_1032_excu2",
@@ -3253,7 +4580,11 @@
       "alias": "shengyuesongzangren shengyaosongzangren syszr 聖約送葬人",
       "rarity": 6,
       "alt_name": "Executor the Ex Foedere",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_210_stward",
@@ -3261,7 +4592,7 @@
       "subProf": "corecaster",
       "name_en": "Steward",
       "name": "史都华德",
-      "alias": "shiduhuade shidouhuade sdhd 史都華德",
+      "alias": "shidouhuade shiduhuade sdhd 史都華德",
       "rarity": 3,
       "alt_name": "Steward"
     },
@@ -3274,7 +4605,11 @@
       "alias": "shierteer sete 史爾特爾",
       "rarity": 6,
       "alt_name": "Surtr",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_308_swire",
@@ -3285,18 +4620,25 @@
       "alias": "shihuaiya shy 詩懷雅",
       "rarity": 5,
       "alt_name": "Swire",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1502_crosly",
       "prof": "SPECIAL",
       "subProf": "executor",
-      "name_en": "CrownSlayer",
+      "name_en": "Crownslayer",
       "name": "弑君者",
       "alias": "shijunzhe sjz 弑君者",
       "rarity": 6,
       "alt_name": "Crownslayer",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_378_asbest",
@@ -3306,7 +4648,11 @@
       "name": "石棉",
       "alias": "shimian danmian sm dm 石棉",
       "rarity": 5,
-      "alt_name": "Asbestos"
+      "alt_name": "Asbestos",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_489_serum",
@@ -3317,7 +4663,10 @@
       "alias": "shiqing sq 蝕清",
       "rarity": 5,
       "alt_name": "Corroserum",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_241_panda",
@@ -3328,7 +4677,24 @@
       "alias": "shitieshou sitieshou yitieshou sts yts 食鐵獸",
       "rarity": 5,
       "alt_name": "FEater",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4236_tmslot",
+      "prof": "CASTER",
+      "subProf": "funnel",
+      "name_en": "Timeslot",
+      "name": "时隙",
+      "alias": "shixi sx 時隙",
+      "rarity": 5,
+      "alt_name": "Timeslot",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_215_mantic",
@@ -3339,7 +4705,10 @@
       "alias": "shixie sx 獅蠍",
       "rarity": 5,
       "alt_name": "Manticore",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4063_quartz",
@@ -3350,7 +4719,10 @@
       "alias": "shiying danying sy dy 石英",
       "rarity": 4,
       "alt_name": "Quartz",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_158_milu",
@@ -3361,7 +4733,10 @@
       "alias": "shoulinren slr 守林人",
       "rarity": 5,
       "alt_name": "Firewatch",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_2025_shu",
@@ -3372,7 +4747,10 @@
       "alias": "shu s 黍",
       "rarity": 6,
       "alt_name": "Shu",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_458_rfrost",
@@ -3383,7 +4761,10 @@
       "alias": "shuanghua sh 霜華",
       "rarity": 5,
       "alt_name": "Frost",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_193_frostl",
@@ -3394,7 +4775,10 @@
       "alias": "shuangye shuangxie sy sx 霜葉",
       "rarity": 4,
       "alt_name": "Frostleaf",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4124_iana",
@@ -3405,7 +4789,10 @@
       "alias": "shuangyue sy 雙月",
       "rarity": 5,
       "alt_name": "Iana",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4177_brigid",
@@ -3415,7 +4802,11 @@
       "name": "水灯心",
       "alias": "shuidengxin sdx 水燈心",
       "rarity": 5,
-      "alt_name": "Brigid"
+      "alt_name": "Brigid",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_437_mizuki",
@@ -3426,7 +4817,12 @@
       "alias": "shuiyue sy 水月",
       "rarity": 6,
       "alt_name": "Mizuki",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_263_skadi",
@@ -3437,7 +4833,11 @@
       "alias": "sikadi siqiadi skd sqd 斯卡蒂",
       "rarity": 6,
       "alt_name": "Skadi",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10017_skadi2_dedant",
@@ -3458,7 +4858,10 @@
       "alias": "simang sm 死芒",
       "rarity": 6,
       "alt_name": "Necrass",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1043_leizi2",
@@ -3469,7 +4872,10 @@
       "alias": "sitingjingzhe stjz 司霆驚蟄",
       "rarity": 6,
       "alt_name": "Leizi the Thunderbringer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_427_vigil",
@@ -3480,7 +4886,11 @@
       "alias": "siye ciye sy cy 伺夜",
       "rarity": 6,
       "alt_name": "Vigil",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_365_aprl",
@@ -3491,7 +4901,10 @@
       "alias": "siyue sy 四月",
       "rarity": 5,
       "alt_name": "April",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_440_pinecn",
@@ -3502,7 +4915,20 @@
       "alias": "songguo sg 鬆果",
       "rarity": 4,
       "alt_name": "Pinecone",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4199_makiri",
+      "prof": "PIONEER",
+      "subProf": "counsellor",
+      "name_en": "Matsukiri",
+      "name": "松桐",
+      "alias": "songtong st 鬆桐",
+      "rarity": 5,
+      "alt_name": "Matsukiri"
     },
     {
       "id": "char_279_excu",
@@ -3513,7 +4939,10 @@
       "alias": "songzangren szr 送葬人",
       "rarity": 5,
       "alt_name": "Executor",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_511_asnipe",
@@ -3534,7 +4963,24 @@
       "alias": "Stormeye",
       "rarity": 6,
       "alt_name": "Stormeye",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1047_halo2",
+      "prof": "SUPPORT",
+      "subProf": "slower",
+      "name_en": "Astgenne the Lightchaser",
+      "name": "溯光星源",
+      "alias": "suguangxingyuan sgxy 溯光星源",
+      "rarity": 6,
+      "alt_name": "Astgenne the Lightchaser",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_298_susuro",
@@ -3545,7 +4991,10 @@
       "alias": "susuluo ssl 蘇蘇洛",
       "rarity": 4,
       "alt_name": "Sussurro",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_245_cello",
@@ -3556,7 +5005,11 @@
       "alias": "suxin sx 塑心",
       "rarity": 6,
       "alt_name": "Virtuosa",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_366_acdrop",
@@ -3567,7 +5020,10 @@
       "alias": "suantang st 酸糖",
       "rarity": 4,
       "alt_name": "Aciddrop",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_415_flint",
@@ -3578,7 +5034,10 @@
       "alias": "suishi suidan ss sd 燧石",
       "rarity": 5,
       "alt_name": "Flint",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4139_papyrs",
@@ -3586,9 +5045,13 @@
       "subProf": "chainhealer",
       "name_en": "Papyrus",
       "name": "莎草",
-      "alias": "suocao shacao sc 莎草",
+      "alias": "shacao suocao sc 莎草",
       "rarity": 5,
-      "alt_name": "Papyrus"
+      "alt_name": "Papyrus",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4077_palico",
@@ -3596,7 +5059,7 @@
       "subProf": "bombarder",
       "name_en": "Terra Research Commission",
       "name": "泰拉大陆调查团",
-      "alias": "tailadalutiaochatuan tailadalutiaozhatuan tailadaludiaochatuan tailadaludiaozhatuan tailadaluzhouchatuan tailadaluzhouzhatuan tailadailutiaochatuan tailadailutiaozhatuan tailadailudiaochatuan tailadailudiaozhatuan tailadailuzhouchatuan tailadailuzhouzhatuan tailatailutiaochatuan tailatailutiaozhatuan tailatailudiaochatuan tailatailudiaozhatuan tailatailuzhouchatuan tailatailuzhouzhatuan tldltct tldltzt tldldct tldldzt tldlzct tldlzzt tltltct tltltzt tltldct tltldzt tltlzct tltlzzt 泰拉大陸調查團",
+      "alias": "tailadalutiaochatuan tailadalutiaozhatuan tailadaludiaochatuan tailadaludiaozhatuan tailadaluzhouchatuan tailadaluzhouzhatuan tailadaliutiaochatuan tailadaliutiaozhatuan tailadaliudiaochatuan tailadaliudiaozhatuan tailadaliuzhouchatuan tailadaliuzhouzhatuan tailadailutiaochatuan tailadailutiaozhatuan tailadailudiaochatuan tailadailudiaozhatuan tailadailuzhouchatuan tailadailuzhouzhatuan tailadailiutiaochatuan tailadailiutiaozhatuan tailadailiudiaochatuan tailadailiudiaozhatuan tailadailiuzhouchatuan tailadailiuzhouzhatuan tldltct tldltzt tldldct tldldzt tldlzct tldlzzt 泰拉大陸調查團",
       "rarity": 1,
       "alt_name": "Terra Research Commission"
     },
@@ -3609,7 +5072,10 @@
       "alias": "taojinniang tjn 桃金娘",
       "rarity": 4,
       "alt_name": "Myrtle",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4164_tecno",
@@ -3620,7 +5086,10 @@
       "alias": "tekenuo tkn 特克諾",
       "rarity": 5,
       "alt_name": "Tecno",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_411_tomimi",
@@ -3631,7 +5100,10 @@
       "alias": "temimi tmm 特米米",
       "rarity": 5,
       "alt_name": "Tomimi",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_376_therex",
@@ -3652,7 +5124,26 @@
       "alias": "tifeng difeng tf df 提豐",
       "rarity": 6,
       "alt_name": "Typhon",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
+    },
+    {
+      "id": "char_4056_titi",
+      "prof": "MEDIC",
+      "subProf": "incantationmedic",
+      "name_en": "Titi",
+      "name": "缇缇",
+      "alias": "titi tt 緹緹",
+      "rarity": 6,
+      "alt_name": "Titi",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_166_skfire",
@@ -3663,7 +5154,20 @@
       "alias": "tianhuo th 天火",
       "rarity": 5,
       "alt_name": "Skyfire",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4213_skybx",
+      "prof": "SNIPER",
+      "subProf": "skybreaker",
+      "name_en": "Skybox",
+      "name": "天空盒",
+      "alias": "tiankonghe tkh 天空盒",
+      "rarity": 5,
+      "alt_name": "Skybox"
     },
     {
       "id": "char_181_flower",
@@ -3674,7 +5178,10 @@
       "alias": "tiaoxiangshi diaoxiangshi zhouxiangshi txs dxs zxs 調香師",
       "rarity": 4,
       "alt_name": "Perfumer",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10027_ironmn_pile3",
@@ -3690,7 +5197,7 @@
       "id": "token_10056_angel2_target",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "Delivery coordinates",
+      "name_en": "Delivery Coordinates",
       "name": "投递坐标",
       "alias": "toudizuobiao tdzb 投遞坐標",
       "rarity": 0,
@@ -3715,7 +5222,10 @@
       "alias": "Touch",
       "rarity": 6,
       "alt_name": "Touch",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_402_tuye",
@@ -3726,7 +5236,10 @@
       "alias": "tuye ty 圖耶",
       "rarity": 5,
       "alt_name": "Tuye",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_112_siege",
@@ -3737,7 +5250,11 @@
       "alias": "tuijinzhiwang tjzw 推進之王",
       "rarity": 6,
       "alt_name": "Siege",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4091_ulika",
@@ -3758,7 +5275,11 @@
       "alias": "W",
       "rarity": 6,
       "alt_name": "W",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4119_wanqin",
@@ -3769,7 +5290,24 @@
       "alias": "wanqing moqing wq mq 萬頃",
       "rarity": 5,
       "alt_name": "Wanqing",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_2027_wang",
+      "prof": "SPECIAL",
+      "subProf": "traper",
+      "name_en": "Wang",
+      "name": "望",
+      "alias": "wang w 望",
+      "rarity": 6,
+      "alt_name": "Wang",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_261_sddrag",
@@ -3780,7 +5318,10 @@
       "alias": "weicao wc 葦草",
       "rarity": 5,
       "alt_name": "Reed",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4107_vrdant",
@@ -3791,7 +5332,10 @@
       "alias": "weidi wd 維荻",
       "rarity": 4,
       "alt_name": "Verdant",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_275_breeze",
@@ -3802,7 +5346,10 @@
       "alias": "weifeng wf 微風",
       "rarity": 5,
       "alt_name": "Breeze",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1019_siege2",
@@ -3813,7 +5360,11 @@
       "alias": "weina·weiduoliya weinuo·weiduoliya wn·wdly 維娜·維多利亞",
       "rarity": 6,
       "alt_name": "Vina Victoria",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_1035_wisdel",
@@ -3821,10 +5372,13 @@
       "subProf": "bombarder",
       "name_en": "Wiš'adel",
       "name": "维什戴尔",
-      "alias": "weishidaier weishendaier wsde 維什戴爾",
+      "alias": "weishendaier weishidaier wsde 維什戴爾",
       "rarity": 6,
       "alt_name": "Wiš'adel",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4098_vvana",
@@ -3835,7 +5389,25 @@
       "alias": "weiweianna weiweiannuo wwan 薇薇安娜",
       "rarity": 6,
       "alt_name": "Viviana",
-      "modules": ["", "D"]
+      "modules": [
+        "",
+        "Y",
+        "D"
+      ]
+    },
+    {
+      "id": "char_4226_veen",
+      "prof": "CASTER",
+      "subProf": "mystic",
+      "name_en": "Вий",
+      "name": "维伊",
+      "alias": "weiyi wy 維伊",
+      "rarity": 6,
+      "alt_name": "Вий",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_400_weedy",
@@ -3846,7 +5418,11 @@
       "alias": "wendi wd 溫蒂",
       "rarity": 6,
       "alt_name": "Weedy",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_4081_warmy",
@@ -3856,7 +5432,11 @@
       "name": "温米",
       "alias": "wenmi wm 溫米",
       "rarity": 5,
-      "alt_name": "Warmy"
+      "alt_name": "Warmy",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4145_ulpia",
@@ -3867,7 +5447,24 @@
       "alias": "wuerbian weba 烏爾比安",
       "rarity": 6,
       "alt_name": "Ulpianus",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4224_turdus",
+      "prof": "MEDIC",
+      "subProf": "chainhealer",
+      "name_en": "Ukusik",
+      "name": "乌啾",
+      "alias": "wujiu wj 烏啾",
+      "rarity": 5,
+      "alt_name": "Укусик",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_254_vodfox",
@@ -3878,7 +5475,10 @@
       "alias": "wulian wl 巫戀",
       "rarity": 5,
       "alt_name": "Shamare",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_455_nothin",
@@ -3889,7 +5489,10 @@
       "alias": "wuyou wy 烏有",
       "rarity": 5,
       "alt_name": "Mr.Nothing",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_2015_dusk",
@@ -3900,7 +5503,12 @@
       "alias": "xi x 夕",
       "rarity": 6,
       "alt_name": "Dusk",
-      "modules": ["", "X", "Y", "A"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "char_348_ceylon",
@@ -3911,7 +5519,10 @@
       "alias": "xilan xl 錫蘭",
       "rarity": 5,
       "alt_name": "Ceylon",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4151_tinman",
@@ -3922,7 +5533,10 @@
       "alias": "xiren xr 錫人",
       "rarity": 5,
       "alt_name": "Tin Man",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_336_folivo",
@@ -3933,7 +5547,10 @@
       "alias": "xiyin xy 稀音",
       "rarity": 5,
       "alt_name": "Scene",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_423_blemsh",
@@ -3944,7 +5561,11 @@
       "alias": "xiaguang xg 瑕光",
       "rarity": 6,
       "alt_name": "Blemishine",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_492_quercu",
@@ -3955,7 +5576,10 @@
       "alias": "xiali xiayue xl xy 夏櫟",
       "rarity": 5,
       "alt_name": "Quercus",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10031_swire2_gdtrap",
@@ -3963,7 +5587,7 @@
       "subProf": "notchar1",
       "name_en": "Champagne Bomb",
       "name": "香槟炸弹",
-      "alias": "xiangbinzhadan xiangbinzhatan xiangbingzhadan xiangbingzhatan xbzd xbzt 香檳炸彈",
+      "alias": "xiangbinzhatan xiangbinzhadan xiangbingzhatan xiangbingzhadan xbzt xbzd 香檳炸彈",
       "rarity": 0,
       "alt_name": "Champagne Bomb"
     },
@@ -3978,6 +5602,20 @@
       "alt_name": "Vanilla"
     },
     {
+      "id": "char_4214_cairn",
+      "prof": "TANK",
+      "subProf": "primprotector",
+      "name_en": "Cairn",
+      "name": "响石",
+      "alias": "xiangshi xiangdan xs xd 響石",
+      "rarity": 5,
+      "alt_name": "Cairn",
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
       "id": "char_497_ctable",
       "prof": "PIONEER",
       "subProf": "agent",
@@ -3986,13 +5624,16 @@
       "alias": "xiaoge xg 曉歌",
       "rarity": 5,
       "alt_name": "Cantabile",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10045_alanna_crane",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "Nutlet",
+      "name_en": "Nutty",
       "name": "小螺帽",
       "alias": "xiaoluomao xlm 小螺帽",
       "rarity": 0,
@@ -4007,7 +5648,38 @@
       "alias": "xiaoman xm 小滿",
       "rarity": 5,
       "alt_name": "Grain Buds",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4051_akkord",
+      "prof": "CASTER",
+      "subProf": "blastcaster",
+      "name_en": "Akkord",
+      "name": "协律",
+      "alias": "xielv xl 協律",
+      "rarity": 4,
+      "alt_name": "Akkord",
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1022_flwr2",
+      "prof": "SUPPORT",
+      "subProf": "blessing",
+      "name_en": "Perfumer the Distilled",
+      "name": "撷英调香师",
+      "alias": "xieyingtiaoxiangshi xieyingdiaoxiangshi xieyingzhouxiangshi xytxs xydxs xyzxs 擷英調香師",
+      "rarity": 5,
+      "alt_name": "Perfumer the Distilled",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4194_rmixer",
@@ -4018,7 +5690,11 @@
       "alias": "xinyangjiaobanji xinyangjiaopanji xinangjiaobanji xinangjiaopanji shenyangjiaobanji shenyangjiaopanji shenangjiaobanji shenangjiaopanji xyjbj xyjpj xajbj xajpj syjbj syjpj sajbj sajpj 信仰攪拌機",
       "rarity": 6,
       "alt_name": "Sankta Miksaparato",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_1041_angel2",
@@ -4029,7 +5705,10 @@
       "alias": "xinyuenengtianshi xinyuenaitianshi xinyaonengtianshi xinyaonaitianshi xynts 新約能天使",
       "rarity": 6,
       "alt_name": "Exusiai the New Covenant",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_274_astesi",
@@ -4040,7 +5719,10 @@
       "alias": "xingji xj 星極",
       "rarity": 5,
       "alt_name": "Astesia",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4105_almond",
@@ -4051,7 +5733,10 @@
       "alias": "xingren xr 杏仁",
       "rarity": 5,
       "alt_name": "Almond",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_136_hsguma",
@@ -4062,7 +5747,11 @@
       "alias": "xingxiong xx 星熊",
       "rarity": 6,
       "alt_name": "Hoshiguma",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_135_halo",
@@ -4073,7 +5762,24 @@
       "alias": "xingyuan xy 星源",
       "rarity": 5,
       "alt_name": "Astgenne",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4172_xingzh",
+      "prof": "SUPPORT",
+      "subProf": "blessing",
+      "name_en": "Xingzhu",
+      "name": "行箸",
+      "alias": "xingzhu hangzhu hengzhu xz hz 行箸",
+      "rarity": 5,
+      "alt_name": "Xingzhu",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_491_humus",
@@ -4084,7 +5790,10 @@
       "alias": "xiumosi xumosi xms 休謨斯",
       "rarity": 4,
       "alt_name": "Humus",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_436_whispr",
@@ -4095,7 +5804,24 @@
       "alias": "xuyu xy 絮雨",
       "rarity": 5,
       "alt_name": "Whisperain",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4211_snhunt",
+      "prof": "SNIPER",
+      "subProf": "hunter",
+      "name_en": "Snow Hunter",
+      "name": "雪猎",
+      "alias": "xuelie xl 雪獵",
+      "rarity": 5,
+      "alt_name": "Snow Hunter",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_466_qanik",
@@ -4106,7 +5832,10 @@
       "alias": "xuerong xr 雪絨",
       "rarity": 5,
       "alt_name": "Qanipalaat",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_383_snsant",
@@ -4117,7 +5846,10 @@
       "alias": "xuezhi xz 雪雉",
       "rarity": 5,
       "alt_name": "Snowsant",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4052_surfer",
@@ -4128,7 +5860,10 @@
       "alias": "xunlan xl 尋瀾",
       "rarity": 5,
       "alt_name": "Surfer",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_503_rang",
@@ -4149,7 +5884,20 @@
       "alias": "xunshi xs 訊使",
       "rarity": 4,
       "alt_name": "Courier",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "token_10063_buddy_bddg",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": " Palamute",
+      "name": "牙猎犬",
+      "alias": "yaliequan ylq 牙獵犬",
+      "rarity": 0,
+      "alt_name": " Palamute"
     },
     {
       "id": "char_173_slchan",
@@ -4160,7 +5908,10 @@
       "alias": "yaxin yx 崖心",
       "rarity": 5,
       "alt_name": "Cliffheart",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_345_folnic",
@@ -4171,7 +5922,10 @@
       "alias": "yaye yaxie yy yx 亞葉",
       "rarity": 5,
       "alt_name": "Folinic",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_337_utage",
@@ -4182,7 +5936,24 @@
       "alias": "yan y 宴",
       "rarity": 4,
       "alt_name": "Utage",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1048_orchd2",
+      "prof": "SNIPER",
+      "subProf": "closerange",
+      "name_en": "Violet Mizutsune Orchid",
+      "name": "焰狐龙梓兰",
+      "alias": "yanhulongzilan yhlzl 焰狐龍梓蘭",
+      "rarity": 6,
+      "alt_name": "Violet Mizutsune Orchid",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_131_flameb",
@@ -4193,7 +5964,10 @@
       "alias": "yanke yk 炎客",
       "rarity": 5,
       "alt_name": "Flamebringer",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_121_lava",
@@ -4214,7 +5988,11 @@
       "alias": "yanwei yanyi yw yy 焰尾",
       "rarity": 6,
       "alt_name": "Flametail",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_1020_reed2",
@@ -4225,7 +6003,11 @@
       "alias": "yanyingweicao yywc 焰影葦草",
       "rarity": 6,
       "alt_name": "Reed The Flame Shadow",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_1011_lava2",
@@ -4236,7 +6018,10 @@
       "alias": "yanyuyanrong yyyr 炎獄炎熔",
       "rarity": 5,
       "alt_name": "Lava the Purgatory",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_464_cement",
@@ -4247,7 +6032,24 @@
       "alias": "yanghui yh 洋灰",
       "rarity": 5,
       "alt_name": "Cement",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4202_haruka",
+      "prof": "SUPPORT",
+      "subProf": "blessing",
+      "name_en": "Haruka",
+      "name": "遥",
+      "alias": "yao y 遙",
+      "rarity": 6,
+      "alt_name": "Haruka",
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_1014_nearl2",
@@ -4258,7 +6060,11 @@
       "alias": "yaoqishilinguang yqslg 耀騎士臨光",
       "rarity": 6,
       "alt_name": "Nearl the Radiant Knight",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_476_blkngt",
@@ -4269,7 +6075,10 @@
       "alias": "yeban yb 夜半",
       "rarity": 5,
       "alt_name": "Blacknight",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_502_nblade",
@@ -4300,7 +6109,10 @@
       "alias": "yela yl 耶拉",
       "rarity": 5,
       "alt_name": "Kjera",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_164_nightm",
@@ -4311,7 +6123,10 @@
       "alias": "yemo ym 夜魔",
       "rarity": 5,
       "alt_name": "Nightmare",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_141_nights",
@@ -4322,7 +6137,10 @@
       "alias": "yeyan yy 夜煙",
       "rarity": 4,
       "alt_name": "Haze",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_179_cgbird",
@@ -4333,7 +6151,11 @@
       "alias": "yeying yy 夜鶯",
       "rarity": 6,
       "alt_name": "Nightingale",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_496_wildmn",
@@ -4344,7 +6166,10 @@
       "alias": "yezong yz 野鬃",
       "rarity": 5,
       "alt_name": "Wild Mane",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10010_folivo_car",
@@ -4365,7 +6190,11 @@
       "alias": "yifulite yflt 伊芙利特",
       "rarity": 6,
       "alt_name": "Ifrit",
-      "modules": ["", "X", "D"]
+      "modules": [
+        "",
+        "X",
+        "D"
+      ]
     },
     {
       "id": "char_472_pasngr",
@@ -4376,7 +6205,12 @@
       "alias": "yike yk 異客",
       "rarity": 6,
       "alt_name": "Passenger",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y",
+        "A"
+      ]
     },
     {
       "id": "token_10000_silent_healrb",
@@ -4397,7 +6231,10 @@
       "alias": "yineisi yinasi yns 伊內絲",
       "rarity": 6,
       "alt_name": "Ines",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_355_ethan",
@@ -4408,7 +6245,10 @@
       "alias": "yisang ys 伊桑",
       "rarity": 4,
       "alt_name": "Ethan",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4125_rdoc",
@@ -4419,7 +6259,10 @@
       "alias": "yisheng ys 醫生",
       "rarity": 5,
       "alt_name": "Doc",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_4010_etlchi",
@@ -4430,7 +6273,11 @@
       "alias": "yindelaixi ydlx 隱德來希",
       "rarity": 6,
       "alt_name": "Entelechia",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_172_svrash",
@@ -4441,7 +6288,10 @@
       "alias": "yinhui yh 銀灰",
       "rarity": 6,
       "alt_name": "SilverAsh",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_155_tiger",
@@ -4452,7 +6302,10 @@
       "alias": "yintuoluo ytl 因陀羅",
       "rarity": 5,
       "alt_name": "Indra",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_498_inside",
@@ -4463,7 +6316,10 @@
       "alias": "yinxian yx 隱現",
       "rarity": 5,
       "alt_name": "Insider",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1039_thorn2",
@@ -4474,7 +6330,10 @@
       "alias": "yinxingjici yxjc 引星棘刺",
       "rarity": 6,
       "alt_name": "Thorns the Lodestar",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "token_10016_rfrost_mine",
@@ -4505,7 +6364,24 @@
       "alias": "youlingsha yls 幽靈鯊",
       "rarity": 5,
       "alt_name": "Specter",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4185_amoris",
+      "prof": "WARRIOR",
+      "subProf": "hammer",
+      "name_en": "Nyamu Yūtenji",
+      "name": "祐天寺若麦",
+      "alias": "youtiansiruomai youtiansiremai ytsrm 祐天寺若麥",
+      "rarity": 5,
+      "alt_name": "Yūtenji Nyamu",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_2026_yu",
@@ -4515,7 +6391,11 @@
       "name": "余",
       "alias": "yu y 餘",
       "rarity": 6,
-      "alt_name": "Yu"
+      "alt_name": "Yu",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_606_csuppo",
@@ -4666,7 +6546,10 @@
       "alias": "yujinxiang yjx 鬱金香",
       "rarity": 6,
       "alt_name": "Tulip",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_421_crow",
@@ -4677,7 +6560,20 @@
       "alias": "yumaobi ymb 羽毛筆",
       "rarity": 5,
       "alt_name": "La Pluma",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_1015_aglna2",
+      "prof": "SPECIAL",
+      "subProf": "skywalker",
+      "name_en": "Angelina the Mellow Wish",
+      "name": "予愿安洁莉娜",
+      "alias": "yuyuananjielina yuyuananjielinuo yyajln 予願安潔莉娜",
+      "rarity": 6,
+      "alt_name": "Angelina the Mellow Wish"
     },
     {
       "id": "char_109_fmout",
@@ -4688,7 +6584,10 @@
       "alias": "yuanshan ys 遠山",
       "rarity": 4,
       "alt_name": "Gitano",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_430_fartth",
@@ -4699,7 +6598,11 @@
       "alias": "yuanya yy 遠牙",
       "rarity": 6,
       "alt_name": "Fartooth",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_343_tknogi",
@@ -4710,7 +6613,10 @@
       "alias": "yuehe yh 月禾",
       "rarity": 5,
       "alt_name": "Tsukinogi",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_283_midn",
@@ -4723,6 +6629,20 @@
       "alt_name": "Midnight"
     },
     {
+      "id": "char_4219_yukari",
+      "prof": "SUPPORT",
+      "subProf": "supportiveranger",
+      "name_en": "Yukari Takeba",
+      "name": "岳羽由加莉",
+      "alias": "yueyuyoujiali yyyjl 嶽羽由加莉",
+      "rarity": 5,
+      "alt_name": "Yukari Takeba",
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
       "id": "char_4100_caper",
       "prof": "SNIPER",
       "subProf": "loopshooter",
@@ -4730,7 +6650,11 @@
       "name": "跃跃",
       "alias": "yueyue yy 躍躍",
       "rarity": 4,
-      "alt_name": "Caper"
+      "alt_name": "Caper",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4165_ctrail",
@@ -4751,7 +6675,10 @@
       "alias": "yunxing yx 隕星",
       "rarity": 5,
       "alt_name": "Meteorite",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_197_poca",
@@ -4759,10 +6686,14 @@
       "subProf": "siegesniper",
       "name_en": "Rosa",
       "name": "早露",
-      "alias": "zaolou zaolu zl 早露",
+      "alias": "zaolu zaolou zl 早露",
       "rarity": 6,
       "alt_name": "Роса",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_459_tachak",
@@ -4773,7 +6704,34 @@
       "alias": "zhanche zhanju zc zj 戰車",
       "rarity": 5,
       "alt_name": "Tachanka",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "token_10068_kalts2_mtship",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Tactical Anchor",
+      "name": "战术锚点",
+      "alias": "zhanshumaodian zhanzhumaodian zsmd zzmd 戰術錨點",
+      "rarity": 0,
+      "alt_name": "Tactical Anchor"
+    },
+    {
+      "id": "char_1044_hsgma2",
+      "prof": "TANK",
+      "subProf": "artsprotector",
+      "name_en": "Hoshiguma the Breacher",
+      "name": "斩业星熊",
+      "alias": "zhanyexingxiong zyxx 斬業星熊",
+      "rarity": 6,
+      "alt_name": "Hoshiguma the Breacher",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_499_kaitou",
@@ -4783,7 +6741,25 @@
       "name": "折光",
       "alias": "zheguang sheguang zg sg 折光",
       "rarity": 5,
-      "alt_name": "Diamante"
+      "alt_name": "Diamante",
+      "modules": [
+        "",
+        "X"
+      ]
+    },
+    {
+      "id": "char_4207_branch",
+      "prof": "TANK",
+      "subProf": "unyield",
+      "name_en": "Vetochki",
+      "name": "折桠",
+      "alias": "zheya sheya zy sy 折椏",
+      "rarity": 5,
+      "alt_name": "Веточки",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_195_glassb",
@@ -4794,7 +6770,24 @@
       "alias": "zhenli zl 真理",
       "rarity": 5,
       "alt_name": "Истина",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
+    },
+    {
+      "id": "char_4204_mantra",
+      "prof": "CASTER",
+      "subProf": "primcaster",
+      "name_en": "Mantra",
+      "name": "真言",
+      "alias": "zhenyan zy 真言",
+      "rarity": 6,
+      "alt_name": "Mantra",
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_4000_jnight",
@@ -4807,6 +6800,16 @@
       "alt_name": "\"Justice Knight\""
     },
     {
+      "id": "token_10066_closur_ourbase",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Command Center",
+      "name": "指挥中心",
+      "alias": "zhihuizhongxin zhzx 指揮中心",
+      "rarity": 0,
+      "alt_name": "Command Center"
+    },
+    {
       "id": "char_4054_malist",
       "prof": "CASTER",
       "subProf": "funnel",
@@ -4815,7 +6818,10 @@
       "alias": "zhijian zj 至簡",
       "rarity": 5,
       "alt_name": "Minimalist",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10022_kazema_shadow",
@@ -4836,17 +6842,31 @@
       "alias": "zhisong zs 止頌",
       "rarity": 6,
       "alt_name": "Lessing",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "token_10050_monstr_prosts",
       "prof": "TOKEN",
       "subProf": "notchar1",
-      "name_en": "Reconstruct",
+      "name_en": "Reconstruction",
       "name": "重构体",
       "alias": "zhonggouti chonggouti zgt cgt 重構體",
       "rarity": 0,
       "alt_name": "Reconstruct"
+    },
+    {
+      "id": "token_10070_aphris_pc",
+      "prof": "TOKEN",
+      "subProf": "notchar1",
+      "name_en": "Repeater",
+      "name": "中继器",
+      "alias": "zhongjiqi zjq 中繼器",
+      "rarity": 0,
+      "alt_name": "Repeater"
     },
     {
       "id": "char_2024_chyue",
@@ -4857,7 +6877,11 @@
       "alias": "zhongyue chongyue zy cy 重嶽",
       "rarity": 6,
       "alt_name": "Chongyue",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_1040_blaze2",
@@ -4867,7 +6891,12 @@
       "name": "烛煌",
       "alias": "zhuhuang zh 燭煌",
       "rarity": 6,
-      "alt_name": "Blaze the Igniting Spark"
+      "alt_name": "Blaze the Igniting Spark",
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_333_sidero",
@@ -4878,7 +6907,10 @@
       "alias": "zhutie zt 鑄鐵",
       "rarity": 5,
       "alt_name": "Sideroca",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "char_1024_hbisc2",
@@ -4889,7 +6921,10 @@
       "alias": "zhuochenfurong zhaochenfurong zcfr 濯塵芙蓉",
       "rarity": 5,
       "alt_name": "Hibiscus the Purifier",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X"
+      ]
     },
     {
       "id": "char_1012_skadi2",
@@ -4900,7 +6935,11 @@
       "alias": "zhuoxinsikadi zhuoxinsiqiadi zxskd zxsqd 濁心斯卡蒂",
       "rarity": 6,
       "alt_name": "Skadi the Corrupting Heart",
-      "modules": ["", "X"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     },
     {
       "id": "char_278_orchid",
@@ -4921,7 +6960,10 @@
       "alias": "ziyue zy 子月",
       "rarity": 5,
       "alt_name": "Lunacub",
-      "modules": ["", "Y"]
+      "modules": [
+        "",
+        "Y"
+      ]
     },
     {
       "id": "token_10006_vodfox_doll",
@@ -4942,7 +6984,11 @@
       "alias": "zuole zuoyue zuoyao zuolao zl zy 左樂",
       "rarity": 6,
       "alt_name": "Zuo Le",
-      "modules": ["", "X", "Y"]
+      "modules": [
+        "",
+        "X",
+        "Y"
+      ]
     }
   ],
   "PROFESSIONS": [
@@ -4951,11 +6997,36 @@
       "name": "先锋",
       "name_en": "Vanguard",
       "sub": [
-        { "id": "pioneer", "name": "尖兵", "name_en": "Pioneer" },
-        { "id": "charger", "name": "冲锋手", "name_en": "Charger" },
-        { "id": "tactician", "name": "战术家", "name_en": "Tactician" },
-        { "id": "bearer", "name": "执旗手", "name_en": "Standard Bearer" },
-        { "id": "agent", "name": "情报官", "name_en": "Agent" }
+        {
+          "id": "pioneer",
+          "name": "尖兵",
+          "name_en": "Pioneer"
+        },
+        {
+          "id": "charger",
+          "name": "冲锋手",
+          "name_en": "Charger"
+        },
+        {
+          "id": "tactician",
+          "name": "战术家",
+          "name_en": "Tactician"
+        },
+        {
+          "id": "bearer",
+          "name": "执旗手",
+          "name_en": "Standard Bearer"
+        },
+        {
+          "id": "agent",
+          "name": "情报官",
+          "name_en": "Agent"
+        },
+        {
+          "id": "counsellor",
+          "name": "策士",
+          "name_en": "Strategist"
+        }
       ]
     },
     {
@@ -4963,19 +7034,76 @@
       "name": "近卫",
       "name_en": "Guard",
       "sub": [
-        { "id": "centurion", "name": "强攻手", "name_en": "Centurion" },
-        { "id": "fighter", "name": "斗士", "name_en": "Fighter" },
-        { "id": "artsfghter", "name": "术战者", "name_en": "Arts Fighter" },
-        { "id": "instructor", "name": "教官", "name_en": "Instructor" },
-        { "id": "lord", "name": "领主", "name_en": "Lord" },
-        { "id": "sword", "name": "剑豪", "name_en": "Swordmaster" },
-        { "id": "musha", "name": "武者", "name_en": "Soloblade" },
-        { "id": "fearless", "name": "无畏者", "name_en": "Dreadnought" },
-        { "id": "reaper", "name": "收割者", "name_en": "Reaper" },
-        { "id": "librator", "name": "解放者", "name_en": "Liberator" },
-        { "id": "crusher", "name": "重剑手", "name_en": "Crusher" },
-        { "id": "hammer", "name": "撼地者", "name_en": "Earthshaker" },
-        { "id": "primguard", "name": "本源近卫", "name_en": "Primguard" }
+        {
+          "id": "centurion",
+          "name": "强攻手",
+          "name_en": "Centurion"
+        },
+        {
+          "id": "fighter",
+          "name": "斗士",
+          "name_en": "Fighter"
+        },
+        {
+          "id": "artsfghter",
+          "name": "术战者",
+          "name_en": "Arts Fighter"
+        },
+        {
+          "id": "instructor",
+          "name": "教官",
+          "name_en": "Instructor"
+        },
+        {
+          "id": "lord",
+          "name": "领主",
+          "name_en": "Lord"
+        },
+        {
+          "id": "sword",
+          "name": "剑豪",
+          "name_en": "Swordmaster"
+        },
+        {
+          "id": "musha",
+          "name": "武者",
+          "name_en": "Soloblade"
+        },
+        {
+          "id": "fearless",
+          "name": "无畏者",
+          "name_en": "Dreadnought"
+        },
+        {
+          "id": "reaper",
+          "name": "收割者",
+          "name_en": "Reaper"
+        },
+        {
+          "id": "librator",
+          "name": "解放者",
+          "name_en": "Liberator"
+        },
+        {
+          "id": "crusher",
+          "name": "重剑手",
+          "name_en": "Crusher"
+        },
+        {
+          "id": "hammer",
+          "name": "撼地者",
+          "name_en": "Earthshaker"
+        },
+        {
+          "id": "primguard",
+          "name": "本源近卫",
+          "name_en": "Primal Guard"
+        },
+        {
+          "id": "mercenary",
+          "name": "佣兵",
+          "name_en": "Mercenary"
+        }
       ]
     },
     {
@@ -4983,16 +7111,36 @@
       "name": "重装",
       "name_en": "Defender",
       "sub": [
-        { "id": "protector", "name": "铁卫", "name_en": "Protector" },
-        { "id": "guardian", "name": "守护者", "name_en": "Guardian" },
-        { "id": "unyield", "name": "不屈者", "name_en": "Juggernaut" },
+        {
+          "id": "protector",
+          "name": "铁卫",
+          "name_en": "Protector"
+        },
+        {
+          "id": "guardian",
+          "name": "守护者",
+          "name_en": "Guardian"
+        },
+        {
+          "id": "unyield",
+          "name": "不屈者",
+          "name_en": "Juggernaut"
+        },
         {
           "id": "artsprotector",
           "name": "驭法铁卫",
           "name_en": "Arts Protector"
         },
-        { "id": "duelist", "name": "决战者", "name_en": "Duelist" },
-        { "id": "fortress", "name": "要塞", "name_en": "Fortress" },
+        {
+          "id": "duelist",
+          "name": "决战者",
+          "name_en": "Duelist"
+        },
+        {
+          "id": "fortress",
+          "name": "要塞",
+          "name_en": "Fortress"
+        },
         {
           "id": "shotprotector",
           "name": "哨戒铁卫",
@@ -5010,15 +7158,56 @@
       "name": "狙击",
       "name_en": "Sniper",
       "sub": [
-        { "id": "fastshot", "name": "速射手", "name_en": "Marksman" },
-        { "id": "closerange", "name": "重射手", "name_en": "Heavyshooter" },
-        { "id": "aoesniper", "name": "炮手", "name_en": "Artilleryman" },
-        { "id": "longrange", "name": "神射手", "name_en": "Deadeye" },
-        { "id": "reaperrange", "name": "散射手", "name_en": "Spreadshooter" },
-        { "id": "siegesniper", "name": "攻城手", "name_en": "Besieger" },
-        { "id": "bombarder", "name": "投掷手", "name_en": "Flinger" },
-        { "id": "hunter", "name": "猎手", "name_en": "Hunter" },
-        { "id": "loopshooter", "name": "回环射手", "name_en": "Loopshooter" }
+        {
+          "id": "fastshot",
+          "name": "速射手",
+          "name_en": "Marksman"
+        },
+        {
+          "id": "closerange",
+          "name": "重射手",
+          "name_en": "Heavyshooter"
+        },
+        {
+          "id": "aoesniper",
+          "name": "炮手",
+          "name_en": "Artilleryman"
+        },
+        {
+          "id": "longrange",
+          "name": "神射手",
+          "name_en": "Deadeye"
+        },
+        {
+          "id": "reaperrange",
+          "name": "散射手",
+          "name_en": "Spreadshooter"
+        },
+        {
+          "id": "siegesniper",
+          "name": "攻城手",
+          "name_en": "Besieger"
+        },
+        {
+          "id": "bombarder",
+          "name": "投掷手",
+          "name_en": "Flinger"
+        },
+        {
+          "id": "hunter",
+          "name": "猎手",
+          "name_en": "Hunter"
+        },
+        {
+          "id": "loopshooter",
+          "name": "回环射手",
+          "name_en": "Loopshooter"
+        },
+        {
+          "id": "skybreaker",
+          "name": "裂空炮手",
+          "name_en": "Skybreaker"
+        }
       ]
     },
     {
@@ -5026,19 +7215,51 @@
       "name": "术师",
       "name_en": "Caster",
       "sub": [
-        { "id": "corecaster", "name": "中坚术师", "name_en": "Core Caster" },
+        {
+          "id": "corecaster",
+          "name": "中坚术师",
+          "name_en": "Core Caster"
+        },
         {
           "id": "splashcaster",
           "name": "扩散术师",
           "name_en": "Splash Caster"
         },
-        { "id": "funnel", "name": "驭械术师", "name_en": "Mech-accord Caster" },
-        { "id": "phalanx", "name": "阵法术师", "name_en": "Phalanx Caster" },
-        { "id": "mystic", "name": "秘术师", "name_en": "Mystic Caster" },
-        { "id": "chain", "name": "链术师", "name_en": "Chain Caster" },
-        { "id": "blastcaster", "name": "轰击术师", "name_en": "Blast Caster" },
-        { "id": "primcaster", "name": "本源术师", "name_en": "Primal Caster" },
-        { "id": "soulcaster", "name": "塑灵术师", "name_en": "Shaper Caster" }
+        {
+          "id": "funnel",
+          "name": "驭械术师",
+          "name_en": "Mech-accord Caster"
+        },
+        {
+          "id": "phalanx",
+          "name": "阵法术师",
+          "name_en": "Phalanx Caster"
+        },
+        {
+          "id": "mystic",
+          "name": "秘术师",
+          "name_en": "Mystic Caster"
+        },
+        {
+          "id": "chain",
+          "name": "链术师",
+          "name_en": "Chain Caster"
+        },
+        {
+          "id": "blastcaster",
+          "name": "轰击术师",
+          "name_en": "Blast Caster"
+        },
+        {
+          "id": "primcaster",
+          "name": "本源术师",
+          "name_en": "Primal Caster"
+        },
+        {
+          "id": "soulcaster",
+          "name": "塑灵术师",
+          "name_en": "Shaper Caster"
+        }
       ]
     },
     {
@@ -5046,20 +7267,41 @@
       "name": "医疗",
       "name_en": "Medic",
       "sub": [
-        { "id": "physician", "name": "医师", "name_en": "Medic" },
+        {
+          "id": "physician",
+          "name": "医师",
+          "name_en": "Medic"
+        },
         {
           "id": "ringhealer",
           "name": "群愈师",
           "name_en": "Multi-target Medic"
         },
-        { "id": "healer", "name": "疗养师", "name_en": "Therapist" },
-        { "id": "wandermedic", "name": "行医", "name_en": "Wandering Medic" },
+        {
+          "id": "healer",
+          "name": "疗养师",
+          "name_en": "Therapist"
+        },
+        {
+          "id": "wandermedic",
+          "name": "行医",
+          "name_en": "Wandering Medic"
+        },
         {
           "id": "incantationmedic",
           "name": "咒愈师",
           "name_en": "Incantation Medic"
         },
-        { "id": "chainhealer", "name": "链愈师", "name_en": "Chain Medic" }
+        {
+          "id": "chainhealer",
+          "name": "链愈师",
+          "name_en": "Chain Medic"
+        },
+        {
+          "id": "watchman",
+          "name": "守望者",
+          "name_en": "Watchman"
+        }
       ]
     },
     {
@@ -5067,13 +7309,46 @@
       "name": "辅助",
       "name_en": "Supporter",
       "sub": [
-        { "id": "slower", "name": "凝滞师", "name_en": "Decel Binder" },
-        { "id": "underminer", "name": "削弱者", "name_en": "Hexer" },
-        { "id": "bard", "name": "吟游者", "name_en": "Bard" },
-        { "id": "blessing", "name": "护佑者", "name_en": "Abjurer" },
-        { "id": "summoner", "name": "召唤师", "name_en": "Summoner" },
-        { "id": "craftsman", "name": "工匠", "name_en": "Artificer" },
-        { "id": "ritualist", "name": "巫役", "name_en": "Ritualist" }
+        {
+          "id": "slower",
+          "name": "凝滞师",
+          "name_en": "Decel Binder"
+        },
+        {
+          "id": "underminer",
+          "name": "削弱者",
+          "name_en": "Hexer"
+        },
+        {
+          "id": "bard",
+          "name": "吟游者",
+          "name_en": "Bard"
+        },
+        {
+          "id": "blessing",
+          "name": "护佑者",
+          "name_en": "Abjurer"
+        },
+        {
+          "id": "summoner",
+          "name": "召唤师",
+          "name_en": "Summoner"
+        },
+        {
+          "id": "craftsman",
+          "name": "工匠",
+          "name_en": "Artificer"
+        },
+        {
+          "id": "ritualist",
+          "name": "巫役",
+          "name_en": "Ritualist"
+        },
+        {
+          "id": "supportiveranger",
+          "name": "游击手",
+          "name_en": "Supportiveranger"
+        }
       ]
     },
     {
@@ -5081,16 +7356,56 @@
       "name": "特种",
       "name_en": "Specialist",
       "sub": [
-        { "id": "executor", "name": "处决者", "name_en": "Executor" },
-        { "id": "pusher", "name": "推击手", "name_en": "Push Stroker" },
-        { "id": "stalker", "name": "伏击客", "name_en": "Ambusher" },
-        { "id": "hookmaster", "name": "钩索师", "name_en": "Hookmaster" },
-        { "id": "geek", "name": "怪杰", "name_en": "Geek" },
-        { "id": "merchant", "name": "行商", "name_en": "Merchant" },
-        { "id": "traper", "name": "陷阱师", "name_en": "Trapmaster" },
-        { "id": "dollkeeper", "name": "傀儡师", "name_en": "Dollkeeper" },
-        { "id": "alchemist", "name": "炼金师", "name_en": "Alchemist" },
-        { "id": "skywalker", "name": "巡空者", "name_en": "Skyranger" }
+        {
+          "id": "executor",
+          "name": "处决者",
+          "name_en": "Executor"
+        },
+        {
+          "id": "pusher",
+          "name": "推击手",
+          "name_en": "Push Stroker"
+        },
+        {
+          "id": "stalker",
+          "name": "伏击客",
+          "name_en": "Ambusher"
+        },
+        {
+          "id": "hookmaster",
+          "name": "钩索师",
+          "name_en": "Hookmaster"
+        },
+        {
+          "id": "geek",
+          "name": "怪杰",
+          "name_en": "Geek"
+        },
+        {
+          "id": "merchant",
+          "name": "行商",
+          "name_en": "Merchant"
+        },
+        {
+          "id": "traper",
+          "name": "陷阱师",
+          "name_en": "Trapmaster"
+        },
+        {
+          "id": "dollkeeper",
+          "name": "傀儡师",
+          "name_en": "Dollkeeper"
+        },
+        {
+          "id": "alchemist",
+          "name": "炼金师",
+          "name_en": "Alchemist"
+        },
+        {
+          "id": "skywalker",
+          "name": "巡空者",
+          "name_en": "Skyranger"
+        }
       ]
     }
   ]

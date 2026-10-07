@@ -98,7 +98,7 @@
         "en": "Change Visibility"
       },
       "set_action_target": {
-        "cn": "修改动作的目标",
+        "cn": "修改动作的对象",
         "en": "Change Action's Target"
       },
       "set_action_location": {
@@ -120,6 +120,46 @@
       "set_action_skill_times": {
         "cn": "修改动作的技能使用次数",
         "en": "Change Action's Skill Usage Count"
+      },
+      "set_action_rect": {
+        "cn": "修改动作的像素区域",
+        "en": "Change Action's Pixel Rect"
+      },
+      "set_action_begin": {
+        "cn": "修改动作的滑动起点",
+        "en": "Change Action's Swipe Begin Rect"
+      },
+      "set_action_end": {
+        "cn": "修改动作的滑动终点",
+        "en": "Change Action's Swipe End Rect"
+      },
+      "set_action_duration": {
+        "cn": "修改动作的滑动时长",
+        "en": "Change Action's Swipe Duration"
+      },
+      "set_action_extra_swipe": {
+        "cn": "修改动作的补偿滑动方向",
+        "en": "Change Action's Extra Swipe Direction"
+      },
+      "set_action_slope_in": {
+        "cn": "修改动作的滑动起始斜率",
+        "en": "Change Action's Swipe Start Slope"
+      },
+      "set_action_slope_out": {
+        "cn": "修改动作的滑动结束斜率",
+        "en": "Change Action's Swipe End Slope"
+      },
+      "set_action_with_pause": {
+        "cn": "修改动作的滑动暂停设置",
+        "en": "Change Action's Swipe With-Pause Setting"
+      },
+      "set_action_high_resolution_swipe_fix": {
+        "cn": "修改动作的高分辨率滑动修正设置",
+        "en": "Change Action's Hi-Res Swipe Fix Setting"
+      },
+      "set_action_keep_kills": {
+        "cn": "修改动作的保持击杀数设置",
+        "en": "Change Action's Keep-Kills Setting"
       },
       "duplicate_action": {
         "cn": "复制动作",
@@ -168,6 +208,10 @@
       "move_operator": {
         "cn": "移动干员",
         "en": "Move Operator"
+      },
+      "set_operator_role": {
+        "cn": "修改干员角色",
+        "en": "Change Operator Role"
       },
       "set_operator_level": {
         "cn": "修改干员等级",
@@ -240,8 +284,8 @@
             "en": "Stage Name"
           },
           "minimum_required": {
-            "cn": "最低要求 MAA 版本",
-            "en": "Minimum Required MAA Version"
+            "cn": "最低要求客户端版本",
+            "en": "Minimum Required Client Version"
           },
           "difficulty": {
             "cn": "难度",
@@ -285,8 +329,12 @@
               "en": "Action Type"
             },
             "name": {
-              "cn": "目标",
+              "cn": "对象",
               "en": "Target"
+            },
+            "role": {
+              "cn": "角色",
+              "en": "Role"
             },
             "location": {
               "cn": "位置",
@@ -343,6 +391,50 @@
             "doc_color": {
               "cn": "日志颜色",
               "en": "Log Color"
+            },
+            "keep_kills": {
+              "cn": "保持击杀数",
+              "en": "Keep Kills"
+            },
+            "rect": {
+              "cn": "像素区域",
+              "en": "Pixel Rect"
+            },
+            "begin": {
+              "cn": "起点区域",
+              "en": "Begin Rect"
+            },
+            "end": {
+              "cn": "终点区域",
+              "en": "End Rect"
+            },
+            "duration": {
+              "cn": "时长 (ms)",
+              "en": "Duration (ms)"
+            },
+            "extra_swipe": {
+              "cn": "补偿滑动",
+              "en": "Extra Swipe"
+            },
+            "slope_in": {
+              "cn": "起始斜率",
+              "en": "Start Slope"
+            },
+            "slope_out": {
+              "cn": "结束斜率",
+              "en": "End Slope"
+            },
+            "with_pause": {
+              "cn": "附带暂停",
+              "en": "With Pause"
+            },
+            "high_resolution_swipe_fix": {
+              "cn": "高分辨率修正",
+              "en": "Hi-Res Swipe Fix"
+            },
+            "high_resolution_swipe_fix_tip": {
+              "cn": "绝大多数情况下无需开启：该修正仅针对未使用 Unity 滑动方式的界面（现阶段仅主线关卡导航的章节滑动需要），自动战斗中的滑动不涉及",
+              "en": "In most cases there is no need to enable this: the fix only applies to screens that don't use Unity swiping (currently only the chapter swiping in main story stage navigation); swiping during auto battles is never affected"
             }
           }
         },
@@ -354,6 +446,10 @@
           "name": {
             "cn": "名称",
             "en": "Name"
+          },
+          "role": {
+            "cn": "角色",
+            "en": "Role"
           },
           "skill": {
             "cn": "技能",
@@ -395,6 +491,38 @@
         "required": {
           "cn": "必填",
           "en": "Required"
+        },
+        "role_ambiguous": {
+          "cn": "\"{{name}}\" 对应的干员不唯一，可能是 {{roles}}，请指定角色",
+          "en": "\"{{name}}\" corresponds to multiple operators, possibly {{roles}}. Please specify the role."
+        },
+        "role_fix": {
+          "cn": "点击干员 -> 选择角色",
+          "en": "Click the operator -> Select Role"
+        },
+        "role_fix_action": {
+          "cn": "重新选择干员",
+          "en": "Re-select the operator"
+        },
+        "skill_locked": {
+          "cn": "技能 {{skill}} 在精 {{elite}} 时尚未解锁",
+          "en": "Skill {{skill}} is not unlocked at Elite {{elite}}"
+        },
+        "skill_level_locked": {
+          "cn": "技能等级 {{skill_level}} 在精 {{elite}} 时尚未解锁",
+          "en": "Skill level {{skill_level}} is not unlocked at Elite {{elite}}"
+        },
+        "name_or_location_required": {
+          "cn": "对象或位置至少需要填写一项",
+          "en": "Either target or location is required"
+        },
+        "rect_or_location_required": {
+          "cn": "像素区域或位置至少需要填写一项",
+          "en": "Either rect or location is required"
+        },
+        "action_name_not_found": {
+          "cn": "\"{{name}}\" 不是已有的干员或干员组",
+          "en": "\"{{name}}\" is not an existing operator or operator group"
         }
       },
       "EditorToolbar": {
@@ -442,8 +570,8 @@
           "en": "Undo History (limit {{limit}})"
         },
         "errors_header": {
-          "cn": "错误",
-          "en": "Errors"
+          "cn": "问题",
+          "en": "Problems"
         },
         "no_errors": {
           "cn": "无错误",
@@ -557,6 +685,14 @@
           "cn": "编辑器设置",
           "en": "Editor Settings"
         },
+        "edit": {
+          "cn": "编辑",
+          "en": "Edit"
+        },
+        "ui": {
+          "cn": "界面",
+          "en": "UI"
+        },
         "show_linker_buttons": {
           "cn": "始终显示动作之间的按钮",
           "en": "Always Show Buttons Between Actions"
@@ -568,6 +704,28 @@
         "show_errors_by_default": {
           "cn": "默认显示验证错误",
           "en": "Show Validation Errors by Default"
+        },
+        "operator_presets": {
+          "cn": "干员预设",
+          "en": "Operator Presets"
+        },
+        "reset_to_default": {
+          "cn": "重置所有选项为默认值",
+          "en": "Reset all the options to default"
+        },
+        "presets_when_adding": {
+          "cn": "添加干员时使用的预设值",
+          "en": "Presets when adding an operator"
+        },
+        "rarity": {
+          "cn": {
+            "0": "{{count}}星（通常为召唤物）",
+            "other": "{{count}}星"
+          },
+          "en": {
+            "0": "{{count}}-star (usually a summon)",
+            "other": "{{count}}-star"
+          }
         },
         "history_limit": {
           "cn": "撤销记录上限",
@@ -583,28 +741,40 @@
           "cn": "编辑 JSON",
           "en": "Edit JSON"
         },
-        "auto_sync_note": {
-          "cn": "编辑后的 JSON 内容会自动同步到编辑器里",
-          "en": "Edited JSON content will automatically sync to the editor"
+        "format_json": {
+          "cn": "格式化 JSON",
+          "en": "Format JSON"
         },
-        "has_errors": {
-          "cn": "存在错误",
-          "en": "Has Errors"
+        "auto_sync": {
+          "cn": "自动同步",
+          "en": "Auto Sync"
+        },
+        "auto_sync_note": {
+          "cn": "编辑后的 JSON 会自动校验并同步到编辑器里。如果将延迟设置为 0，则会禁用自动校验和同步，仅在关闭 JSON 编辑器时才会执行。",
+          "en": "The edited JSON will be automatically validated and synchronized to the editor. If the delay is set to 0, automatic validation and synchronization will be disabled, and will only be executed when the JSON editor is being closed."
+        },
+        "auto_sync_timeout": {
+          "cn": "自动同步延迟 (毫秒)",
+          "en": "Auto Sync Delay (ms)"
+        },
+        "validation_failed": {
+          "cn": "验证未通过",
+          "en": "Validation Failed"
         },
         "validation_passed": {
           "cn": "验证通过",
           "en": "Validation Passed"
         },
         "error_count": {
-          "cn": "{{count}} 个错误",
+          "cn": "{{count}} 个问题",
           "en": {
-            "1": "{{count}} error",
-            "other": "{{count}} errors"
+            "1": "{{count}} problem",
+            "other": "{{count}} problems"
           }
         },
         "json_syntax_error": {
-          "cn": "JSON 语法错误",
-          "en": "JSON Syntax Error"
+          "cn": "JSON 语法错误：{{error}}",
+          "en": "JSON Syntax Error: {{error}}"
         },
         "unknown_error": {
           "cn": "未知错误: {{error}}",
@@ -617,6 +787,18 @@
         "unsaved_warning": {
           "cn": "未保存的修改将在关闭 JSON 编辑器后丢失，是否仍要关闭？",
           "en": "Unsaved changes will be lost after closing the JSON editor. Do you still want to close it?"
+        },
+        "submit": {
+          "cn": "提交",
+          "en": "Submit"
+        },
+        "recovery_note": {
+          "cn": "作业解析失败，无法进行编辑。请修正 JSON 后提交以恢复编辑器状态。",
+          "en": "Failed to parse operation, cannot edit. Please fix the JSON and submit to recover the editor state."
+        },
+        "recovery_submit_failed": {
+          "cn": "验证未通过，请修正后再提交",
+          "en": "Validation failed, please fix the issues before submitting"
         }
       },
       "SelectorPanel": {
@@ -649,7 +831,7 @@
           "en": "(Unnamed Group)"
         },
         "select_target": {
-          "cn": "选择目标",
+          "cn": "选择对象",
           "en": "Select Target"
         },
         "group": {
@@ -669,8 +851,16 @@
           "en": "Unknown Unit"
         },
         "target_or_location": {
-          "cn": "目标或位置只需填入其中一项",
+          "cn": "对象或位置只需填入其中一项",
           "en": "Only one of target or location is required"
+        },
+        "rect_or_location": {
+          "cn": "像素区域与位置至少填一项；同时填写时优先使用像素区域",
+          "en": "At least one of pixel rect or location is required; when both are set, the pixel rect takes precedence"
+        },
+        "disabled": {
+          "cn": "不启用",
+          "en": "Disabled"
         },
         "or": {
           "cn": "或",
@@ -693,8 +883,8 @@
           "en": "Delete"
         },
         "doc_placeholder": {
-          "cn": "MAA 执行此动作时显示的文字",
-          "en": "Text displayed when MAA executes this action"
+          "cn": "客户端执行此动作时显示的文字",
+          "en": "Text displayed when the client executes this action"
         }
       },
       "ActionLinker": {
@@ -820,9 +1010,25 @@
           "cn": "已添加到收藏",
           "en": "Added to favorites"
         },
+        "select_role": {
+          "cn": "选择角色",
+          "en": "Select Role"
+        },
+        "unset_role": {
+          "cn": "不指定",
+          "en": "Don't Specify"
+        },
         "elite": {
           "cn": "精英{{level}}",
           "en": "Elite {{level}}"
+        },
+        "level": {
+          "cn": "等级（可使用鼠标滚轮调整）",
+          "en": "Level (use mouse wheel to adjust)"
+        },
+        "level_unset": {
+          "cn": "未设置等级",
+          "en": "Level not set"
         },
         "module": {
           "cn": "模组",
@@ -839,6 +1045,10 @@
             "0": "Switch to Original Module",
             "other": "Switch to {{name}} Module"
           }
+        },
+        "selected_skill": {
+          "cn": "{{skill}}（可使用鼠标滚轮调整等级）",
+          "en": "{{skill}} (use mouse wheel to adjust level)"
         },
         "skill_not_available": {
           "cn": "当前等级未解锁该技能",
@@ -1187,6 +1397,34 @@
             "cn": "移动距离一般不需要修改，只填写前置延迟（15000）和击杀数条件即可",
             "en": "Movement distance usually doesn't need modification, just fill in pre-delay (15000) and Kill Count conditions"
           },
+          "keep_kills": {
+            "cn": "保持击杀数",
+            "en": "Keep kills"
+          },
+          "click_hint": {
+            "cn": "直接点击像素区域或战场格子，不做任何识别，空格子也可点击；两者至少填一项，同时填写时优先使用像素区域",
+            "en": "Directly click a pixel rect or a battlefield tile without any recognition; empty tiles are clickable too. At least one of them is required; when both are set, the pixel rect takes precedence"
+          },
+          "swipe_hint": {
+            "cn": "从起点矩形滑动到终点矩形（720p 基准像素，起点/终点在各自区域内随机取点并自动缩放适配分辨率），其余参数可选",
+            "en": "Swipe from the begin rect to the end rect (720p-based pixels; the begin/end points are picked randomly inside each rect and scaled to the actual resolution). All other parameters are optional"
+          },
+          "set_unit_location_hint": {
+            "cn": "设置战场单位（干员/装置）的格子坐标，用于位移后修正位置或登记装置位置；名称与位置均为必填",
+            "en": "Set the tile location of a battlefield unit (operator or device), to correct its position after displacement or register a device. Both name and location are required"
+          },
+          "pixel_rect": {
+            "cn": "像素区域",
+            "en": "Pixel Rect"
+          },
+          "swipe_begin": {
+            "cn": "起点区域",
+            "en": "Begin Rect"
+          },
+          "swipe_end": {
+            "cn": "终点区域",
+            "en": "End Rect"
+          },
           "execution_conditions": {
             "cn": "执行条件",
             "en": "Execution Conditions"
@@ -1222,6 +1460,66 @@
             "en": "Post-Delay"
           }
         },
+        "EditorActionRect": {
+          "rect_required": {
+            "cn": "必须填写像素矩形",
+            "en": "Pixel rect is required"
+          },
+          "not_valid_rect": {
+            "cn": "像素矩形不合法",
+            "en": "Not a valid pixel rect"
+          },
+          "x": {
+            "cn": "X",
+            "en": "X"
+          },
+          "y": {
+            "cn": "Y",
+            "en": "Y"
+          },
+          "w": {
+            "cn": "宽",
+            "en": "W"
+          },
+          "h": {
+            "cn": "高",
+            "en": "H"
+          }
+        },
+        "EditorActionSwipeParams": {
+          "duration": {
+            "cn": "时长 (ms)",
+            "en": "Duration (ms)"
+          },
+          "extra_swipe": {
+            "cn": "补偿滑动",
+            "en": "Extra Swipe"
+          },
+          "extra_swipe_disabled": {
+            "cn": "不启用",
+            "en": "Disabled"
+          },
+          "slope_in": {
+            "cn": "起始斜率",
+            "en": "Start Slope"
+          },
+          "slope_out": {
+            "cn": "结束斜率",
+            "en": "End Slope"
+          },
+          "with_pause": {
+            "cn": "附带暂停",
+            "en": "With Pause"
+          },
+          "high_resolution_swipe_fix": {
+            "cn": "高分辨率修正",
+            "en": "Hi-Res Swipe Fix"
+          },
+          "high_resolution_swipe_fix_tip": {
+            "cn": "绝大多数情况下无需开启：该修正仅针对未使用 Unity 滑动方式的界面（现阶段仅主线关卡导航的章节滑动需要），自动战斗中的滑动不涉及",
+            "en": "In most cases there is no need to enable this: the fix only applies to screens that don't use Unity swiping (currently only the chapter swiping in main story stage navigation); swiping during auto battles is never affected"
+          }
+        },
         "EditorActionDistance": {
           "distance_required": {
             "cn": "必须填写移动距离",
@@ -1250,8 +1548,8 @@
             "en": "Description Color"
           },
           "color_description": {
-            "cn": "在 MAA 中打印描述时的颜色",
-            "en": "Color used when printing descriptions in MAA"
+            "cn": "在客户端中打印描述时的颜色",
+            "en": "Color used when printing descriptions in the client"
           }
         },
         "EditorActionExecPredicate": {
@@ -1380,6 +1678,10 @@
           "name_or_location_required": {
             "cn": "类型为技能、撤退或子弹时间时，必须填写名称或位置其中一个",
             "en": "When type is Skill, Retreat, or BulletTime, you must provide either a name or location"
+          },
+          "rect_or_location_required": {
+            "cn": "类型为点击时，像素区域与位置至少需要填写其中一个",
+            "en": "When type is Click, you must provide either a pixel rect or a location"
           }
         }
       },
@@ -1683,8 +1985,8 @@
               "en": "Confirm"
             },
             "default_settings_tooltip": {
-              "cn": "若不进行任何设置, 将使用默认值 (一技能 · 不自动使用 · 技能使用次数: 1次)",
-              "en": "If no settings are applied, default values will be used (Skill 1 · Don't use automatically · Usage count: 1)"
+              "cn": "若不进行任何设置, 将使用默认值 (不指定技能 · 不自动使用 · 技能使用次数: 1次)",
+              "en": "If no settings are applied, default values will be used (Unspecified Skill · Don't use automatically · Usage count: 1)"
             },
             "not_set": {
               "cn": "未设置技能",
@@ -1741,12 +2043,14 @@
         "EditorOperatorItem": {
           "skill_number": {
             "cn": {
+              "0": "不指定技能",
               "1": "一技能",
               "2": "二技能",
               "3": "三技能",
               "other": "未知技能"
             },
             "en": {
+              "0": "Unspecified Skill",
               "1": "S1",
               "2": "S2",
               "3": "S3",
@@ -1847,12 +2151,14 @@
         "EditorOperatorSkill": {
           "skill_number": {
             "cn": {
+              "0": "不指定技能",
               "1": "一技能",
               "2": "二技能",
               "3": "三技能",
               "other": "未知技能"
             },
             "en": {
+              "0": "Unspecified Skill",
               "1": "Skill 1",
               "2": "Skill 2",
               "3": "Skill 3",
@@ -2498,9 +2804,13 @@
           "cn": "描述",
           "en": "Description"
         },
-        "visible_to_all": {
-          "cn": "对所有人可见",
-          "en": "Visible to everyone"
+        "for_personal_use": {
+          "cn": "仅对自己可见（自用）",
+          "en": "For Personal Use"
+        },
+        "personal_use_warning": {
+          "cn": "自用作业集请勾选「仅对自己可见（自用）」哦",
+          "en": "Personal use job sets should be marked as 'For Personal Use'"
         },
         "click_save": {
           "cn": "修改后请点击保存按钮",
@@ -2545,6 +2855,14 @@
         "reverse_list": {
           "cn": "反转列表",
           "en": "Reverse List"
+        },
+        "private_usage_warning": {
+          "cn": "自用作业集请勾选「自用」哦",
+          "en": "Personal use job sets should be marked as 'For Personal Use'"
+        },
+        "private_usage_public_warning": {
+          "cn": "标题含有「自用」关键字且勾选了公开，请取消勾选公开再次提交",
+          "en": "Title contains 'personal use' keyword and is marked as public, please uncheck public and submit again"
         }
       }
     },
@@ -2822,7 +3140,7 @@
           "cn": "刷新作业集失败：{{error}}",
           "en": "Failed to refresh Job set: {{error}}"
         },
-        "maa_copilot_task_set": {
+        "task_set": {
           "cn": "PRTS Plus 作业集",
           "en": "PRTS Plus Job Set"
         },
@@ -2849,6 +3167,25 @@
         "author": {
           "cn": "作者",
           "en": "Author"
+        },
+        "operators_and_groups": {
+          "cn": "所需干员与干员组",
+          "en": "Required Operators and Groups"
+        },
+        "no_explicit_operators": {
+          "cn": "无所需干员与干员组",
+          "en": "No required operators or operator groups"
+        },
+        "operations_over_limit": {
+          "cn": "作业数量过多，请自行核对所需干员。",
+          "en": "There are too many operations; please check the required operators yourself."
+        },
+        "operations_incomplete": {
+          "cn": "{{count}} 个作业无法读取，所需干员汇总可能不完整。",
+          "en": {
+            "1": "{{count}} operation could not be read, so the required operator summary may be incomplete.",
+            "other": "{{count}} operations could not be read, so the required operator summary may be incomplete."
+          }
         },
         "render_preview_problem": {
           "cn": "渲染此作业集的预览时出现了问题 Σ(っ °Д °;)っ",
@@ -2928,7 +3265,7 @@
           "cn": "提交评分失败：{{error}}",
           "en": "Failed to submit rating: {{error}}"
         },
-        "maa_copilot_task": {
+        "task": {
           "cn": "PRTS Plus 作业",
           "en": "PRTS Plus Job"
         },
@@ -3008,10 +3345,6 @@
           "cn": "干员与干员组",
           "en": "Operators and Operator Groups"
         },
-        "operators_and_groups_note": {
-          "cn": "{{operators(干员)}}\n作业必需的干员。\n干员练度（等级、模组）仅供参考，MAA 的自动编队仅支持技能选择，其余信息暂未支持。\n\n{{groups(干员组)}}\n一系列可替换干员的编组。\n组内干员可以任选其一，MAA 自动编队时按最高练度来选择。",
-          "en": "{{operators(Operators)}}\nOperators required for this Job. \nThe requirements (level and module) are for reference only. MAA's auto-formation only supports skill selection, and other information is not yet supported.\n\n{{groups(Operator Groups)}}\nGroups of interchangeable operators. \nYou can choose any operator in a group. MAA's auto-formation selects the one with the highest level."
-        },
         "no_operators": {
           "cn": "暂无干员",
           "en": "No Operators"
@@ -3042,6 +3375,10 @@
           "cn": "动作序列",
           "en": "Action Sequence"
         },
+        "coordinate_hint": {
+          "cn": "坐标可在地图站（<a href=\"https://map.ark-nights.com/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline\">PRTS.Map</a>）中查看，需在设置中将坐标展示改为客户端体系",
+          "en": "Coordinates can be viewed on <a href=\"https://map.ark-nights.com/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-blue-500 hover:underline\">PRTS.Map</a>; change coordinate display to client system in settings"
+        },
         "no_actions": {
           "cn": "暂无动作",
           "en": "No Actions"
@@ -3049,6 +3386,48 @@
         "no_actions_defined": {
           "cn": "作业并未定义任何动作",
           "en": "No actions have been defined for this Job"
+        },
+        "grid_mode": {
+          "cn": "链式视图",
+          "en": "Chain"
+        },
+        "grid_on": {
+          "cn": "开",
+          "en": "On"
+        },
+        "grid_off": {
+          "cn": "关",
+          "en": "Off"
+        },
+        "type_video": {
+          "cn": "视频",
+          "en": "Video"
+        },
+        "video_guide": {
+          "cn": "攻略视频",
+          "en": "Video Guide"
+        },
+        "watch_video": {
+          "cn": "观看视频",
+          "en": "Watch Video"
+        },
+        "no_video": {
+          "cn": "暂无视频链接",
+          "en": "No Video Link"
+        },
+        "type_prts": {
+          "cn": "PRTS",
+          "en": "PRTS"
+        }
+      },
+      "OperatorsAndGroupsHelpNote": {
+        "note": {
+          "cn": "{{operators(干员)}}\n作业必需的干员。\n干员练度（等级、模组）仅供参考，客户端的自动编队仅支持技能选择，其余信息暂未支持。\n\n{{groups(干员组)}}\n一系列可替换干员的编组。\n组内干员可以任选其一，客户端自动编队时按最高练度来选择。",
+          "en": "{{operators(Operators)}}\nOperators required for this Job. \nThe requirements (level and module) are for reference only. The client's auto-formation only supports skill selection, and other information is not yet supported.\n\n{{groups(Operator Groups)}}\nGroups of interchangeable operators. \nYou can choose any operator in a group. The client's auto-formation selects the one with the highest level."
+        },
+        "toggle_label": {
+          "cn": "干员与干员组说明",
+          "en": "Help for operators and operator groups"
         }
       }
     },
@@ -3081,7 +3460,7 @@
         "cn": "修改信息...",
         "en": "Edit Information"
       },
-      "maa_account": {
+      "account": {
         "cn": "PRTS Plus 账户",
         "en": "PRTS Plus Account"
       },
@@ -3102,6 +3481,18 @@
       "coordinates": {
         "cn": "坐标",
         "en": "Coordinates"
+      },
+      "rect": {
+        "cn": "像素区域",
+        "en": "Pixel Rect"
+      },
+      "swipe_range": {
+        "cn": "滑动范围",
+        "en": "Swipe Range"
+      },
+      "keep_kills": {
+        "cn": "保持击杀数",
+        "en": "Keep Kills"
       },
       "direction": {
         "cn": "朝向",
@@ -3204,6 +3595,14 @@
       "add_to_job_set": {
         "cn": "添加到作业集",
         "en": "Add to Job Set"
+      },
+      "type_video": {
+        "cn": "视频",
+        "en": "Video"
+      },
+      "type_prts": {
+        "cn": "PRTS",
+        "en": "PRTS"
       }
     },
     "OperationList": {
@@ -3276,6 +3675,18 @@
       "views": {
         "cn": "访问量",
         "en": "Views"
+      },
+      "type_all": {
+        "cn": "全部",
+        "en": "All"
+      },
+      "type_prts": {
+        "cn": "PRTS",
+        "en": "PRTS"
+      },
+      "type_video": {
+        "cn": "视频",
+        "en": "Videos"
       }
     },
     "OperationSetCard": {
@@ -3348,6 +3759,104 @@
         "en": "Remember Selection"
       }
     },
+    "OperatorMatcher": {
+      "match_operators": {
+        "cn": "干员匹配设置",
+        "en": "Operator Match Settings"
+      },
+      "dialog_title": {
+        "cn": "干员匹配设置",
+        "en": "Operator Match Settings"
+      },
+      "token_help": {
+        "cn": "Token 会保存到当前浏览器的本地存储，仅用于直接向{{yituliu}}请求干员数据，不会发送至作业站。",
+        "en": "The token is stored in this browser and used only for direct operator-data requests to {{yituliu}}. It is not sent to PRTS Plus."
+      },
+      "token_placeholder": {
+        "cn": "输入一图流第三方 API Token",
+        "en": "Enter your Yituliu OpenAPI token"
+      },
+      "token_required": {
+        "cn": "请输入 Token",
+        "en": "Enter a token first"
+      },
+      "import_local": {
+        "cn": "本地导入 JSON",
+        "en": "Import local JSON"
+      },
+      "local_import_help": {
+        "cn": "如不想使用 Token 拉取，也可以使用 MAA 导出干员的 JSON 数据。",
+        "en": "If you prefer not to fetch with a token, you can also use the operator JSON data exported from MAA."
+      },
+      "invalid_file": {
+        "cn": "JSON 文件格式不正确，无法解析出干员数据。",
+        "en": "The JSON file is invalid and no operator data could be parsed."
+      },
+      "fetch_failed": {
+        "cn": "获取干员数据失败",
+        "en": "Failed to fetch operator data"
+      },
+      "no_operators": {
+        "cn": "未读取到可用于匹配的干员数据",
+        "en": "No usable operator data was returned"
+      },
+      "imported": {
+        "cn": "已导入 {{count}} 名干员",
+        "en": "Imported {{count}} operators"
+      },
+      "imported_count": {
+        "cn": "已导入{{count}}名干员数据",
+        "en": "Imported data for {{count}} operators"
+      },
+      "ready": {
+        "cn": "可以直接打",
+        "en": "Ready"
+      },
+      "borrow": {
+        "cn": "需要借干员",
+        "en": "Borrow"
+      },
+      "train": {
+        "cn": "需要提升练度",
+        "en": "Train"
+      },
+      "blocked": {
+        "cn": "干员不满足要求",
+        "en": "Blocked"
+      },
+      "enabled": {
+        "cn": "启用干员匹配",
+        "en": "Enable operator matching"
+      },
+      "clear": {
+        "cn": "清除本地数据",
+        "en": "Clear local data"
+      },
+      "clear_title": {
+        "cn": "清除干员匹配数据？",
+        "en": "Clear operator matching data?"
+      },
+      "clear_message": {
+        "cn": "这将删除本地保存的 Token、干员数据和匹配设置。",
+        "en": "This will delete the locally saved token, operator data, and matching settings."
+      },
+      "clear_confirm": {
+        "cn": "清除",
+        "en": "Clear"
+      },
+      "sync": {
+        "cn": "同步干员数据",
+        "en": "Sync operator data"
+      },
+      "stale_reminder": {
+        "cn": "干员数据超过 33 天未变动，建议确认一图流数据是否为最新。",
+        "en": "Operator data has not changed in over 33 days. Confirm that it is up to date in Yituliu."
+      },
+      "import": {
+        "cn": "导入",
+        "en": "Import"
+      }
+    },
     "OperatorSelect": {
       "no_matching_operators": {
         "cn": "没有匹配的干员",
@@ -3370,6 +3879,20 @@
       "retry": {
         "cn": "重试",
         "en": "Retry"
+      }
+    },
+    "ThemeSwitchButton": {
+      "light": {
+        "cn": "浅色模式",
+        "en": "Light Mode"
+      },
+      "dark": {
+        "cn": "深色模式",
+        "en": "Dark Mode"
+      },
+      "highContrast": {
+        "cn": "深色模式 (高对比)",
+        "en": "Dark Mode (High Contrast)"
       }
     },
     "UserFilter": {
@@ -3401,9 +3924,103 @@
         "cn": "查看我自己的作业",
         "en": "View my own Jobs"
       },
+      "only_following": {
+        "cn": "只看关注",
+        "en": "Only following"
+      },
       "view_mine": {
         "cn": "看看我的",
         "en": "View personal"
+      }
+    },
+    "UserProfile": {
+      "follow": {
+        "cn": "关注",
+        "en": "Follow"
+      },
+      "following": {
+        "cn": "已关注",
+        "en": "Following"
+      },
+      "mutual": {
+        "cn": "互相关注",
+        "en": "Mutual"
+      },
+      "followBack": {
+        "cn": "回关",
+        "en": "Follow Back"
+      },
+      "unfollowSuccess": {
+        "cn": "已取消关注",
+        "en": "Unfollowed"
+      },
+      "followSuccess": {
+        "cn": "关注成功",
+        "en": "Followed successfully"
+      },
+      "notActivated": {
+        "cn": "未激活",
+        "en": "Not activated"
+      },
+      "loginToFollow": {
+        "cn": "登录后可关注用户",
+        "en": "Login to follow users"
+      },
+      "loading": {
+        "cn": "加载中...",
+        "en": "Loading..."
+      },
+      "loadFailed": {
+        "cn": "加载失败",
+        "en": "Failed to load profile"
+      }
+    },
+    "UserStats": {
+      "following": {
+        "cn": "关注",
+        "en": "Following"
+      },
+      "fans": {
+        "cn": "粉丝",
+        "en": "Fans"
+      },
+      "operations": {
+        "cn": "作业",
+        "en": "Jobs"
+      }
+    },
+    "CopilotTypePicker": {
+      "type_label": {
+        "cn": "作业类型",
+        "en": "Job Type"
+      },
+      "type_prts": {
+        "cn": "动作序列",
+        "en": "Action Sequence"
+      },
+      "type_video": {
+        "cn": "攻略视频",
+        "en": "Video Guide"
+      },
+      "immutable_hint": {
+        "cn": "类型创建后不可更改，切换会清除对应的动作序列 / 视频链接。",
+        "en": "Type cannot be changed after creation. Switching will clear the corresponding action sequence / video link."
+      },
+      "immutable_locked": {
+        "cn": "类型创建后不可更改。",
+        "en": "Type cannot be changed after creation."
+      },
+      "video_url": {
+        "cn": "视频链接",
+        "en": "Video URL"
+      },
+      "video_url_placeholder": {
+        "cn": "如 https://www.bilibili.com/video/...",
+        "en": "e.g. https://www.bilibili.com/video/..."
+      },
+      "video_url_helper": {
+        "cn": "玩家可通过此链接观看攻略视频。",
+        "en": "Players can watch the guide via this link."
       }
     }
   },
@@ -3439,14 +4056,20 @@
         "cn": "干员组",
         "en": "Operator Group"
       },
+      "unnamed_group": {
+        "cn": "未命名分组",
+        "en": "Unnamed Group"
+      },
       "skill_number": {
         "cn": {
+          "0": "不指定技能",
           "1": "一技能",
           "2": "二技能",
           "3": "三技能",
           "other": "未知技能"
         },
         "en": {
+          "0": "Unspecified Skill",
           "1": "S1",
           "2": "S2",
           "3": "S3",
@@ -3456,6 +4079,52 @@
       "elite": {
         "cn": "精英{{level}}",
         "en": "Elite {{level}}"
+      },
+      "role": {
+        "Unknown": {
+          "cn": "未知",
+          "en": "Unknown"
+        },
+        "Pioneer": {
+          "cn": "先锋",
+          "en": "Pioneer"
+        },
+        "Warrior": {
+          "cn": "近卫",
+          "en": "Warrior"
+        },
+        "Tank": {
+          "cn": "重装",
+          "en": "Tank"
+        },
+        "Sniper": {
+          "cn": "狙击",
+          "en": "Sniper"
+        },
+        "Caster": {
+          "cn": "术士",
+          "en": "Caster"
+        },
+        "Medic": {
+          "cn": "医疗",
+          "en": "Medic"
+        },
+        "Support": {
+          "cn": "辅助",
+          "en": "Support"
+        },
+        "Special": {
+          "cn": "特种",
+          "en": "Special"
+        },
+        "Token": {
+          "cn": "召唤物",
+          "en": "Summon (Token)"
+        },
+        "Trap": {
+          "cn": "装置",
+          "en": "Device (Trap)"
+        }
       },
       "skill_usage": {
         "none": {
@@ -3468,8 +4137,8 @@
             "en": "Manual Activation"
           },
           "description": {
-            "cn": "不由 MAA 自动开启技能、或干员技能并不需要操作开启（自动触发）。若需要手动开启技能，请添加「使用技能」动作",
-            "en": "Skills won't be activated automatically by MAA, or for operators whose skills don't need manual activation (auto-trigger). If you need to manually activate a skill, add a 'Use Skill' action"
+            "cn": "不由客户端自动开启技能、或干员技能并不需要操作开启（自动触发）。若需要手动开启技能，请添加「使用技能」动作",
+            "en": "Skills won't be activated automatically by the client, or for operators whose skills don't need manual activation (auto-trigger). If you need to manually activate a skill, add a 'Use Skill' action"
           }
         },
         "ready_to_use": {
@@ -3765,6 +4434,48 @@
             "en": "Only used for switching areas in Integrated Strategies mode"
           }
         },
+        "click": {
+          "title": {
+            "cn": "点击",
+            "en": "Click"
+          },
+          "short_title": {
+            "cn": "点击",
+            "en": "Click"
+          },
+          "description": {
+            "cn": "直接点击像素区域或战场格子，不做任何识别，空格子也可点击；两者至少填一项，同时填写时优先使用像素区域",
+            "en": "Directly click a pixel rect or a battlefield tile without any recognition; empty tiles are clickable too. At least one of rect and location is required; when both are set, the rect takes precedence"
+          }
+        },
+        "swipe": {
+          "title": {
+            "cn": "滑动",
+            "en": "Swipe"
+          },
+          "short_title": {
+            "cn": "滑动",
+            "en": "Swipe"
+          },
+          "description": {
+            "cn": "从起点矩形滑动到终点矩形，直接下发底层滑动指令，可配置时长、补偿滑动、斜率等参数",
+            "en": "Swipe from the begin rect to the end rect, sending the raw controller swipe command, with optional duration, extra swipe, slopes and more"
+          }
+        },
+        "set_unit_location": {
+          "title": {
+            "cn": "设置单位坐标",
+            "en": "Set Unit Location"
+          },
+          "short_title": {
+            "cn": "设置坐标",
+            "en": "Set Loc"
+          },
+          "description": {
+            "cn": "设置战场单位（干员/装置）的位置，用于位移后修正或装置登记",
+            "en": "Set the position of a battlefield unit (operator or device), for correcting displacement or registering devices"
+          }
+        },
         "skill_daemon": {
           "title": {
             "cn": "开始挂机",
@@ -3815,8 +4526,8 @@
             "en": "Pre-Delay"
           },
           "description": {
-            "cn": "延迟一定时间后，开始检查其他条件。注意：这里的含义和旧版编辑器以及 MAA 作业协议里的前置延迟是相反的",
-            "en": "Delay for a certain time before checking other conditions. Note: The meaning here is opposite to the pre-delay in the old editor and MAA Job Protocol."
+            "cn": "延迟一定时间后，开始检查其他条件。注意：这里的含义和旧版编辑器以及作业协议里的前置延迟是相反的",
+            "en": "Delay for a certain time before checking other conditions. Note: The meaning here is opposite to the pre-delay in the old editor and the Job Protocol."
           }
         },
         "intermediate_post_delay": {
@@ -3825,8 +4536,8 @@
             "en": "Post-Delay"
           },
           "description": {
-            "cn": "所有条件全部满足后，延迟一定时间。注意：这里的含义和旧版编辑器以及 MAA 作业协议里的后置延迟是相反的",
-            "en": "Delay for a certain time after all conditions are met. Note: The meaning here is opposite to the post-delay in the old editor and MAA Job Protocol."
+            "cn": "所有条件全部满足后，延迟一定时间。注意：这里的含义和旧版编辑器以及作业协议里的后置延迟是相反的",
+            "en": "Delay for a certain time after all conditions are met. Note: The meaning here is opposite to the post-delay in the old editor and the Job Protocol."
           }
         },
         "costs": {
@@ -3955,6 +4666,18 @@
       "private_task_description": {
         "cn": "私有作业：其他人无法在列表中看见，但可以通过神秘代码访问",
         "en": "Private Job: Others won't see it in lists, but can be accessed via secret code"
+      },
+      "video_url_required": {
+        "cn": "请填写视频链接",
+        "en": "Please fill in the video link"
+      },
+      "switch_to_video_warning": {
+        "cn": "切换为攻略视频将清除已添加的动作序列，确定继续吗？",
+        "en": "Switching to Video Guide will clear the added action sequence. Continue?"
+      },
+      "switch_to_prts_warning": {
+        "cn": "切换为动作序列将清除视频链接，确定继续吗？",
+        "en": "Switching to Action Sequence will clear the video link. Continue?"
       }
     },
     "editor": {
@@ -3993,6 +4716,10 @@
       "validation_error": {
         "cn": "作业内容存在错误，请检查",
         "en": "Job content has errors, please check"
+      },
+      "video_url_required": {
+        "cn": "请填写视频链接",
+        "en": "Please fill in the video link"
       }
     },
     "about": {
@@ -4008,13 +4735,59 @@
         "cn": "更新日志",
         "en": "Changelog"
       }
+    },
+    "following": {
+      "title": {
+        "cn": "关注列表",
+        "en": "Following"
+      },
+      "empty_title": {
+        "cn": "暂无关注",
+        "en": "No Following"
+      },
+      "empty_description": {
+        "cn": "还没有关注任何用户",
+        "en": "No users followed yet"
+      }
+    },
+    "fans": {
+      "title": {
+        "cn": "粉丝列表",
+        "en": "Fans"
+      },
+      "empty_title": {
+        "cn": "暂无粉丝",
+        "en": "No Fans"
+      },
+      "empty_description": {
+        "cn": "还没有粉丝",
+        "en": "No fans yet"
+      }
+    },
+    "followCommon": {
+      "no_more": {
+        "cn": "没有更多了",
+        "en": "No more"
+      },
+      "load_more": {
+        "cn": "加载更多",
+        "en": "Load more"
+      },
+      "error_title": {
+        "cn": "加载失败",
+        "en": "Failed to load"
+      },
+      "error_description": {
+        "cn": "无法获取列表，请稍后重试",
+        "en": "Could not fetch the list. Please try again later."
+      }
     }
   },
   "services": {
     "operation": {
       "json_downloaded": {
-        "cn": "已下载作业 JSON 文件，前往 MAA 选择即可使用~",
-        "en": "Job JSON file downloaded, go to MAA to use it~"
+        "cn": "已下载作业 JSON 文件，导入客户端即可使用~",
+        "en": "Job JSON file downloaded, import it into the client to use it~"
       },
       "json_download_failed": {
         "cn": "JSON下载失败：{{error}}",
@@ -4025,8 +4798,8 @@
         "en": "JSON data error, please contact the developer"
       },
       "shortcode_copied": {
-        "cn": "已复制神秘代码，前往 MAA 粘贴即可使用~",
-        "en": "Secret code copied, paste it in MAA to use it~"
+        "cn": "已复制神秘代码~",
+        "en": "Secret code copied~"
       },
       "shortcode_copy_failed": {
         "cn": "复制神秘代码失败：{{error}}",
@@ -4065,7 +4838,7 @@
         "en": "Request error"
       }
     },
-    "maa_copilot_client": {
+    "api_client": {
       "invalid_response": {
         "cn": "返回值无效",
         "en": "Invalid response"
@@ -4097,17 +4870,21 @@
       "cn": "关于",
       "en": "About"
     },
-    "official_site": {
-      "cn": "MAA 官网",
-      "en": "MAA Official Site"
+    "map_site": {
+      "cn": "明日方舟地图站",
+      "en": "Arknights PRTS.Map"
+    },
+    "theresa_site": {
+      "cn": "特蕾西娅",
+      "en": "Theresa"
+    },
+    "yituliu_site": {
+      "cn": "明日方舟一图流",
+      "en": "Yituliu"
     },
     "feedback": {
       "cn": "意见与反馈",
       "en": "Feedback"
-    },
-    "maa_repo": {
-      "cn": "MAA GitHub Repo",
-      "en": "MAA GitHub Repo"
     },
     "frontend_repo": {
       "cn": "前端 GitHub Repo",
@@ -4121,9 +4898,9 @@
       "cn": "作业制作者交流群：{{groupNumber}}",
       "en": "Creator Community Group: {{groupNumber}}"
     },
-    "sharing_group": {
-      "cn": "作业分享群",
-      "en": "Job Sharing Group"
+    "friendly_links": {
+      "cn": "友情链接",
+      "en": "Friendly Links"
     }
   }
 }

@@ -5,8 +5,9 @@ import { FC, useState } from 'react'
 import { useController, useForm } from 'react-hook-form'
 
 import { useTranslation } from '../../../i18n/i18n'
-import { parseShortCode } from '../../../models/shortCode'
+import { parseShortCode, useNewShortCodeProtocol } from '../../../models/shortCode'
 import { formatError } from '../../../utils/error'
+import { snakeCaseKeysUnicode } from '../../../utils/object'
 import { FormField2 } from '../../FormField'
 
 interface ShortCodeForm {
@@ -43,29 +44,19 @@ export const ShortCodeImporter: FC<{
 
       const shortCodeContent = parseShortCode(code)
 
-      if (!shortCodeContent) {
-        throw new Error(
-          t.components.editor.source.ShortCodeImporter.invalid_shortcode,
-        )
+      // 导入只处理作业：拒绝作业集代码（prts://s），兼容旧 maa:// 与 prts://
+      if (!shortCodeContent || shortCodeContent.type === 'operation-set') {
+        throw new Error(t.components.editor.source.ShortCodeImporter.invalid_shortcode)
       }
 
       const { id } = shortCodeContent
-      const operationContent = (await getOperation({ id })).parsedContent
+      const operationContentCamelcased = (await getOperation({ id })).parsedContent
 
-      if (
-        operationContent.doc.title ===
-        t.models.converter.invalid_operation_content
-      ) {
-        throw new Error(
-          t.components.editor.source.ShortCodeImporter.cannot_parse_content,
-        )
+      if (operationContentCamelcased.doc.title === t.models.converter.invalid_operation_content) {
+        throw new Error(t.components.editor.source.ShortCodeImporter.cannot_parse_content)
       }
 
-      // deal with race condition
-      if (!dialogOpen) {
-        return
-      }
-
+      const operationContent = snakeCaseKeysUnicode(operationContentCamelcased as any, { deep: true })
       const prettifiedJson = JSON.stringify(operationContent, null, 2)
 
       onImport(prettifiedJson)
@@ -73,9 +64,7 @@ export const ShortCodeImporter: FC<{
     } catch (e) {
       console.warn(e)
       setError('code', {
-        message:
-          t.components.editor.source.ShortCodeImporter.load_failed +
-          formatError(e),
+        message: t.components.editor.source.ShortCodeImporter.load_failed + formatError(e),
       })
     } finally {
       setPending(false)
@@ -93,9 +82,7 @@ export const ShortCodeImporter: FC<{
       <Dialog
         className="w-full max-w-xl"
         isOpen={dialogOpen}
-        title={
-          t.components.editor.source.ShortCodeImporter.import_shortcode_title
-        }
+        title={t.components.editor.source.ShortCodeImporter.import_shortcode_title}
         icon="backlink"
         onClose={() => {
           setPending(false)
@@ -106,27 +93,18 @@ export const ShortCodeImporter: FC<{
           <FormField2
             field="code"
             label={t.components.editor.source.ShortCodeImporter.shortcode_label}
-            description={
-              t.components.editor.source.ShortCodeImporter.shortcode_description
-            }
+            description={t.components.editor.source.ShortCodeImporter.shortcode_description}
             error={errors.code}
           >
             <InputGroup
               large
-              placeholder="maa://..."
+              placeholder={useNewShortCodeProtocol() ? 'prts://...' : 'maa://...'}
               value={value || ''}
               onChange={onChange}
             />
           </FormField2>
 
-          <Button
-            disabled={!isValid && !isDirty}
-            intent="primary"
-            loading={pending}
-            type="submit"
-            icon="import"
-            large
-          >
+          <Button disabled={!isValid && !isDirty} intent="primary" loading={pending} type="submit" icon="import" large>
             {t.components.editor.source.ShortCodeImporter.import_button}
           </Button>
         </form>
