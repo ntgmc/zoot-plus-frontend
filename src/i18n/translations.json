@@ -4587,8 +4587,8 @@
     "recommendations": {
       "title": { "cn": "干员养成推荐", "en": "Operator training" },
       "intro": {
-        "cn": "根据公开自动作业，查看值得培养的干员、常用练度和适用关卡。",
-        "en": "Find operators to train, common requirements, and supported stages from public automatic operations."
+        "cn": "参考公开自动作业，查看日常养成、常驻补课和指定关卡的练度需求。",
+        "en": "Use public automatic operations to plan everyday training, catch up on permanent stages, or prepare for a specific stage."
       },
       "note": {
         "cn": "练度取自作业要求，模组建议显示类型。",
@@ -4598,16 +4598,35 @@
       "scope": { "cn": "推荐用途", "en": "Use case" },
       "scopes": {
         "RECENT": { "cn": "近期通用", "en": "Current use" },
-        "PERMANENT": { "cn": "常驻关卡", "en": "Permanent stages" },
-        "HISTORY": { "cn": "历史参考", "en": "Historical reference" }
+        "PERMANENT": { "cn": "常驻补课", "en": "Permanent stages" },
+        "HISTORY": { "cn": "长期参考", "en": "Long-term reference" }
       },
-      "days": { "cn": "作业时间范围", "en": "Publication window" },
+      "scope_help": {
+        "RECENT": {
+          "cn": "优先查看近期有可靠打法支持的干员，也参考常驻关卡的长期需求。",
+          "en": "Focus on operators with recent reliable strategies, with permanent-stage needs as context."
+        },
+        "PERMANENT": {
+          "cn": "参考主线、资源收集和剿灭的养成需求，保留较早的可靠作业。",
+          "en": "Find training needs for story, supply, and annihilation stages, including older reliable operations."
+        },
+        "HISTORY": {
+          "cn": "参考当前收录的长期需求；已结束活动可在更多条件中开启。",
+          "en": "Explore older needs in the current data. Enable closed content in More options to include past events."
+        }
+      },
+      "more_options": { "cn": "更多条件", "en": "More options" },
+      "days": { "cn": "近期需求范围", "en": "Recent demand window" },
       "day_count": { "cn": "近 {{count}} 天", "en": "Last {{count}} days" },
-      "all_time": { "cn": "全部时间", "en": "All time" },
+      "all_time": { "cn": "不限近期窗口", "en": "Any age" },
       "coverage": { "cn": "培养目标", "en": "Training target" },
       "basic": { "cn": "基础参考", "en": "Basic" },
       "practical": { "cn": "实用推荐", "en": "Practical" },
       "extensive": { "cn": "高覆盖", "en": "Broad coverage" },
+      "target_help": {
+        "cn": "培养目标参考作业中已注明的练度。近期需求包括新打法和近期获得好评的旧打法。",
+        "en": "Targets use the training requirements specified in operations. Recent demand includes new strategies and older ones with recent positive feedback."
+      },
       "category": { "cn": "关卡类型", "en": "Stage category" },
       "activity": { "cn": "活动或章节", "en": "Event or chapter" },
       "stage": { "cn": "指定关卡", "en": "Stage" },
@@ -4642,8 +4661,8 @@
       "target_count": { "cn": "{{count}} 种配置", "en": "{{count}} targets" },
       "empty": { "cn": "当前条件下没有推荐", "en": "No recommendations match these filters" },
       "empty_help": {
-        "cn": "可以扩大时间范围、选择历史参考，或包含待观察干员。",
-        "en": "Try a wider time window, historical reference, or operators with limited evidence."
+        "cn": "可以选择具体活动或关卡，或在更多条件中扩大近期范围、包含待观察干员。",
+        "en": "Try a specific event or stage, or use More options to widen the recent window or include operators with limited evidence."
       },
       "results": { "cn": "{{count}} 名干员", "en": "{{count}} operators" },
       "summary": {

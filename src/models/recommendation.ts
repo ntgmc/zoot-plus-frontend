@@ -75,16 +75,20 @@ export function recommendationParams(search: URLSearchParams): RecommendationPar
   const minOperationCount = Number(search.get('minOperationCount') ?? 5)
   return {
     scope: scope === 'PERMANENT' || scope === 'HISTORY' ? scope : 'RECENT',
-    days: (scope === 'HISTORY' ? [0, 90, 180, 365] : [90, 180, 365]).includes(days) ? days : 180,
+    days:
+      scope === 'PERMANENT'
+        ? 180
+        : (scope === 'HISTORY' ? [0, 90, 180, 365] : [90, 180, 365]).includes(days)
+          ? days
+          : scope === 'HISTORY'
+            ? 0
+            : 180,
     coverage: [0.6, 0.8, 0.9].includes(coverage) ? coverage : 0.8,
-    minOperationCount:
-      Number.isInteger(minOperationCount) && minOperationCount >= 1 && minOperationCount <= 2_147_483_647
-        ? minOperationCount
-        : 5,
-    stageId: search.get('stageId')?.slice(0, 200) || undefined,
-    category: search.get('category')?.slice(0, 200) || undefined,
-    activity: search.get('activity')?.slice(0, 200) || undefined,
-    includeClosed: search.get('closed') === '1',
+    minOperationCount: [1, 5, 10].includes(minOperationCount) ? minOperationCount : 5,
+    stageId: search.get('stageId')?.trim().slice(0, 200) || undefined,
+    category: search.get('category')?.trim().slice(0, 200) || undefined,
+    activity: search.get('activity')?.trim().slice(0, 200) || undefined,
+    includeClosed: scope !== 'PERMANENT' && search.get('closed') === '1',
     includeAlternatives: search.get('alternatives') !== '0',
     includeUncertain: search.get('uncertain') === '1',
   }

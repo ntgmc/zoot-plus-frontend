@@ -86,7 +86,7 @@ describe('recommendation filters', () => {
   })
 
   it('validates the minimum operation count and passes it to the server', () => {
-    for (const value of ['0', '-1', '1.5', 'bad', 'Infinity', '2147483648']) {
+    for (const value of ['0', '-1', '2', '6', '11', '1.5', 'bad', 'Infinity', '2147483648']) {
       expect(recommendationParams(new URLSearchParams({ minOperationCount: value })).minOperationCount).toBe(5)
     }
     expect(recommendationParams(new URLSearchParams('minOperationCount=1')).minOperationCount).toBe(1)
@@ -97,6 +97,42 @@ describe('recommendation filters', () => {
     expect(mock.useRecommendations).toHaveBeenLastCalledWith(
       expect.objectContaining({ scope: 'PERMANENT', minOperationCount: 10 }),
     )
+  })
+
+  it('keeps daily filters visible and folds optional settings without losing supported links', () => {
+    mount()
+    expect(screen.getByRole('button', { name: 'Use case' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Stage' })).toBeTruthy()
+    expect(screen.queryByRole('button', { name: 'Training target' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'More options' }).getAttribute('aria-expanded')).toBe('false')
+    fireEvent.click(screen.getByRole('button', { name: 'More options' }))
+    expect(screen.getByRole('button', { name: 'Training target' }).textContent).toBe('Practical')
+    expect(screen.getByRole('button', { name: 'Recent demand window' }).textContent).toBe('Last 180 days')
+    cleanup()
+    mount('/recommendations?days=365&coverage=0.9')
+    expect(screen.getByRole('button', { name: 'More options' }).getAttribute('aria-expanded')).toBe('true')
+    expect(screen.getByRole('button', { name: 'Training target' }).textContent).toBe('Broad coverage')
+  })
+
+  it('normalizes unsupported presets and irrelevant permanent settings in old links', () => {
+    expect(recommendationParams(new URLSearchParams('scope=PERMANENT&days=365&closed=1'))).toMatchObject({
+      scope: 'PERMANENT',
+      days: 180,
+      includeClosed: false,
+    })
+    expect(recommendationParams(new URLSearchParams('scope=HISTORY&days=91&coverage=0.81'))).toMatchObject({
+      scope: 'HISTORY',
+      days: 0,
+      coverage: 0.8,
+    })
+    expect(recommendationParams(new URLSearchParams('stageId=+s1+&category=+&activity=+第一章+'))).toMatchObject({
+      stageId: 's1',
+      category: undefined,
+      activity: '第一章',
+    })
+    mount('/recommendations?scope=PERMANENT&coverage=0.9')
+    expect(screen.queryByRole('button', { name: 'Recent demand window' })).toBeNull()
+    expect(screen.queryByRole('checkbox', { name: 'Include closed content' })).toBeNull()
   })
 
   it('uses server-approved activities independently of the stage count threshold', async () => {
@@ -203,11 +239,20 @@ describe('recommendation filters', () => {
   })
 
   it('restores filters and updates the server query when scope changes', () => {
-    mount('/recommendations?scope=HISTORY&days=0')
+    mount('/recommendations?scope=HISTORY&days=0&category=活动关卡&activity=旧活动&stageId=old&closed=1')
     expect(mock.useRecommendations).toHaveBeenLastCalledWith(expect.objectContaining({ scope: 'HISTORY', days: 0 }))
     fireEvent.click(screen.getByRole('button', { name: 'Use case' }))
     fireEvent.click(screen.getByRole('option', { name: 'Permanent stages' }).querySelector('a')!)
-    expect(mock.useRecommendations).toHaveBeenLastCalledWith(expect.objectContaining({ scope: 'PERMANENT' }))
+    expect(mock.useRecommendations).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        scope: 'PERMANENT',
+        days: 180,
+        category: undefined,
+        activity: undefined,
+        stageId: undefined,
+        includeClosed: false,
+      }),
+    )
   })
 
   it('searches every stage by code and ID while limiting the displayed options', async () => {

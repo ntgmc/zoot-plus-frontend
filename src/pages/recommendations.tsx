@@ -23,14 +23,25 @@ export const RecommendationsPage = () => {
   const params = recommendationParams(search)
   const { data, activities, error, isLoading, isValidating, mutate } = useRecommendations(params)
   const [filtersVisible, setFiltersVisible] = useState(false)
+  const [moreVisible, setMoreVisible] = useState(
+    () =>
+      params.days !== (params.scope === 'HISTORY' ? 0 : 180) ||
+      params.coverage !== 0.8 ||
+      params.includeClosed ||
+      !params.includeAlternatives ||
+      params.includeUncertain,
+  )
   const filterPanelId = useId()
+  const moreOptionsId = useId()
   const patch = (key: string, value: string) => {
     setSearch(
       (previous) => {
         const next = new URLSearchParams(previous)
         if (value) next.set(key, value)
         else next.delete(key)
-        if (key === 'scope' && value !== 'HISTORY' && next.get('days') === '0') next.delete('days')
+        if (key === 'scope' && value !== params.scope) {
+          for (const filter of ['days', 'category', 'activity', 'stageId', 'closed']) next.delete(filter)
+        }
         if (key === 'category') {
           next.delete('activity')
           next.delete('stageId')
@@ -118,29 +129,9 @@ export const RecommendationsPage = () => {
                 label={t.scope}
               />
             </Filter>
-            <Filter label={t.days}>
-              <FilterSelect
-                items={(params.scope === 'HISTORY' ? [90, 180, 365, 0] : [90, 180, 365]).map((days) => ({
-                  id: String(days),
-                  name: days ? t.day_count({ count: days }) : t.all_time,
-                }))}
-                value={String(params.days)}
-                onChange={(value) => patch('days', value)}
-                label={t.days}
-              />
-            </Filter>
-            <Filter label={t.coverage}>
-              <FilterSelect
-                items={[
-                  { id: '0.6', name: t.basic },
-                  { id: '0.8', name: t.practical },
-                  { id: '0.9', name: t.extensive },
-                ]}
-                value={String(params.coverage)}
-                onChange={(value) => patch('coverage', value)}
-                label={t.coverage}
-              />
-            </Filter>
+            <p className="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed sm:col-span-2 lg:col-span-1">
+              {t.scope_help[params.scope]}
+            </p>
             <Filter label={t.category}>
               <FilterSelect
                 items={[{ id: '', name: t.all }, ...(data?.categories ?? []).map((id) => ({ id, name: id }))]}
@@ -169,25 +160,65 @@ export const RecommendationsPage = () => {
               />
             </Filter>
             <div className="recommendations-options sm:col-span-2 lg:col-span-1 pt-4">
-              <Checkbox
-                checked={params.includeAlternatives}
-                onChange={(event) => patch('alternatives', event.currentTarget.checked ? '' : '0')}
+              <Button
+                fill
+                minimal
+                rightIcon={moreVisible ? 'chevron-up' : 'chevron-down'}
+                aria-expanded={moreVisible}
+                aria-controls={moreOptionsId}
+                onClick={() => setMoreVisible((value) => !value)}
               >
-                {t.alternatives}
-              </Checkbox>
-              <Checkbox
-                checked={params.includeClosed}
-                onChange={(event) => patch('closed', event.currentTarget.checked ? '1' : '')}
-              >
-                {t.closed}
-              </Checkbox>
-              <Checkbox
-                checked={params.includeUncertain}
-                onChange={(event) => patch('uncertain', event.currentTarget.checked ? '1' : '')}
-              >
-                {t.uncertain}
-              </Checkbox>
-              <Button className="recommendations-reset" fill minimal icon="reset" onClick={() => setSearch({})}>
+                {t.more_options}
+              </Button>
+              <div id={moreOptionsId} hidden={!moreVisible} className={moreVisible ? 'grid gap-4 mt-4' : 'hidden'}>
+                {params.scope !== 'PERMANENT' && (
+                  <Filter label={t.days}>
+                    <FilterSelect
+                      items={(params.scope === 'HISTORY' ? [90, 180, 365, 0] : [90, 180, 365]).map((days) => ({
+                        id: String(days),
+                        name: days ? t.day_count({ count: days }) : t.all_time,
+                      }))}
+                      value={String(params.days)}
+                      onChange={(value) => patch('days', value)}
+                      label={t.days}
+                    />
+                  </Filter>
+                )}
+                <Filter label={t.coverage}>
+                  <FilterSelect
+                    items={[
+                      { id: '0.6', name: t.basic },
+                      { id: '0.8', name: t.practical },
+                      { id: '0.9', name: t.extensive },
+                    ]}
+                    value={String(params.coverage)}
+                    onChange={(value) => patch('coverage', value)}
+                    label={t.coverage}
+                  />
+                </Filter>
+                <p className="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">{t.target_help}</p>
+                <Checkbox
+                  checked={params.includeAlternatives}
+                  onChange={(event) => patch('alternatives', event.currentTarget.checked ? '' : '0')}
+                >
+                  {t.alternatives}
+                </Checkbox>
+                {params.scope !== 'PERMANENT' && (
+                  <Checkbox
+                    checked={params.includeClosed}
+                    onChange={(event) => patch('closed', event.currentTarget.checked ? '1' : '')}
+                  >
+                    {t.closed}
+                  </Checkbox>
+                )}
+                <Checkbox
+                  checked={params.includeUncertain}
+                  onChange={(event) => patch('uncertain', event.currentTarget.checked ? '1' : '')}
+                >
+                  {t.uncertain}
+                </Checkbox>
+              </div>
+              <Button className="recommendations-reset mt-4" fill minimal icon="reset" onClick={() => setSearch({})}>
                 {t.reset}
               </Button>
             </div>
